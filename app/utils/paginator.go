@@ -21,7 +21,7 @@ import (
 	"strconv"
 )
 
-// 默认的每页条数的选择范围
+// <LABEL_98>
 var defaultPerPageNumsSelect = []int{10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100}
 
 type Paginator struct {
@@ -198,9 +198,9 @@ func (p *Paginator) HasPages() bool {
 func NewPaginator(req *http.Request, per int, nums interface{}) *Paginator {
 	p := Paginator{}
 	p.Request = req
-	// 翻页参数名，默认为 page
+	// <LABEL_988>，<LABEL_1507> page
 	p.pageParamName = "page"
-	// 每页条数参数名，默认为 "number"
+	// <LABEL_593>，<LABEL_1507> "number"
 	p.perPageNumParamName = "number"
 	if per <= 0 {
 		per = 10

@@ -5,7 +5,7 @@
             <form action="" method="get">
                 <div class="col-sm-offset-8 col-sm-4">
                     <div class="input-group">
-                        <input class="form-control" name="username" type="text" value="{{$username}}" placeholder="用户名">
+                        <input class="form-control" name="username" type="text" value="{{$username}}" placeholder="<LABEL_1522>">
 				            <span class="input-group-btn">
 				              <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
 				            </span>
@@ -19,12 +19,12 @@
             <thead>
             <tr>
                 <th class="w8p">ID</th>
-                <th class="w13p">用户名</th>
-                <th class="w13p">姓名</th>
-                <th>职位</th>
-                <th class="w15p">手机号</th>
-                <th class="w20p">邮箱</th>
-                <th class="w11p">操作</th>
+                <th class="w13p"><LABEL_1522></th>
+                <th class="w13p"><LABEL_1676></th>
+                <th><LABEL_1677></th>
+                <th class="w15p"><LABEL_1525></th>
+                <th class="w20p"><LABEL_1678></th>
+                <th class="w11p"><LABEL_1659></th>
             </tr>
             </thead>
             <tbody>
@@ -39,10 +39,10 @@
                     <td>{{$user.email}}</td>
                     <td class="center">
                         {{if ne $user.is_forbidden "1"}}
-                            <a onclick="importContact('确定导入该用户为系统联系人吗？',
+                            <a onclick="importContact('<LABEL_51>？',
                                     '/system/contact/save',
                                     'name={{$user.given_name}}&mobile={{$user.mobile}}&position={{$user.position}}&email={{$user.email}}');">
-                                <i class="glyphicon glyphicon-import"></i>导入
+                                <i class="glyphicon glyphicon-import"></i><LABEL_1679>
                             </a>
                         {{end}}
                     </td>

@@ -3,6 +3,7 @@ module github.com/chaiyd/mm-wiki
 go 1.12
 
 replace github.com/coreos/go-systemd => ./vendor/github.com/coreos/go-systemd
+replace github.com/chaiyd/ => ./
 
 require (
 	github.com/asaskevich/govalidator v0.0.0-20190424111038-f61b66f89f4a // indirect

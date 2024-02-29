@@ -1,17 +1,17 @@
 var Layers = {
 
 	/**
-	 * 皮肤
+	 * <LABEL_1823>
 	 */
 	skin : 'default',
 
 	/**
-	 * success 提示信息框
+	 * success <LABEL_1109>
 	 * @param title
 	 */
 	success : function (title) {
 		layer.alert(title+"<br/>", {
-			title: "操作成功",
+			title: "<LABEL_1489>",
 			icon: 1,
 			skin: Layers.skin,
 			closeBtn: 0
@@ -19,12 +19,12 @@ var Layers = {
 	},
 
 	/**
-	 * error 提示信息框
+	 * error <LABEL_1109>
 	 * @param title
 	 */
 	error : function (title) {
 		layer.alert(title, {
-			title: "操作失败",
+			title: "<LABEL_1152>",
 			icon: 2,
 			skin: Layers.skin,
 			closeBtn: 0
@@ -44,7 +44,7 @@ var Layers = {
 	},
 
 	/**
-	 * confirm 提示框， post 请求
+	 * confirm <LABEL_1605>， post <LABEL_1698>
 	 * @param title
 	 * @param url
 	 * @param data
@@ -52,10 +52,10 @@ var Layers = {
 	confirm: function (title, url, data) {
         title = '<i class="fa fa-volume-up"></i> '+title;
 		layer.confirm(title, {
-			btn: ['是','否'],
+			btn: ['<LABEL_1838>','<LABEL_1839>'],
 			skin: Layers.skin,
             btnAlign: 'c',
-			title: "<i class='fa fa-warning'></i><strong> 警告</strong>"
+			title: "<i class='fa fa-warning'></i><strong> <LABEL_1689></strong>"
 		}, function() {
 			Common.ajaxSubmit(url, data)
 		}, function() {
@@ -64,7 +64,7 @@ var Layers = {
 	},
 
 	/**
-	 * confirm 提示框， post 请求
+	 * confirm <LABEL_1605>， post <LABEL_1698>
 	 * @param title
 	 * @param confirm
 	 * @param cancel
@@ -72,10 +72,10 @@ var Layers = {
 	confirmCallback: function (title, confirm, cancel) {
 		title = '<i class="fa fa-volume-up"></i> '+title;
 		layer.confirm(title, {
-			btn: ['是','否'],
+			btn: ['<LABEL_1838>','<LABEL_1839>'],
 			skin: Layers.skin,
 			btnAlign: 'c',
-			title: "<i class='fa fa-warning'></i><strong> 警告</strong>"
+			title: "<i class='fa fa-warning'></i><strong> <LABEL_1689></strong>"
 		}, function() {
 			confirm();
 		}, function() {
@@ -84,7 +84,7 @@ var Layers = {
 	},
 
 	/**
-	 * bind iframe 窗
+	 * bind iframe <LABEL_1876>
 	 */
 	bindIframe: function (element, title, height, width, url) {
 		$(element).each(function () {

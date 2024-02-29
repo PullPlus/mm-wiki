@@ -18,20 +18,20 @@ func NewEncrypt() *encrypt {
 	return &encrypt{}
 }
 
-//base64 加密
+//base64 <LABEL_1637>
 func (encrypt *encrypt) Base64Encode(str string) string {
 	var coder = base64.NewEncoding(BASE_64_TABLE)
 	var src []byte = []byte(str)
 	return string([]byte(coder.EncodeToString(src)))
 }
 
-//base64 加密
+//base64 <LABEL_1637>
 func (encrypt *encrypt) Base64EncodeBytes(bytes []byte) []byte {
 	var coder = base64.NewEncoding(BASE_64_TABLE)
 	return []byte(coder.EncodeToString(bytes))
 }
 
-//base64 解密
+//base64 <LABEL_1638>
 func (encrypt *encrypt) Base64Decode(str string) (string, error) {
 	var src []byte = []byte(str)
 	var coder = base64.NewEncoding(BASE_64_TABLE)
@@ -39,13 +39,13 @@ func (encrypt *encrypt) Base64Decode(str string) (string, error) {
 	return string(by), err
 }
 
-//base64 解密
+//base64 <LABEL_1638>
 func (encrypt *encrypt) Base64DecodeBytes(str string) ([]byte, error) {
 	var coder = base64.NewEncoding(BASE_64_TABLE)
 	return coder.DecodeString(str)
 }
 
-//md5加密
+//md5<LABEL_1637>
 func (encrypt *encrypt) Md5Encode(str string) string {
 	hash := md5.New()
 	hash.Write([]byte(str))

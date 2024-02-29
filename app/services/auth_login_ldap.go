@@ -13,7 +13,7 @@ const (
 )
 
 var (
-	LdapUserSearchNotFoundErr = errors.New("用户不存在或密码错误")
+	LdapUserSearchNotFoundErr = errors.New("<LABEL_213>")
 )
 
 type AuthLoginConfig struct {
@@ -69,29 +69,29 @@ func (al *AuthLoginLdapService) AuthLogin(username string, password string) (*Au
 		return nil, fmt.Errorf("LDAP URL is empty")
 	}
 	if al.config == nil || al.conf == "" {
-		return nil, fmt.Errorf("LDAP 配置数据错误")
+		return nil, fmt.Errorf("LDAP <LABEL_773>")
 	}
 	if al.config.GivenNameKey == "" {
-		return nil, fmt.Errorf("LDAP 配置 given_name_key 错误")
+		return nil, fmt.Errorf("LDAP <LABEL_1628> given_name_key <LABEL_1629>")
 	}
 
 	lc, err := ldap.DialURL(al.url)
 	if err != nil {
-		return nil, fmt.Errorf("连接 LDAP 服务失败, err=%s", err.Error())
+		return nil, fmt.Errorf("<LABEL_1630> LDAP <LABEL_976> err=%s", err.Error())
 	}
 	defer lc.Close()
 
-	// bind 用户
+	// bind <LABEL_1631>
 	if al.config.BindPassword != "" {
 		err = lc.Bind(al.config.BindUsername, al.config.BindPassword)
 	} else {
 		err = lc.UnauthenticatedBind(al.config.BindUsername)
 	}
 	if err != nil {
-		return nil, fmt.Errorf("绑定 LDAP 用户失败, err=%s", err.Error())
+		return nil, fmt.Errorf("<LABEL_1632> LDAP <LABEL_977> err=%s", err.Error())
 	}
 
-	// 搜索下用户信息
+	// <LABEL_566>
 	searchRequest := ldap.NewSearchRequest(
 		al.config.BaseDn,
 		ldap.ScopeWholeSubtree,
@@ -105,13 +105,13 @@ func (al *AuthLoginLdapService) AuthLogin(username string, password string) (*Au
 	)
 	searchResult, err := lc.Search(searchRequest)
 	if err != nil {
-		return nil, fmt.Errorf("查找 LDAP 用户失败, err=%s", err.Error())
+		return nil, fmt.Errorf("<LABEL_1633> LDAP <LABEL_977> err=%s", err.Error())
 	}
 	if len(searchResult.Entries) != 1 {
 		return nil, LdapUserSearchNotFoundErr
 	}
 
-	// 验证下用户密码
+	// <LABEL_567>
 	userDN := searchResult.Entries[0].DN
 	err = lc.Bind(userDN, password)
 	if err != nil {

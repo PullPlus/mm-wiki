@@ -76,10 +76,46 @@ build_install() {
 }
 
 build() {
+    choose_lang
     echo ">> MM-Wiki start build!"
     build_app
     build_install
     return
 }
+
+choose_lang() {
+    # Определение доступных вариантов языка
+    langs="en cn ru"
+
+    # Предложение пользователю выбрать язык
+    echo "Please select a language (en, cn, ru):"
+    echo "1. en"
+    echo "2. cn"
+    echo "3. ru"
+
+    while true; do
+        read -p "Enter your choice (number): " choice
+        case $choice in
+            1)
+                echo "You have selected English."
+                python3 set_lang.py en
+                break
+                ;;
+            2)
+                echo "You have selected Chinese."
+                python3 set_lang.py cn
+                break
+                ;;
+            3)
+                echo "You have selected Russian."
+                break
+                ;;
+            *)
+                echo "Invalid selection. Please try again."
+                ;;
+        esac
+    done
+}
+
 
 build

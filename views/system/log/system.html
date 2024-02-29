@@ -9,9 +9,9 @@
                     </div>
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-addon"> 日志级别</span>
+                            <span class="input-group-addon"> <LABEL_1289></span>
                             <select class="form-control" name="level">
-                                <option value="">全部</option>
+                                <option value=""><LABEL_1701></option>
                                 <option value="7">DEBUG</option>
                                 <option value="6">INFO</option>
                                 <option value="4">WARNING</option>
@@ -21,13 +21,13 @@
                     </div>
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-addon"> 用户名 </span>
-                            <input class="form-control" name="username" type="text" value="{{.username}}" placeholder="用户名">
+                            <span class="input-group-addon"> <LABEL_1522> </span>
+                            <input class="form-control" name="username" type="text" value="{{.username}}" placeholder="<LABEL_1522>">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="input-group">
-                            <input class="form-control" name="message" type="text" value="{{.message}}" placeholder="描述">
+                            <input class="form-control" name="message" type="text" value="{{.message}}" placeholder="<LABEL_1706>">
                             <span class="input-group-btn">
                                   <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
                                 </span>
@@ -41,12 +41,12 @@
                 <thead>
                 <tr>
                     <th class="w7p">ID</th>
-                    <th class="w10p">级别</th>
-                    <th class="w9p">用户</th>
-                    <th>描述</th>
-                    <th class="w20p">动作</th>
+                    <th class="w10p"><LABEL_1707></th>
+                    <th class="w9p"><LABEL_1631></th>
+                    <th><LABEL_1706></th>
+                    <th class="w20p"><LABEL_1687></th>
                     <th class="w10p">IP</th>
-                    <th class="w15p">时间</th>
+                    <th class="w15p"><LABEL_1661></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -78,7 +78,7 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        Layers.bindIframe("[name='info']", "日志详细信息", "400px", "800px");
+        Layers.bindIframe("[name='info']", "<LABEL_886>", "400px", "800px");
         $("select[name='level']").val({{.level}})
     });
 </script>

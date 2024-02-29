@@ -43,7 +43,7 @@ func (this *TemplateController) Prepare() {
 
 	if !this.isLogin() {
 		if this.IsAjax() {
-			this.JsonError("未登录或登录已失效！", nil, "/author/index")
+			this.JsonError("<LABEL_265>！", nil, "/author/index")
 		} else {
 			this.Redirect("/author/index", 302)
 		}
@@ -52,9 +52,9 @@ func (this *TemplateController) Prepare() {
 
 	if !this.checkAccess() {
 		if this.IsPost() {
-			this.JsonError("抱歉，您没有权限操作！", nil, "/system/main/index")
+			this.JsonError("<LABEL_1621>，<LABEL_558>！", nil, "/system/main/index")
 		} else {
-			this.ViewError("您没有权限访问该页面！", "/system/main/index")
+			this.ViewError("<LABEL_197>！", "/system/main/index")
 		}
 		this.StopRun()
 	}
@@ -98,7 +98,7 @@ func (this *TemplateController) isLogin() bool {
 	// flush session
 	newUser, err := models.UserModel.GetUserByUserId(userValue["user_id"])
 	if err != nil {
-		this.ErrorLog("登录成功 flush session 失败：" + err.Error())
+		this.ErrorLog("<LABEL_1141> flush session <LABEL_1618>：" + err.Error())
 		return false
 	}
 	// flush session
@@ -106,7 +106,7 @@ func (this *TemplateController) isLogin() bool {
 	this.User = this.GetSession("author").(map[string]string)
 	this.UserId = this.User["user_id"]
 
-	// 查找系统名称
+	// <LABEL_746>
 	systemName := models.ConfigModel.GetConfigValueByKey(models.ConfigKeySystemName, "Markdown Mini Wiki")
 	this.Data["system_name"] = systemName
 	this.Data["login_user_id"] = this.UserId
@@ -134,7 +134,7 @@ func (this *TemplateController) checkAccess() bool {
 		}
 		_, controllers, err := models.PrivilegeModel.GetTypePrivilegesByUserId(this.UserId)
 		if err != nil {
-			this.ErrorLog("获取用户 " + this.UserId + " 权限失败：" + err.Error())
+			this.ErrorLog("<LABEL_1150> " + this.UserId + " <LABEL_1151>：" + err.Error())
 			return false
 		}
 		for _, controller := range controllers {
@@ -171,7 +171,7 @@ func (this *TemplateController) ViewError(content string, redirect ...string) {
 		sleep = redirect[1]
 	}
 	if content == "" {
-		content = "操作失败"
+		content = "<LABEL_1152>"
 	}
 	this.Data["content"] = content
 	this.Data["url"] = url
@@ -273,7 +273,7 @@ func (this *TemplateController) IsGet() bool {
 	return this.Ctx.Input.Method() == "GET"
 }
 
-// 是否是超级管理员
+// <LABEL_379>
 func (this *TemplateController) IsRoot() bool {
 	return this.User["role_id"] == fmt.Sprintf("%d", models.Role_Root_Id)
 }

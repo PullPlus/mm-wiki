@@ -12,23 +12,23 @@
     <div class="error-page-container">
         <div class="error-page-main">
             <h3>
-                很抱歉，{{.content}}
+                <LABEL_1556>，{{.content}}
             </h3>
             <div class="error-page-actions">
                 <div>
-                    <h4>可能原因：</h4>
+                    <h4><LABEL_1346>：</h4>
                     <ol>
-                        <li>请求的资源不存在或已删除</li>
-                        <li>操作资源的权限不够</li>
-                        <li>请求方式错误</li>
+                        <li><LABEL_113></li>
+                        <li><LABEL_324></li>
+                        <li><LABEL_777></li>
                     </ol>
                 </div>
                 <div>
-                    <h4>可以尝试：</h4>
+                    <h4><LABEL_1347>：</h4>
                     <ol>
-                        <li><a href="/">返回首页</a></li>
-                        <li><a href="/">联系管理员</a></li>
-                        <li><a href="https://github.com/phachon/mm-wiki/issues">提交反馈</a></li>
+                        <li><a href="/"><LABEL_1348></a></li>
+                        <li><a href="/"><LABEL_1044></a></li>
+                        <li><a href="https://github.com/phachon/mm-wiki/issues"><LABEL_1349></a></li>
                     </ol>
                 </div>
             </div>
@@ -47,7 +47,7 @@
     }
     function showTime(){
         t -= 1;
-        document.getElementById("countdown").innerHTML = t+" 秒后自动跳转";
+        document.getElementById("countdown").innerHTML = t+" <LABEL_903>";
         if (t == 0) {
             location.href = url;
         }

@@ -1,5 +1,5 @@
 /**
- * 安装页
+ * <LABEL_1594>
  * Copyright (c) 2017 phachon@163.com
  */
 
@@ -23,22 +23,22 @@ var Install = {
 					return false
 				}
 				if (response.data.status == "1") {
-					//正在安装中
+					//<LABEL_1094>
 					$("#install_success").addClass("hidden");
 					$("#install_failed").addClass("hidden");
 					$("#install_load").removeClass("hidden");
 				}
 				if (response.data.status == "2") {
-					// 完成
+					// <LABEL_1612>
 					if (response.data.is_success == "1") {
-						//失败
+						//<LABEL_1618>
 						$("#install_load").addClass("hidden");
 						$("#install_success").addClass("hidden");
 						$("#install_failed [data-name='error_message']").text(response.data.result);
 						$("#install_failed").removeClass("hidden");
 					}
 					if (response.data.is_success == "2") {
-						//成功
+						//<LABEL_1617>
 						$("#install_load").addClass("hidden");
 						$("#install_failed").addClass("hidden");
 						var res = eval('(' + response.data.result + ')');

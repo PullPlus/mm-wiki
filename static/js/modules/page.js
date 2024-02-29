@@ -12,7 +12,7 @@ var Page = {
     ajaxSave: function (element, sendEmail, isAutoFollow) {
 
         /**
-         * 成功信息条
+         * <LABEL_1095>
          * @param message
          * @param data
          */
@@ -21,7 +21,7 @@ var Page = {
         }
 
         /**
-         * 失败信息条
+         * <LABEL_1096>
          * @param message
          * @param data
          */
@@ -58,20 +58,20 @@ var Page = {
         containerHtml += '<div style="margin-top: 8px;text-align: left">';
 
         if (sendEmail === "1") {
-            containerHtml += '<label>&nbsp;&nbsp;通知关注用户&nbsp;</label><input type="checkbox" name="is_notice_user" checked="checked" value="1">';
+            containerHtml += '<label>&nbsp;&nbsp;<LABEL_949>&nbsp;</label><input type="checkbox" name="is_notice_user" checked="checked" value="1">';
         }
         if (isAutoFollow !== "1") {
-            containerHtml += '<label>&nbsp;&nbsp;关注该文档&nbsp;</label><input type="checkbox" name="is_follow_doc" checked="checked" value="1">';
+            containerHtml += '<label>&nbsp;&nbsp;<LABEL_1097>&nbsp;</label><input type="checkbox" name="is_follow_doc" checked="checked" value="1">';
         }
         containerHtml += "</div>";
         containerHtml += "</div>";
 
         layer.open({
-            title: '<i class="fa fa-volume-up"></i> 请输入修改备注',
+            title: '<i class="fa fa-volume-up"></i> <LABEL_695>',
             type: 1,
             area: ['380px', '232px'],
             content: containerHtml,
-            btn: ['确定','取消'],
+            btn: ['<LABEL_1738>','<LABEL_1688>'],
             yes: function(index, layero){
                 var commentText = $("textarea[name='edit_comment']").val().trim();
                 var isNoticeUser = "0";
@@ -89,7 +89,7 @@ var Page = {
                     }
                 }
                 if (commentText.length > 50 ) {
-                    layer.tips("最多50个字符！", $("textarea[name='edit_comment']"))
+                    layer.tips("<LABEL_1817>50<LABEL_1595>！", $("textarea[name='edit_comment']"))
                 } else {
                     layer.close(index);
                     var options = {
@@ -111,7 +111,7 @@ var Page = {
         });
 
         // layer.prompt({
-        //     title: '<i class="fa fa-volume-up"></i> 请输入修改备注',
+        //     title: '<i class="fa fa-volume-up"></i> <LABEL_695>',
         //     formType: 2,
         //     maxlength: 150,
         //     value: '',
@@ -139,10 +139,10 @@ var Page = {
     cancelSave: function (title, url) {
         title = '<i class="fa fa-volume-up"></i> '+title;
         layer.confirm(title, {
-            btn: ['是','否'],
+            btn: ['<LABEL_1838>','<LABEL_1839>'],
             skin: Layers.skin,
             btnAlign: 'c',
-            title: "<i class='fa fa-warning'></i><strong> 警告</strong>"
+            title: "<i class='fa fa-warning'></i><strong> <LABEL_1689></strong>"
         }, function() {
             var documentId = $("input[name='document_id']").val();
             var storageId = "mm_wiki_doc_"+documentId;
@@ -160,7 +160,7 @@ var Page = {
         layer.open({
             type: 2,
             skin: Layers.skin,
-            title: '<strong>附件</strong>',
+            title: '<strong><LABEL_1620></strong>',
             shadeClose: true,
             shade : 0.1,
             resize: false,
@@ -172,7 +172,7 @@ var Page = {
     },
 
     /**
-     * 错误提示
+     * <LABEL_1476>
      * @param element
      * @param message
      */
@@ -181,7 +181,7 @@ var Page = {
         $(element).removeClass('hide');
         $(element).addClass('alert alert-danger');
         $(element).append('<a class="close" href="#" onclick="$(this).parent().hide();">×</a>');
-        $(element).append('<strong><i class="glyphicon glyphicon-remove-circle"></i> 上传失败：</strong>');
+        $(element).append('<strong><i class="glyphicon glyphicon-remove-circle"></i> <LABEL_1477>：</strong>');
         $(element).append(message);
         $(element).show();
     },

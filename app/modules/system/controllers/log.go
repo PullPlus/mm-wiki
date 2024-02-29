@@ -29,8 +29,8 @@ func (this *LogController) System() {
 		logs, err = models.LogModel.GetLogsByLimit(limit, number)
 	}
 	if err != nil {
-		this.ErrorLog("查找系统日志出错：" + err.Error())
-		this.ViewError("查找系统日志出错", "/system/main/index")
+		this.ErrorLog("<LABEL_437>：" + err.Error())
+		this.ViewError("<LABEL_437>", "/system/main/index")
 	}
 
 	this.Data["logs"] = logs
@@ -45,12 +45,12 @@ func (this *LogController) Info() {
 
 	logId := this.GetString("log_id", "")
 	if logId == "" {
-		this.ViewError("日志不存在", "/system/log/system")
+		this.ViewError("<LABEL_987>", "/system/log/system")
 	}
 
 	log, err := models.LogModel.GetLogByLogId(logId)
 	if err != nil {
-		this.ViewError("日志不存在", "/system/log/system")
+		this.ViewError("<LABEL_987>", "/system/log/system")
 	}
 
 	this.Data["log"] = log
@@ -82,8 +82,8 @@ func (this *LogController) Document() {
 		count, err = models.LogDocumentModel.CountLogDocuments()
 	}
 	if err != nil {
-		this.ErrorLog("文档日志查找失败：" + err.Error())
-		this.ViewError("文档日志查找失败！", "/system/main/index")
+		this.ErrorLog("<LABEL_438>：" + err.Error())
+		this.ViewError("<LABEL_438>！", "/system/main/index")
 	}
 
 	userIds := []string{}
@@ -94,13 +94,13 @@ func (this *LogController) Document() {
 	}
 	users, err := models.UserModel.GetUsersByUserIds(userIds)
 	if err != nil {
-		this.ErrorLog("文档日志查找失败：" + err.Error())
-		this.ViewError("文档日志查找失败！", "/system/main/index")
+		this.ErrorLog("<LABEL_438>：" + err.Error())
+		this.ViewError("<LABEL_438>！", "/system/main/index")
 	}
 	docs, err := models.DocumentModel.GetAllDocumentsByDocumentIds(docIds)
 	if err != nil {
-		this.ErrorLog("文档日志查找失败：" + err.Error())
-		this.ViewError("文档日志查找失败！", "/system/main/index")
+		this.ErrorLog("<LABEL_438>：" + err.Error())
+		this.ViewError("<LABEL_438>！", "/system/main/index")
 	}
 	for _, logDocument := range logDocuments {
 		logDocument["username"] = ""
@@ -122,8 +122,8 @@ func (this *LogController) Document() {
 
 	users, err = models.UserModel.GetUsers()
 	if err != nil {
-		this.ErrorLog("文档日志查找失败：" + err.Error())
-		this.ViewError("文档日志查找失败！", "/system/main/index")
+		this.ErrorLog("<LABEL_438>：" + err.Error())
+		this.ViewError("<LABEL_438>！", "/system/main/index")
 	}
 	this.Data["logDocuments"] = logDocuments
 	this.Data["keyword"] = keyword

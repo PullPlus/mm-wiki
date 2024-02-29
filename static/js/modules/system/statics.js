@@ -1,5 +1,5 @@
 /**
- * 统计
+ * <LABEL_1821>
  * Copyright (c) 2018 phachon@163.com
  */
 
@@ -21,7 +21,7 @@ var Statics = {
                     data: response.data,
                     xkey: 'space_name',
                     ykeys: ['total'],
-                    labels: ['文档数量'],
+                    labels: ['<LABEL_1486>'],
                     barRatio: 0.4,
                     xLabelAngle: 65,
                     hideHover: 'auto',
@@ -68,7 +68,7 @@ var Statics = {
                         data: response.data,
                         xkey: 'date',
                         ykeys: ['total'],
-                        labels: ['新增文档数']
+                        labels: ['<LABEL_1102>']
                     });
 				}
             },
@@ -95,7 +95,7 @@ var Statics = {
                         data: response.data,
                         xkey: 'document_name',
                         ykeys: ['total'],
-                        labels: ['收藏数'],
+                        labels: ['<LABEL_1604>'],
                         barRatio: 0.4,
                         xLabelAngle: 65,
                         hideHover: 'auto',

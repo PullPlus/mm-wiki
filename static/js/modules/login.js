@@ -3,7 +3,7 @@ var Login = {
 	errorMessage: "#errorMessage",
 
 	/**
-	 * 登录
+	 * <LABEL_1665>
 	 * @param element
 	 */
 	ajaxSubmit: function (element) {
@@ -32,7 +32,7 @@ var Login = {
 		}
 
 		function failed(messages, data) {
-			var text = "登陆失败：";
+			var text = "<LABEL_1475>：";
 			var failedText = messages;
 			$(Login.errorMessage).removeClass('alert-success');
 			$(Login.errorMessage).addClass('alert-danger');

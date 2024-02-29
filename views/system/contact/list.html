@@ -5,12 +5,12 @@
             <div class="row">
                 <div class="col-md-1">
                     <div class="input-group">
-                        <a name="add" data-link="/system/contact/add" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加联系人 </a>
+                        <a name="add" data-link="/system/contact/add" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> <LABEL_978> </a>
                     </div>
                 </div>
                 <div class="col-md-1">
                     <div class="input-group">
-                        <a name="import" data-link="/system/contact/import" class="btn btn-primary"><i class="glyphicon glyphicon-import"></i> 导入联系人 </a>
+                        <a name="import" data-link="/system/contact/import" class="btn btn-primary"><i class="glyphicon glyphicon-import"></i> <LABEL_999> </a>
                     </div>
                 </div>
                 <form action="" method="get">
@@ -30,11 +30,11 @@
                 <thead>
                 <tr>
                     <th class="w5p">ID</th>
-                    <th class="w10p">姓名</th>
-                    <th class="w11p">职位</th>
-                    <th class="w9p">联系电话</th>
-                    <th class="w13p">邮箱</th>
-                    <th class="w10p">操作</th>
+                    <th class="w10p"><LABEL_1676></th>
+                    <th class="w11p"><LABEL_1677></th>
+                    <th class="w9p"><LABEL_1241></th>
+                    <th class="w13p"><LABEL_1678></th>
+                    <th class="w10p"><LABEL_1659></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,8 +46,8 @@
                     <td class="center">{{$contact.mobile}}</td>
                     <td class="center">{{$contact.email}}</td>
                     <td class="center">
-                        <a name="edit" data-link="/system/contact/edit?contact_id={{$contact.contact_id}}"><i class="glyphicon glyphicon-edit" ></i>修改</a>
-                        <a onclick="Layers.confirm('确定删除吗？', '/system/contact/delete?contact_id={{$contact.contact_id}}');"><i class="glyphicon glyphicon-trash"></i>删除</a>
+                        <a name="edit" data-link="/system/contact/edit?contact_id={{$contact.contact_id}}"><i class="glyphicon glyphicon-edit" ></i><LABEL_1663></a>
+                        <a onclick="Layers.confirm('<LABEL_1008>？', '/system/contact/delete?contact_id={{$contact.contact_id}}');"><i class="glyphicon glyphicon-trash"></i><LABEL_1664></a>
                     </td>
                 </tr>
                 {{end}}
@@ -58,7 +58,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    Layers.bindIframe("[name='add']", "添加系统联系人", "400px", "850px");
-    Layers.bindIframe("[name='import']", "导入联系人", "500px", "1000px");
-    Layers.bindIframe("[name='edit']", "修改系统联系人", "400px", "850px");
+    Layers.bindIframe("[name='add']", "<LABEL_615>", "400px", "850px");
+    Layers.bindIframe("[name='import']", "<LABEL_999>", "500px", "1000px");
+    Layers.bindIframe("[name='edit']", "<LABEL_616>", "400px", "850px");
 </script>

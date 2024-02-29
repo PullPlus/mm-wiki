@@ -5,18 +5,18 @@
                 <h3><i class="fa fa-address-card-o"></i> {{$user.username}}（{{$user.given_name}}）</h3>
             </div>
             <ul class="nav nav-tabs">
-                <li  class="active"><a href="/system/profile/info">用户信息</a></li>
-                <li><a href="/system/profile/followUser">关注用户</a></li>
-                <li><a href="/system/profile/followDoc">关注文档</a></li>
+                <li  class="active"><a href="/system/profile/info"><LABEL_1176></a></li>
+                <li><a href="/system/profile/followUser"><LABEL_1244></a></li>
+                <li><a href="/system/profile/followDoc"><LABEL_1245></a></li>
             </ul>
             <br>
             <div class="row">
                 <div class="col-md-7" style="padding-left: 30px">
-                    <h3>最近活动</h3>
+                    <h3><LABEL_1247></h3>
                     <div class="user-activity">
                         {{if eq .count 0}}
                             <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-bottom: 0">
-                                <p><i class="glyphicon glyphicon-volume-up"></i> 还没有任何活动！</p>
+                                <p><i class="glyphicon glyphicon-volume-up"></i> <LABEL_625>！</p>
                             </div>
                         {{else}}
                         <ul>
@@ -40,9 +40,9 @@
                                         {{$logDocument.document_name}}</a>
                                     {{end}}
                                 </div>
-                                <span class="text text-font-12 activity-time">{{if eq $logDocument.action "1"}}创建
-                                {{else if eq $logDocument.action "2"}}修改{{else if eq $logDocument.action "3"}}删除
-                                {{end}}于 {{dateFormat $logDocument.update_time "Y-m-d H:i:s"}}</span>
+                                <span class="text text-font-12 activity-time">{{if eq $logDocument.action "1"}}<LABEL_1662>
+                                {{else if eq $logDocument.action "2"}}<LABEL_1663>{{else if eq $logDocument.action "3"}}<LABEL_1664>
+                                {{end}}<LABEL_1842> {{dateFormat $logDocument.update_time "Y-m-d H:i:s"}}</span>
                             </li>
                         {{end}}
                         </ul>
@@ -50,39 +50,39 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <h3>个人资料 <a class="fa fa-edit" name="edit" data-link="/system/profile/edit"></a></h3>
+                    <h3><LABEL_1248> <a class="fa fa-edit" name="edit" data-link="/system/profile/edit"></a></h3>
                     <div class="user-info">
                         <div class="user-group">
-                            <label class="text-right text-font-15">用户名</label>
+                            <label class="text-right text-font-15"><LABEL_1522></label>
                             <span>{{$user.username}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">姓名</label>
+                            <label class="text-right text-font-15"><LABEL_1676></label>
                             <span>{{$user.given_name}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">邮箱</label>
+                            <label class="text-right text-font-15"><LABEL_1678></label>
                             <span>{{$user.email}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">手机</label>
+                            <label class="text-right text-font-15"><LABEL_1681></label>
                             <span>{{$user.mobile}}</span>
                         </div>
                         <hr>
                         <div class="user-group">
-                            <label class="text-right text-font-15">电话</label>
+                            <label class="text-right text-font-15"><LABEL_1680></label>
                             <span>{{$user.phone}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">部门</label>
+                            <label class="text-right text-font-15"><LABEL_1682></label>
                             <span>{{$user.department}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">职位</label>
+                            <label class="text-right text-font-15"><LABEL_1677></label>
                             <span>{{$user.position}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">位置</label>
+                            <label class="text-right text-font-15"><LABEL_1684></label>
                             <span>{{$user.location}}</span>
                         </div>
                         <div class="user-group">
@@ -96,5 +96,5 @@
     </div>
 </div>
 <script type="text/javascript">
-    Layers.bindIframe("[name='edit']", "修改个人资料", "390px", "1000px");
+    Layers.bindIframe("[name='edit']", "<LABEL_871>", "390px", "1000px");
 </script>

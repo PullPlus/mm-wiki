@@ -4,7 +4,7 @@ import (
 	"github.com/go-ego/riot"
 )
 
-// 文档搜索
+// <LABEL_1219>
 var (
 	DocSearcher = riot.Engine{}
 )

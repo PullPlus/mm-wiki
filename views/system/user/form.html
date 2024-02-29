@@ -5,40 +5,40 @@
             <br>
             <form class="form-horizontal" method="post" action="/system/user/save">
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> 用户名</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> <LABEL_1522></label>
                 <div class="col-sm-4">
-                    <input type="text" name="username" class="form-control" placeholder="请输入用户名" value="">
+                    <input type="text" name="username" class="form-control" placeholder="<LABEL_882>" value="">
                 </div>
                 <div class="col-sm-3 form-comment">
-                    <span class="text-danger"> * 只能由数字和字母组成</span>
+                    <span class="text-danger"> * <LABEL_229></span>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> 姓名</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> <LABEL_1676></label>
                 <div class="col-sm-4">
-                    <input type="text" name="given_name" class="form-control" placeholder="请输入姓名" value="" required>
+                    <input type="text" name="given_name" class="form-control" placeholder="<LABEL_1009>" value="" required>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> 密码</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> <LABEL_1674></label>
                 <div class="col-sm-4">
-                    <input type="password" name="password" class="form-control" placeholder="请输入密码" value="" required autocomplete="new-password">
+                    <input type="password" name="password" class="form-control" placeholder="<LABEL_1000>" value="" required autocomplete="new-password">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> 邮箱</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> <LABEL_1678></label>
                 <div class="col-sm-4">
-                    <input type="text" name="email" class="form-control" placeholder="请输入邮箱" value="" required>
+                    <input type="text" name="email" class="form-control" placeholder="<LABEL_1010>" value="" required>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> 手机</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> <LABEL_1681></label>
                 <div class="col-sm-4">
-                    <input type="text" name="mobile" class="form-control" placeholder="请输入手机号" value="" required>
+                    <input type="text" name="mobile" class="form-control" placeholder="<LABEL_869>" value="" required>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> 角色</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"> * </span> <LABEL_1634></label>
                 <div class="col-sm-4">
                     <select name="role_id" class="form-control">
                     {{range $role := .roles}}
@@ -48,38 +48,38 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"></span> 电话</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"></span> <LABEL_1680></label>
                 <div class="col-sm-4">
-                    <input type="text" name="phone" class="form-control" placeholder="请输入电话号码" value="">
+                    <input type="text" name="phone" class="form-control" placeholder="<LABEL_621>" value="">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"></span> 部门</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"></span> <LABEL_1682></label>
                 <div class="col-sm-4">
-                    <input type="text" name="department" class="form-control" placeholder="请输入所在部门（广告事业部.技术部.后端研发组）" value="">
+                    <input type="text" name="department" class="form-control" placeholder="<LABEL_622>（<LABEL_27>）" value="">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"></span> 职位</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"></span> <LABEL_1677></label>
                 <div class="col-sm-4">
-                    <input type="text" name="position" class="form-control" placeholder="请输入职位信息（高级PHP开发工程师）" value="">
+                    <input type="text" name="position" class="form-control" placeholder="<LABEL_623>（<LABEL_1683>PHP<LABEL_1011>）" value="">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label"><span class="text-danger"></span> 位置</label>
+                <label class="col-sm-2 control-label"><span class="text-danger"></span> <LABEL_1684></label>
                 <div class="col-sm-4">
-                    <input type="text" name="location" class="form-control" placeholder="请输入工位信息（5层B区B107）" value="">
+                    <input type="text" name="location" class="form-control" placeholder="<LABEL_624>（5<LABEL_1840>B<LABEL_1841>B107）" value="">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label"><span class="text-danger"></span> IM</label>
                 <div class="col-sm-4">
-                    <input type="text" name="im" class="form-control" placeholder="请输入即时通讯工具信息（QQ：34512612）" value="">
+                    <input type="text" name="im" class="form-control" placeholder="<LABEL_154>（QQ：34512612）" value="">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2">
-                    &nbsp;<button type="button" onclick="Form.ajaxSubmit(this.form, false);" class="btn btn-primary">保存</button>
+                    &nbsp;<button type="button" onclick="Form.ajaxSubmit(this.form, false);" class="btn btn-primary"><LABEL_1655></button>
                 </div>
             </div>
             </form>

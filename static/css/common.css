@@ -336,7 +336,7 @@ ul.countdown li p {
     font-size: 14px;
 }
 
-/*width 按百分比*/
+/*width <LABEL_1353>*/
 .w5p{width:5%;}
 .w6p{width:6%;}
 .w7p{width:7%;}
@@ -372,7 +372,7 @@ ul.countdown li p {
 .w95p{width:95%;}
 .w100p{width:100%;}
 
-/*width 按像素*/
+/*width <LABEL_1558>*/
 .w10{width:10px;}
 .w20{width:20px;}
 .w30{width:30px;}
@@ -412,7 +412,7 @@ ul.countdown li p {
 
 
 /**
- * mainFrame 滚动条
+ * mainFrame <LABEL_1557>
  */
 #frame-body {
     padding-top: 6px;
@@ -458,7 +458,7 @@ ul.countdown li p {
 }
 
 /**
- * 分页选择框
+ * <LABEL_1045>
  */
 .pagination > .pagination-select > span {
     padding: 0;
@@ -497,7 +497,7 @@ mark {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* markdown浏览生成目录样式 */
+/* markdown<LABEL_498> */
 .md-view-box {
     position: relative;
 }
@@ -554,7 +554,7 @@ mark {
     padding: 10px 20px 10px 0;
 }
 
-/* 目录只显示单行, 多的文字使用title, 但感觉不太合理, 暂时不要 */
+/* <LABEL_34>title<LABEL_35> */
 /*.page-view-dir-toc ul li a {
     overflow: hidden;
     white-space: nowrap;

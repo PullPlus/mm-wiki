@@ -1,26 +1,26 @@
 /**
  * Copyright (c) 2018 phachon@163.com
  * // var treeData = [
- //     { id:10, pId:0, name:"首页", open:true},
- //     { id:11, pId:0, name:"技术部"},
- //     { id:12, pId:0, name:"产品部"},
- //     { id:13, pId:0, name:"运营部", isParent:true},
- //     { id:111, pId:11, name:"前端开发组", isParent:true},
- //     { id:112, pId:11, name:"UED组", isParent:true},
- //     { id:113, pId:11, name:"后台开发组", isParent:true},
- //     { id:114, pId:11, name:"应用开发组", isParent:true},
- //     { id:115, pId:11, name:"基础研发组", isParent:true},
+ //     { id:10, pId:0, name:"<LABEL_1640>", open:true},
+ //     { id:11, pId:0, name:"<LABEL_1596>"},
+ //     { id:12, pId:0, name:"<LABEL_1597>"},
+ //     { id:13, pId:0, name:"<LABEL_1598>", isParent:true},
+ //     { id:111, pId:11, name:"<LABEL_1098>", isParent:true},
+ //     { id:112, pId:11, name:"UED<LABEL_1875>", isParent:true},
+ //     { id:113, pId:11, name:"<LABEL_1099>", isParent:true},
+ //     { id:114, pId:11, name:"<LABEL_1100>", isParent:true},
+ //     { id:115, pId:11, name:"<LABEL_1101>", isParent:true},
  //
- //     { id:121, pId:111, name:"前端CSS规范"},
- //     { id:122, pId:112, name:"UED 设计标准"},
- //     { id:123, pId:113, name:"PHP 代码规范"},
- //     { id:124, pId:114, name:"广告应用架构"},
- //     { id:125, pId:115, name:"消息中间件的设计"},
+ //     { id:121, pId:111, name:"<LABEL_1818>CSS<LABEL_1819>"},
+ //     { id:122, pId:112, name:"UED <LABEL_1478>"},
+ //     { id:123, pId:113, name:"PHP <LABEL_1479>"},
+ //     { id:124, pId:114, name:"<LABEL_950>"},
+ //     { id:125, pId:115, name:"<LABEL_531>"},
  //
- //     { id:121, pId:12, name:"视频组", isParent:true},
- //     { id:122, pId:12, name:"社交组", isParent:true},
- //     { id:123, pId:12, name:"会员组", isParent:true},
- //     { id:124, pId:12, name:"广告组", isParent:true}
+ //     { id:121, pId:12, name:"<LABEL_1599>", isParent:true},
+ //     { id:122, pId:12, name:"<LABEL_1600>", isParent:true},
+ //     { id:123, pId:12, name:"<LABEL_1601>", isParent:true},
+ //     { id:124, pId:12, name:"<LABEL_1602>", isParent:true}
  // ];
  */
 var Document = {
@@ -30,7 +30,7 @@ var Document = {
      */
     ListTree: function (element, treeData, defaultId, isEditor, isDelete) {
 
-        //配置信息
+        //<LABEL_1480>
         var setting = {
             view: {
                 showIcon: showIconForTree,
@@ -41,8 +41,8 @@ var Document = {
                 enable: true,
                 showRemoveBtn: true,
                 showRenameBtn: false
-                // removeTitle: '删除',
-                // renameTitle: '修改'
+                // removeTitle: '<LABEL_1664>',
+                // renameTitle: '<LABEL_1663>'
             },
             data: {
                 simpleData: {
@@ -80,27 +80,27 @@ var Document = {
         }
 
         function beforeClick(treeId, treeNode) {
-            console.log("点击节点前....");
+            console.log("<LABEL_347>");
             // $("#mainFrame").attr("src", "/page/view?document_id="+treeNode.id);
             location.href = "/document/index?document_id=" + treeNode.id
         }
 
         function onClick() {
-            console.log("点击节点后....");
+            console.log("<LABEL_348>");
         }
 
         function beforeEditName(treeId, treeNode) {
-            console.log("开始修改节点...");
+            console.log("<LABEL_349>");
             return true;
         }
 
         function beforeRename(treeId, treeNode, newName) {
-            console.log("修改完成提交...");
+            console.log("<LABEL_350>");
             return true;
         }
 
         function onRename(e, treeId, treeNode, isCancel) {
-            console.log("修改之后刷新...");
+            console.log("<LABEL_351>");
             // setTimeout(function() {
             // 	location.href = listUrl;
             // }, 2000);
@@ -108,21 +108,21 @@ var Document = {
         }
 
         function beforeRemove(treeId, treeNode) {
-            console.log("删除节点前...");
+            console.log("<LABEL_532>");
             console.log(treeNode);
             if (treeNode.isParent) {
                 if (treeNode.children && treeNode.children.length > 0) {
-                    Layers.failedMsg("请先删除或移动目录下所有文档！");
+                    Layers.failedMsg("<LABEL_41>！");
                     return false;
                 }
             }
 
-            var title = '<i class="fa fa-volume-up"></i> 确定要删除文档吗？';
+            var title = '<i class="fa fa-volume-up"></i> <LABEL_533>？';
             layer.confirm(title, {
-                btn: ['是', '否'],
+                btn: ['<LABEL_1838>', '<LABEL_1839>'],
                 skin: Layers.skin,
                 btnAlign: 'c',
-                title: "<i class='fa fa-warning'></i><strong> 警告</strong>"
+                title: "<i class='fa fa-warning'></i><strong> <LABEL_1689></strong>"
             }, function () {
                 Common.ajaxSubmit("/document/delete?document_id=" + treeNode.id);
                 // location.href = "/document/index?document_id="+moveNode.id;
@@ -134,7 +134,7 @@ var Document = {
         }
 
         function onRemove(e, treeId, treeNode) {
-            console.log("删除节点...");
+            console.log("<LABEL_696>");
             return false;
         }
 
@@ -143,7 +143,7 @@ var Document = {
         }
 
         function beforeDrag(treeId, treeNodes) {
-            console.log("拖拽节点前...");
+            console.log("<LABEL_534>");
             if (isEditor == false) {
                 return false;
             }
@@ -154,18 +154,18 @@ var Document = {
         }
 
         function onDrag() {
-            console.log("拖拽节点中...");
+            console.log("<LABEL_535>");
             return true;
         }
 
         function beforeDrop(treeId, treeNodes, targetNode, moveType) {
-            console.log("拖拽数据:", treeId, treeNodes, targetNode, moveType);
-            console.log("拖拽节点完成...");
+            console.log("<LABEL_1481>:", treeId, treeNodes, targetNode, moveType);
+            console.log("<LABEL_352>");
             if (isEditor == false) {
                 return false;
             }
             var moveNode = treeNodes[0];
-            // 文档当前层级排序
+            // <LABEL_536>
             if (moveType === "prev" || moveType === "next") {
                 let moveUrl = "/document/move?move_type=" + moveType
                     + "&document_id=" + moveNode.id
@@ -174,7 +174,7 @@ var Document = {
                 return false;
             }
 
-            // 移动文档到目录中
+            // <LABEL_537>
             if (moveNode.isParent) {
                 return false;
             }
@@ -182,12 +182,12 @@ var Document = {
                 return false;
             }
             
-            var title = '<i class="fa fa-volume-up"></i> 确定要移动文档吗？';
+            var title = '<i class="fa fa-volume-up"></i> <LABEL_538>？';
             layer.confirm(title, {
-                btn: ['是', '否'],
+                btn: ['<LABEL_1838>', '<LABEL_1839>'],
                 skin: Layers.skin,
                 btnAlign: 'c',
-                title: "<i class='fa fa-warning'></i><strong> 警告</strong>"
+                title: "<i class='fa fa-warning'></i><strong> <LABEL_1689></strong>"
             }, function () {
                 Common.ajaxSubmit("/document/move?document_id=" + moveNode.id + "&target_id=" + targetNode.id);
             }, function () {
@@ -198,7 +198,7 @@ var Document = {
         }
 
         function onDrop(treeId, treeNodes, targetNode, moveType) {
-            console.log("拖拽节点完成中...");
+            console.log("<LABEL_247>");
             return false;
         }
 
@@ -213,7 +213,7 @@ var Document = {
             var addBtn = $("#addBtn_" + treeNode.tId);
             if (addBtn.length > 0) return;
 
-            var spanHtml = "<span class='button add' id='addBtn_" + treeNode.tId + "' title='新建文档' onfocus='this.blur();'></span>";
+            var spanHtml = "<span class='button add' id='addBtn_" + treeNode.tId + "' title='<LABEL_1482>' onfocus='this.blur();'></span>";
             sObj.append(spanHtml);
 
             // bind add
@@ -223,7 +223,7 @@ var Document = {
                 layer.open({
                     type: 2,
                     skin: Layers.skin,
-                    title: '<strong>创建文档</strong>',
+                    title: '<strong><LABEL_1134></strong>',
                     shadeClose: true,
                     shade: 0.6,
                     maxmin: true,

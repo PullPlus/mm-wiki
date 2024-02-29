@@ -2,12 +2,12 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="page-header">
-                <h4><i class="fa fa-address-card-o"></i> 登录认证方式配置文档</h4>
+                <h4><i class="fa fa-address-card-o"></i> <LABEL_232></h4>
             </div>
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#ldap" aria-controls="ldap" role="tab" data-toggle="tab">LDAP登录</a></li>
-                <li role="presentation"><a href="#http" aria-controls="http" role="tab" data-toggle="tab">HTTP登录</a></li>
+                <li role="presentation" class="active"><a href="#ldap" aria-controls="ldap" role="tab" data-toggle="tab">LDAP<LABEL_1665></a></li>
+                <li role="presentation"><a href="#http" aria-controls="http" role="tab" data-toggle="tab">HTTP<LABEL_1665></a></li>
             </ul>
             <br>
             <!-- Tab panes -->
@@ -17,40 +17,40 @@
                         <table class="table table-bordered">
                             <tbody>
                             <tr>
-                                <td class="w10p"><strong>认证URL</strong></td>
+                                <td class="w10p"><strong><LABEL_1635>URL</strong></td>
                                 <td>
-                                    格式为：<code>ldap://ldap.server:port</code> 或 <code>ldaps://ldap.server:port</code>
-                                    其中 ldap.server 为 ldap 服务器地址 port 为 ldap 服务器端口;
-                                    ldaps 为 ssl 加密的 ldap;<br>
-                                    示例：<code>ldap://ldap.itd.umich.edu:389;</code> <code>ldaps://ldap.itd.umich.edu:636</code>
+                                    <LABEL_1530>：<code>ldap://ldap.server:port</code> <LABEL_1846> <code>ldaps://ldap.server:port</code>
+                                    <LABEL_1693> ldap.server <LABEL_1847> ldap <LABEL_1016> port <LABEL_1847> ldap <LABEL_1017>;
+                                    ldaps <LABEL_1847> ssl <LABEL_1531> ldap;<br>
+                                    <LABEL_1694>：<code>ldap://ldap.itd.umich.edu:389;</code> <code>ldaps://ldap.itd.umich.edu:636</code>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>附加参数（配置数据）</strong></td>
-                                <td>配置数据格式必须为 json 字符串，字段含义如下
+                                <td><strong><LABEL_1263>（<LABEL_1264>）</strong></td>
+                                <td><LABEL_313> json <LABEL_1532>，<LABEL_876>
 <pre>
 {
     "basedn": "cn=dev,dc=mmwiki,dc=com",
     "bind_username": "cn=readonly,dc=mmwiki,dc=com",
     "bind_password": "mmwiki",
-	"account_pattern": "(&(objectClass=inetOrgPerson)(uid=%s))",// ldap search pattern; 非必填可以为空，默认值为(&(objectClass=inetOrgPerson)(uid=%s))
-	"given_name_key": "cn",  // ldap 查询用户名对应的 key，非必填可以为空，默认为 cn
+	"account_pattern": "(&(objectClass=inetOrgPerson)(uid=%s))",// ldap search pattern; <LABEL_630>，<LABEL_1266>(&(objectClass=inetOrgPerson)(uid=%s))
+	"given_name_key": "cn",  // ldap <LABEL_470> key，<LABEL_630>，<LABEL_1507> cn
     "email_key": "mail",
-    "mobile_key": "mobile", // ldap 查询手机号对应的 key，非必填可以为空
-    "phone_key": "telephoneNumber", // ldap 查询电话对应的 key，非必填可以为空
-    "department_key": "department", // ldap 查询部门对应的 key，非必填可以为空
-    "position_key": "Position", // ldap 查询职位对应的 key，非必填可以为空
-    "location_key": "physicalDeliveryOfficeName", // ldap 查询位置对应的 key，非必填可以为空
-    "im_key": "im" // ldap 查询 im 信息对应的 key，非必填可以为空
+    "mobile_key": "mobile", // ldap <LABEL_471> key，<LABEL_630>
+    "phone_key": "telephoneNumber", // ldap <LABEL_631> key，<LABEL_630>
+    "department_key": "department", // ldap <LABEL_632> key，<LABEL_630>
+    "position_key": "Position", // ldap <LABEL_633> key，<LABEL_630>
+    "location_key": "physicalDeliveryOfficeName", // ldap <LABEL_634> key，<LABEL_630>
+    "im_key": "im" // ldap <LABEL_1695> im <LABEL_1018> key，<LABEL_630>
 }
 </pre>
-                                    示例：<code>{"basedn":"dc=umich,dc=edu","bind_username":"readonly","bind_password":"password","given_name_key":"displayName","email_key":"mail","mobile_key":"mobile","phone_key":"telephoneNumber","department_key":"department","position_key":"Position","location_key":"physicalDeliveryOfficeName","im_key":"im"}</code>
+                                    <LABEL_1694>：<code>{"basedn":"dc=umich,dc=edu","bind_username":"readonly","bind_password":"password","given_name_key":"displayName","email_key":"mail","mobile_key":"mobile","phone_key":"telephoneNumber","department_key":"department","position_key":"Position","location_key":"physicalDeliveryOfficeName","im_key":"im"}</code>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>注意事项</strong></td>
+                                <td><strong><LABEL_1267></strong></td>
                                 <td>
-                                    请确保配置数据为 <code>json</code> 格式字符串，且配置数据正确无误;
+                                    <LABEL_472> <code>json</code> <LABEL_1019>，<LABEL_314>;
                                 </td>
                             </tr>
                             </tbody>
@@ -62,68 +62,68 @@
                         <table class="table table-bordered">
                             <tbody>
                             <tr>
-                                <td class="w10p"><strong>认证URL</strong></td>
+                                <td class="w10p"><strong><LABEL_1635>URL</strong></td>
                                 <td>
-                                    用户获取登录结果的接口 http/https 协议的 url
-                                    例如：<code>http://mmWiki.com/login</code> 或 <code>https://mmWiki.com/login</code>
+                                    <LABEL_156> http/https <LABEL_1533> url
+                                    <LABEL_1696>：<code>http://mmWiki.com/login</code> <LABEL_1846> <code>https://mmWiki.com/login</code>
                                     <a target="_blank" href="https://github.com/phachon/mm-wiki/blob/master/docs/examples/auth_login/http_login.php">
-                                        <i class="fa fa-share"></i> PHP 开发接口示例
+                                        <i class="fa fa-share"></i> PHP <LABEL_877>
                                     </a>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>附加参数（配置数据）</strong></td>
+                                <td><strong><LABEL_1263>（<LABEL_1264>）</strong></td>
                                 <td>
-                                    根据接口需要填写；例如某些统一登录接口需要携带登录来源，这里可以写 source=mm-wiki
+                                    <LABEL_473>；<LABEL_10>，<LABEL_1020> source=mm-wiki
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>URL请求方式</strong></td>
-                                <td><code>POST</code>; MM-Wiki 会以 POST 表单提交的方式（即Content-Type: application/x-www-form-urlencoded）去请求登录认证接口；所以该 URL 必须支持 POST 请求</td>
+                                <td><strong>URL<LABEL_1268></strong></td>
+                                <td><code>POST</code>; MM-Wiki <LABEL_1697> POST <LABEL_635>（<LABEL_1848>Content-Type: application/x-www-form-urlencoded）<LABEL_315>；<LABEL_1534> URL <LABEL_1269> POST <LABEL_1698></td>
                             </tr>
                             <tr>
-                                <td>URL请求参数</td>
+                                <td>URL<LABEL_1270></td>
                                 <td>
-                                    这里是指 MM-Wiki 以 POST 方式请求登录认证的 URL 接口时带的请求参数
+                                    <LABEL_1271> MM-Wiki <LABEL_1849> POST <LABEL_316> URL <LABEL_317>
 <pre>
-username: 用户名 string; 即用户统一登录输入的用户名;
-password: 密码 string; 即用户统一登录输入的密码;
-ext_data: 登录认证附加参数 string; 即登录配置填写的 附加参数（配置数据）
+username: <LABEL_1522> string; <LABEL_69>;
+password: <LABEL_1674> string; <LABEL_107>;
+ext_data: <LABEL_474> string; <LABEL_70>（<LABEL_1264>）
 </pre>
-                                    示例：<code>username=mm-wiki&password=111111&ext_data=mm-wiki</code>
+                                    <LABEL_1694>：<code>username=mm-wiki&password=111111&ext_data=mm-wiki</code>
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>URL返回格式</strong></td>
+                                <td><strong>URL<LABEL_1272></strong></td>
                                 <td>
-                                    MM-Wiki 请求登录认证接口，登录认证接口认证完成后返回的数据格式必须为 json 协议，具体协议如下：
+                                    MM-Wiki <LABEL_475>，<LABEL_3> json <LABEL_1609>，<LABEL_878>：
                                     <li>
-                                        <strong>成功返回</strong>
+                                        <strong><LABEL_1273></strong>
 <pre>
 {
-     // 认证接口信息，必须返回，成功为空，失败非空
+     // <LABEL_879>，<LABEL_1274>，<LABEL_1275>，<LABEL_1276>
     "message": "",
-    // 认证成功用户数据，必须返回, 成功时非空
+    // <LABEL_476>，<LABEL_157>
     "data": {
-        "given_name": "王哈哈", // 用户姓名，string，<code>不能为空</code>
-        "mobile": "111111111111", // 用户手机号，string，可以为空
-        "phone": "010-9929921", // 用户电话，string，可以为空
-        "email": "root@mmWiki.com", // 用户邮箱，string，<code>不能为空</code>
-        "department": "广告事业部.技术部.系统开发组", // 用户所属部门，string，可以为空
-        "position": "高级JAVA开发工程师", // 职位，string，可以为空
-        "location": "B座32层E区1002", // 工位位置，string，可以为空
-        "im": "QQ：12211", // 即时聊天工具，string，可以为空
+        "given_name": "<LABEL_1535>", // <LABEL_1277>，string，<code><LABEL_1117></code>
+        "mobile": "111111111111", // <LABEL_1021>，string，<LABEL_1278>
+        "phone": "010-9929921", // <LABEL_1279>，string，<LABEL_1278>
+        "email": "root@mmWiki.com", // <LABEL_1280>，string，<code><LABEL_1117></code>
+        "department": "<LABEL_29>", // <LABEL_880>，string，<LABEL_1278>
+        "position": "<LABEL_1683>JAVA<LABEL_1011>", // <LABEL_1677>，string，<LABEL_1278>
+        "location": "B<LABEL_1850>32<LABEL_1840>E<LABEL_1841>1002", // <LABEL_1281>，string，<LABEL_1278>
+        "im": "QQ：12211", // <LABEL_881>，string，<LABEL_1278>
     }
 }
 </pre>
                                     </li>
                                     <li>
-                                        <strong>失败返回</strong>
+                                        <strong><LABEL_1282></strong>
 <pre>
 {
-     // 失败原因，失败时不能为空
-    "message": "密码错误",
-     // 失败时为空
+     // <LABEL_1283>，<LABEL_636>
+    "message": "<LABEL_1284>",
+     // <LABEL_1022>
     "data": {}
 }
 </pre>
@@ -131,11 +131,11 @@ ext_data: 登录认证附加参数 string; 即登录配置填写的 附加参数
                                 </td>
                             </tr>
                             <tr>
-                                <td>注意事项</td>
-                                <td> http 登录认证的原理是：当用户选择http方式的统一认证登录时，MM-Wiki 将用户名和密码一起发送到配置的登录认证接口，
-                                    根据接口返回的结果 message 为空判断登录成功，并从 data 字段获取到用户信息存储到 MM-Wiki 系统中；如果登录失败请参考以上文档说明！
+                                <td><LABEL_1267></td>
+                                <td> http <LABEL_477>：<LABEL_1023>http<LABEL_233>，MM-Wiki <LABEL_4>，
+                                    <LABEL_318> message <LABEL_478>，<LABEL_1699> data <LABEL_108> MM-Wiki <LABEL_1536>；<LABEL_30>！
                                     <a target="_blank" href="https://github.com/chaiyd/mm-wiki/blob/master/docs/examples/auth_login/http_login.php">
-                                        <i class="fa fa-share"></i> PHP 开发接口示例
+                                        <i class="fa fa-share"></i> PHP <LABEL_877>
                                     </a>
                                 </td>
                             </tr>

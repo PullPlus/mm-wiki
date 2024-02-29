@@ -1,17 +1,17 @@
 /**
- * Form.js 表单提交类
- * 依赖 jquery.form.js
+ * Form.js <LABEL_1111>
+ * <LABEL_1826> jquery.form.js
  */
 
 var Form = {
 
     /**
-     * 提示 div
+     * <LABEL_1827> div
      */
     failedBox: '#failedBox',
 
     /**
-     * 是否在弹框中
+     * <LABEL_953>
      */
     inPopup: false,
 
@@ -28,7 +28,7 @@ var Form = {
         }
 
         /**
-         * 成功信息条
+         * <LABEL_1095>
          * @param message
          * @param data
          */
@@ -37,7 +37,7 @@ var Form = {
         }
 
         /**
-         * 失败信息条
+         * <LABEL_1096>
          * @param message
          * @param data
          */

@@ -224,7 +224,7 @@ func (d *Document) Insert(documentValue map[string]interface{}) (id int64, err e
 		return
 	}
 
-	// 处理同级排序编号
+	// <LABEL_454>
 	parentId := documentValue["parent_id"].(string)
 	spaceId := documentValue["space_id"].(string)
 
@@ -317,7 +317,7 @@ func (d *Document) Update(documentId string, documentValue map[string]interface{
 }
 
 // update document by spaceId and >= sequence
-// 批量移动更新文档序号
+// <LABEL_226>
 func (d *Document) MoveSequenceBySpaceIdAndGtSequence(spaceId string, startSequence int, n int) (id int64, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -741,7 +741,7 @@ func (d *Document) GetDocumentGroupEditUserId() (documents []map[string]string, 
 	return
 }
 
-// 根据文档信息获取文档内容和文件地址
+// <LABEL_15>
 func (d *Document) GetDocumentContentByDocument(doc map[string]string) (content string, pageFile string, err error) {
 	// get document page file
 	_, pageFile, err = DocumentModel.GetParentDocumentsByDocument(doc)

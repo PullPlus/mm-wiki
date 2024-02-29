@@ -19,25 +19,25 @@
 		var langs = {
 			"zh-cn" : {
 				toolbar : {
-					"goto-line" : "跳转到行"
+					"goto-line" : "<LABEL_1366>"
 				},
 				dialog : {
 					"goto-line" : {
-						title  : "跳转到行",
-						label  : "请输入行号",
-						error  : "错误："
+						title  : "<LABEL_1366>",
+						label  : "<LABEL_1080>",
+						error  : "<LABEL_1629>："
 					}
 				}
 			},
 			"zh-tw" : {
 				toolbar : {
-					"goto-line" : "跳轉到行"
+					"goto-line" : "<LABEL_1435>"
 				},
 				dialog : {
 					"goto-line" : {
-						title  : "跳轉到行",
-						label  : "請輸入行號",
-						error  : "錯誤："
+						title  : "<LABEL_1435>",
+						label  : "<LABEL_1081>",
+						error  : "<LABEL_1786>："
 					}
 				}
 			},

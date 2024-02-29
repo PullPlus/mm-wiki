@@ -5,17 +5,17 @@
                 <h3><i class="fa fa-address-card-o"></i> {{$user.username}}（{{$user.given_name}}）</h3>
             </div>
             <ul class="nav nav-tabs">
-                <li  class="active"><a href="/user/info?user_id={{$user.user_id}}">用户信息</a></li>
-                <li><a href="/user/followUser?user_id={{$user.user_id}}">关注用户</a></li>
+                <li  class="active"><a href="/user/info?user_id={{$user.user_id}}"><LABEL_1176></a></li>
+                <li><a href="/user/followUser?user_id={{$user.user_id}}"><LABEL_1244></a></li>
             </ul>
             <br>
             <div class="row">
                 <div class="col-md-7" style="padding-left: 30px">
-                    <h3>最近活动</h3>
+                    <h3><LABEL_1247></h3>
                     <div class="user-activity">
                         {{if eq .count 0}}
                             <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-bottom: 0">
-                                <p><i class="glyphicon glyphicon-volume-up"></i> 还没有任何活动！</p>
+                                <p><i class="glyphicon glyphicon-volume-up"></i> <LABEL_625>！</p>
                             </div>
                         {{else}}
                         <ul>
@@ -32,14 +32,14 @@
                                 </div>
                                 <span class="text text-font-12 activity-time">
                                     {{if eq $logDocument.action "1"}}
-                                        <label class="text text-info">创建</label>
+                                        <label class="text text-info"><LABEL_1662></label>
                                     {{else if eq $logDocument.action "2"}}
-                                        <label class="text text-primary">修改</label>
+                                        <label class="text text-primary"><LABEL_1663></label>
                                     {{else if eq $logDocument.action "3"}}
-                                        <label class="text text-danger">删除</label>
+                                        <label class="text text-danger"><LABEL_1664></label>
                                     {{end}}
                                         </td>
-                                    于 {{dateFormat $logDocument.update_time "Y-m-d H:i:s"}}</span>
+                                    <LABEL_1842> {{dateFormat $logDocument.update_time "Y-m-d H:i:s"}}</span>
                             </li>
                             {{end}}
                         </ul>
@@ -47,49 +47,49 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <h3>个人资料</h3>
+                    <h3><LABEL_1248></h3>
                     <div class="user-info">
                         <div class="user-group">
-                            <label class="text-right text-font-15">用户名</label>
+                            <label class="text-right text-font-15"><LABEL_1522></label>
                             <span>{{$user.username}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">姓名</label>
+                            <label class="text-right text-font-15"><LABEL_1676></label>
                             <span>{{$user.given_name}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">邮箱</label>
+                            <label class="text-right text-font-15"><LABEL_1678></label>
                             <span>{{$user.email}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">手机</label>
+                            <label class="text-right text-font-15"><LABEL_1681></label>
                             <span>{{$user.mobile}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">状态</label>
+                            <label class="text-right text-font-15"><LABEL_1702></label>
                             <span>
                             {{if eq $user.is_forbidden "1"}}
-                                <span class="label label-success">屏蔽</span>
+                                <span class="label label-success"><LABEL_1703></span>
                             {{else}}
-                                <span class="label label-success">正常</span>
+                                <span class="label label-success"><LABEL_1704></span>
                             {{end}}
                             </span>
                         </div>
                         <hr>
                         <div class="user-group">
-                            <label class="text-right text-font-15">电话</label>
+                            <label class="text-right text-font-15"><LABEL_1680></label>
                             <span>{{$user.phone}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">部门</label>
+                            <label class="text-right text-font-15"><LABEL_1682></label>
                             <span>{{$user.department}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">职位</label>
+                            <label class="text-right text-font-15"><LABEL_1677></label>
                             <span>{{$user.position}}</span>
                         </div>
                         <div class="user-group">
-                            <label class="text-right text-font-15">位置</label>
+                            <label class="text-right text-font-15"><LABEL_1684></label>
                             <span>{{$user.location}}</span>
                         </div>
                         <div class="user-group">

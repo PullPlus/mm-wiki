@@ -27,7 +27,7 @@ type Log struct {
 
 var LogModel = Log{}
 
-// 根据 log_id 获取日志
+// <LABEL_1647> log_id <LABEL_1209>
 func (l *Log) GetLogByLogId(logId string) (log map[string]string, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -41,7 +41,7 @@ func (l *Log) GetLogByLogId(logId string) (log map[string]string, err error) {
 	return
 }
 
-// 插入
+// <LABEL_1648>
 func (l *Log) Insert(log map[string]interface{}) (id int64, err error) {
 
 	log["create_time"] = time.Now().Unix()
@@ -56,7 +56,7 @@ func (l *Log) Insert(log map[string]interface{}) (id int64, err error) {
 	return
 }
 
-// 根据关键字分页获取日志
+// <LABEL_149>
 func (l *Log) GetLogsByKeywordAndLimit(level, message, username string, limit int, number int) (logs []map[string]string, err error) {
 
 	db := G.DB()
@@ -80,7 +80,7 @@ func (l *Log) GetLogsByKeywordAndLimit(level, message, username string, limit in
 	return
 }
 
-// 分页获取日志
+// <LABEL_847>
 func (l *Log) GetLogsByLimit(limit int, number int) (logs []map[string]string, err error) {
 
 	db := G.DB()
@@ -98,7 +98,7 @@ func (l *Log) GetLogsByLimit(limit int, number int) (logs []map[string]string, e
 	return
 }
 
-// 获取日志总数
+// <LABEL_848>
 func (l *Log) CountLogs() (count int64, err error) {
 
 	db := G.DB()
@@ -132,7 +132,7 @@ func (l *Log) CountLogsByLevel(level int) (count int64, err error) {
 	return
 }
 
-// 根据关键字获取日志总数
+// <LABEL_150>
 func (l *Log) CountLogsByKeyword(level, message, username string) (count int64, err error) {
 
 	db := G.DB()

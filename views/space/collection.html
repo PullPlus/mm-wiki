@@ -2,29 +2,29 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="page-header">
-                <h2>收藏空间 <small><span class="badge">{{.count}}</span></small></h2>
+                <h2><LABEL_1340> <small><span class="badge">{{.count}}</span></small></h2>
             </div>
             {{if eq .count 0}}
                 <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-bottom: 0">
-                    <p><i class="glyphicon glyphicon-volume-up"></i> 您还没有收藏任何空间！</p>
+                    <p><i class="glyphicon glyphicon-volume-up"></i> <LABEL_238>！</p>
                 </div>
             {{else}}
             <br>
             <table class="table" style="margin-bottom: 0">
                 <thead>
                 <tr>
-                    <td class="w15p text-left"><strong>名称</strong></td>
-                    <td class="text-left"><strong>描述</strong></td>
-                    <td class="w15p text-left"><strong>标签</strong></td>
-                    <td class="w15p center"><strong>访问级别</strong></td>
-                    <td class="w13p center"><strong>创建时间</strong></td>
-                    <td class="w13p center"><strong>操作</strong></td>
+                    <td class="w15p text-left"><strong><LABEL_1654></strong></td>
+                    <td class="text-left"><strong><LABEL_1706></strong></td>
+                    <td class="w15p text-left"><strong><LABEL_1639></strong></td>
+                    <td class="w15p center"><strong><LABEL_1311></strong></td>
+                    <td class="w13p center"><strong><LABEL_1216></strong></td>
+                    <td class="w13p center"><strong><LABEL_1659></strong></td>
                 </tr>
                 </thead>
                 <tbody>
                 {{range $space := .spaces}}
                 <tr class="space-list">
-                    <td><a href="/space/document?space_id={{$space.space_id}}" target="_parent" title="查看空间文档"><strong>{{$space.name}}</strong> <span class="text text-primary"><i class="glyphicon glyphicon-new-window"></i></span></a></td>
+                    <td><a href="/space/document?space_id={{$space.space_id}}" target="_parent" title="<LABEL_893>"><strong>{{$space.name}}</strong> <span class="text text-primary"><i class="glyphicon glyphicon-new-window"></i></span></a></td>
                     <td>{{$space.description}}</td>
                     <td class="tags-show">{{$space.tags}}</td>
                     <td class="center">
@@ -69,5 +69,5 @@
             }
         });
     });
-    Layers.bindIframe("[name='user']", "空间成员列表", "500px", "1000px");
+    Layers.bindIframe("[name='user']", "<LABEL_895>", "500px", "1000px");
 </script>

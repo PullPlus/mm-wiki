@@ -28,25 +28,25 @@ var (
 	CopyRight = global.SYSTEM_COPYRIGHT
 )
 
-const License_Disagree = 0 // 协议不同意
-const License_Agree = 1    // 协议同意
+const License_Disagree = 0 // <LABEL_956>
+const License_Agree = 1    // <LABEL_1121>
 
-const Env_NotAccess = 0 // 环境检测不通过
-const Env_Access = 1    // 环境检测通过
+const Env_NotAccess = 0 // <LABEL_542>
+const Env_Access = 1    // <LABEL_701>
 
-const Sys_NotAccess = 0 // 系统配置不通过
-const Sys_Access = 1    // 系统配置通过
+const Sys_NotAccess = 0 // <LABEL_543>
+const Sys_Access = 1    // <LABEL_702>
 
-const Database_NotAccess = 0 // 数据库配置不通过
-const Database_Access = 1    // 数据库配置通过
+const Database_NotAccess = 0 // <LABEL_358>
+const Database_Access = 1    // <LABEL_544>
 
-const Install_Ready = 0 // 安装准备阶段
-const Install_Start = 1 // 安装开始
-const Install_End = 2   // 安装完成
+const Install_Ready = 0 // <LABEL_703>
+const Install_Start = 1 // <LABEL_1122>
+const Install_End = 2   // <LABEL_1119>
 
-const Install_Default = 0 // 默认
-const Install_Failed = 1  // 安装失败
-const Install_Success = 2 // 安装成功
+const Install_Default = 0 // <LABEL_1613>
+const Install_Failed = 1  // <LABEL_1123>
+const Install_Success = 2 // <LABEL_1124>
 
 var defaultSystemConf = map[string]string{
 	"addr":         "0.0.0.0",
@@ -211,7 +211,7 @@ func writeInstallData() (err error) {
 		return
 	}
 	defer stmt.Close()
-	_, err = stmt.Exec("系统版本号", "system_version", global.SYSTEM_VERSION, time.Now().Unix(), time.Now().Unix())
+	_, err = stmt.Exec("<LABEL_957>", "system_version", global.SYSTEM_VERSION, time.Now().Unix(), time.Now().Unix())
 	return err
 }
 
@@ -292,47 +292,47 @@ func ListenInstall() {
 			select {
 			case <-installChan:
 				Data.Status = Install_Start
-				// 开始安装
+				// <LABEL_1125>
 				log.Println("mm-wiki start install")
-				// 检查db
+				// <LABEL_1614>db
 				err := checkDB()
 				if err != nil {
-					installFailed("连接数据库出错：" + err.Error())
+					installFailed("<LABEL_545>：" + err.Error())
 					continue
 				}
 				log.Println("database connect success")
-				// 创建数据库
+				// <LABEL_958>
 				err = createDB()
 				if err != nil {
-					installFailed("创建数据库出错：" + err.Error())
+					installFailed("<LABEL_546>：" + err.Error())
 					continue
 				}
 				log.Println("create database success")
-				// 创建表
+				// <LABEL_1499>
 				err = createTable()
 				if err != nil {
-					installFailed("创建表出错：" + err.Error())
+					installFailed("<LABEL_959>：" + err.Error())
 					continue
 				}
 				log.Println("create table success")
-				// 创建超级管理员
+				// <LABEL_547>
 				err = createAdmin()
 				if err != nil {
-					installFailed("创建管理员账号出错：" + err.Error())
+					installFailed("<LABEL_253>：" + err.Error())
 					continue
 				}
 				log.Println("create admin user success")
-				// 写入安装数据
+				// <LABEL_704>
 				err = writeInstallData()
 				if err != nil {
-					installFailed("导入安装数据出错：" + err.Error())
+					installFailed("<LABEL_359>：" + err.Error())
 					continue
 				}
 				log.Println("write install data success")
-				// 写入 conf 文件
+				// <LABEL_1615> conf <LABEL_1616>
 				err = makeConf()
 				if err != nil {
-					installFailed("生成配置文件出错：" + err.Error())
+					installFailed("<LABEL_360>：" + err.Error())
 					continue
 				}
 				log.Println("make conf file success")

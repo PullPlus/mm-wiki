@@ -14,7 +14,7 @@ func NewConvert() *convert {
 	return &convert{}
 }
 
-// bool 转化为字符串
+// bool <LABEL_846>
 func (c *convert) BoolToString(boolValue bool) string {
 	if boolValue == true {
 		return "true"
@@ -23,7 +23,7 @@ func (c *convert) BoolToString(boolValue bool) string {
 	}
 }
 
-//bool 转化为 int
+//bool <LABEL_1512> int
 func (c *convert) BoolToInt(boolValue bool) int {
 	if boolValue == true {
 		return 1
@@ -32,7 +32,7 @@ func (c *convert) BoolToInt(boolValue bool) int {
 	}
 }
 
-//int 转化为 bool
+//int <LABEL_1512> bool
 func (c *convert) IntToBool(number int) bool {
 	if number == 0 {
 		return false
@@ -41,35 +41,35 @@ func (c *convert) IntToBool(number int) bool {
 	}
 }
 
-//int 转化为字符串
-//base 范围 2-32 进制
+//int <LABEL_846>
+//base <LABEL_1645> 2-32 <LABEL_1646>
 func (c *convert) IntToString(number int64, base int) string {
 	return strconv.FormatInt(number, base)
 }
 
-//string to int(10进制)
+//string to int(10<LABEL_1646>)
 func (c *convert) StringToInt(str string) int {
 	intValue, _ := strconv.Atoi(str)
 	return intValue
 }
 
-// string to int64(10进制)
+// string to int64(10<LABEL_1646>)
 func (c *convert) StringToInt64(str string) int64 {
 	intValue, _ := strconv.ParseInt(str, 10, 64)
 	return intValue
 }
 
-// int 转化为10进制字符串 IntToString(number, 10)
+// int <LABEL_1512>10<LABEL_990> IntToString(number, 10)
 func (c *convert) IntToTenString(number int) string {
 	return strconv.Itoa(number)
 }
 
-// float 转化为字符串
+// float <LABEL_846>
 func (c *convert) FloatToString(f float64, fmt byte, prec, bitSize int) string {
 	return strconv.FormatFloat(f, fmt, prec, bitSize)
 }
 
-// 转化任何的数为 int64
+// <LABEL_595> int64
 func (c *convert) ToInt64(value interface{}) (d int64, err error) {
 	val := reflect.ValueOf(value)
 	switch value.(type) {

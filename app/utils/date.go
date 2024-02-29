@@ -13,7 +13,7 @@ func NewDate() *date {
 	return &date{}
 }
 
-//格式化 unix 时间戳
+//<LABEL_1510> unix <LABEL_1511>
 func (date *date) Format(unixTime interface{}, format string) string {
 	convert := NewConvert()
 	var convertTime int64

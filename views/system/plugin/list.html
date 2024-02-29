@@ -5,7 +5,7 @@
                 <form action="" method="get">
                     <div class="col-md-offset-9 col-md-3">
                         <div class="input-group">
-                            <input class="form-control" name="keyword" type="text" value="{{.keyword}}" placeholder="插件名称">
+                            <input class="form-control" name="keyword" type="text" value="{{.keyword}}" placeholder="<LABEL_1292>">
                             <span class="input-group-btn">
 				              <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
 				            </span>
@@ -29,7 +29,7 @@
                             <div style="height: 30px">
                                 <span style="float: left;">
                                     <a name="config" data-link="/system/plugin/config?plugin_id={{$plugin.plugin_id}}" class="btn btn-sm btn-default" role="button">
-                                        <i class="fa fa-wrench"></i> 配置
+                                        <i class="fa fa-wrench"></i> <LABEL_1628>
                                     </a>
                                 </span>
                                 <span style="float: right;">
@@ -51,9 +51,9 @@
     $(function () {
         $("input[type='checkbox']").bootstrapSwitch({
             size: 'small',
-            onText: '开',
-            offText: '关'
+            onText: '<LABEL_1851>',
+            offText: '<LABEL_1852>'
         });
     });
-    Layers.bindIframe("[name='config']", "插件配置", "600px", "1100px");
+    Layers.bindIframe("[name='config']", "<LABEL_1293>", "600px", "1100px");
 </script>

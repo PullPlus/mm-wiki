@@ -16,11 +16,11 @@
                     </p>
                     <p class="view-page-time">
                         <i class="fa fa-newspaper-o fa-fw"></i>
-                        创建于 {{dateFormat $document.create_time "Y/m/d H:i:s"}} By  {{$createUser.username}}（{{$createUser.given_name}}）
+                        <LABEL_1550> {{dateFormat $document.create_time "Y/m/d H:i:s"}} By  {{$createUser.username}}（{{$createUser.given_name}}）
                     </p>
                     <p class="view-page-time">
                         <i class="fa fa-edit fa-fw"></i>
-                        修改于 {{dateFormat $document.update_time "Y/m/d H:i:s"}} By  {{$editUser.username}}（{{$editUser.given_name}}）
+                        <LABEL_1551> {{dateFormat $document.update_time "Y/m/d H:i:s"}} By  {{$editUser.username}}（{{$editUser.given_name}}）
                     </p>
                     <hr style="margin: 0">
                     <textarea style="display:none;">{{$pageContent}}</textarea>
@@ -36,9 +36,9 @@
         </div>
         <div class="col-md-1" id="display_section">
             <div class="share-popup center">
-                <label> 分享到 <i class="fa fa-wechat"></i> <i class="fa fa-qq"></i></label>
+                <label> <LABEL_1552> <i class="fa fa-wechat"></i> <i class="fa fa-qq"></i></label>
                 <div id="document-qrcode"></div>
-                <label>打开微信“扫一扫”</label>
+                <label><LABEL_1328>“<LABEL_1553>”</label>
             </div>
         </div>
     </div>
@@ -55,19 +55,19 @@
         };
         editormd.markdownToHTML("document_page_view", {
             path : '/static/plugins/editor.md/lib/',
-            //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
+            //htmlDecode      : true,       // <LABEL_1716> HTML <LABEL_1321>，<LABEL_1036>，<LABEL_1037>
             htmlDecode      : "style,script,iframe",  // you can filter tags decode
             //toc             : false,
             tocm            : true,    // Using [TOCM]
-            //tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
+            //tocContainer    : "#custom-toc-container", // <LABEL_1537> ToC <LABEL_1554>
             //gfm             : false,
             //tocDropdown     : true,
-            //markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
+            //markdownSourceCode : true, // <LABEL_1329> Markdown <LABEL_1717>，<LABEL_237> Textarea <LABEL_1639>
             emoji           : false,
             taskList        : true,
-            tex             : true,  // 默认不解析
-            flowChart       : true,  // 默认不解析
-            sequenceDiagram : true,  // 默认不解析
+            tex             : true,  // <LABEL_1041>
+            flowChart       : true,  // <LABEL_1041>
+            sequenceDiagram : true,  // <LABEL_1041>
         });
 
         $.scrollUp({

@@ -2,96 +2,96 @@
     var factory = function (exports) {
         var lang = {
             name : "zh-tw",
-            description : "開源在線Markdown編輯器<br/>Open source online Markdown editor.",
-            tocTitle    : "目錄",
+            description : "<LABEL_1410>Markdown<LABEL_1577><br/>Open source online Markdown editor.",
+            tocTitle    : "<LABEL_1775>",
             toolbar     : {
-                undo             : "撤銷（Ctrl+Z）",
-                redo             : "重做（Ctrl+Y）",
-                bold             : "粗體",
-                del              : "刪除線",
-                italic           : "斜體",
-                quote            : "引用",
-                ucwords          : "將所選的每個單詞首字母轉成大寫",
-                uppercase        : "將所選文本轉成大寫",
-                lowercase        : "將所選文本轉成小寫",
-                h1               : "標題1",
-                h2               : "標題2",
-                h3               : "標題3",
-                h4               : "標題4",
-                h5               : "標題5",
-                h6               : "標題6",
-                "list-ul"        : "無序列表",
-                "list-ol"        : "有序列表",
-                hr               : "横线",
-                link             : "链接",
-                "reference-link" : "引用鏈接",
-                image            : "圖片",
-                code             : "行內代碼",
-                "preformatted-text" : "預格式文本 / 代碼塊（縮進風格）",
-                "code-block"     : "代碼塊（多語言風格）",
-                table            : "添加表格",
-                datetime         : "日期時間",
-                emoji            : "Emoji 表情",
-                "html-entities"  : "HTML 實體字符",
-                pagebreak        : "插入分頁符",
-                watch            : "關閉實時預覽",
-                unwatch          : "開啟實時預覽",
-                preview          : "全窗口預覽HTML（按 Shift + ESC 退出）",
-                fullscreen       : "全屏（按 ESC 退出）",
-                clear            : "清空",
-                search           : "搜尋",
-                help             : "使用幫助",
-                info             : "關於" + exports.title
+                undo             : "<LABEL_1776>（Ctrl+Z）",
+                redo             : "<LABEL_1727>（Ctrl+Y）",
+                bold             : "<LABEL_1777>",
+                del              : "<LABEL_1578>",
+                italic           : "<LABEL_1778>",
+                quote            : "<LABEL_1730>",
+                ucwords          : "<LABEL_36>",
+                uppercase        : "<LABEL_338>",
+                lowercase        : "<LABEL_339>",
+                h1               : "<LABEL_1779>1",
+                h2               : "<LABEL_1779>2",
+                h3               : "<LABEL_1779>3",
+                h4               : "<LABEL_1779>4",
+                h5               : "<LABEL_1779>5",
+                h6               : "<LABEL_1779>6",
+                "list-ul"        : "<LABEL_1411>",
+                "list-ol"        : "<LABEL_1358>",
+                hr               : "<LABEL_1732>",
+                link             : "<LABEL_1733>",
+                "reference-link" : "<LABEL_1412>",
+                image            : "<LABEL_1780>",
+                code             : "<LABEL_1413>",
+                "preformatted-text" : "<LABEL_1075> / <LABEL_1579>（<LABEL_1414>）",
+                "code-block"     : "<LABEL_1579>（<LABEL_1076>）",
+                table            : "<LABEL_1363>",
+                datetime         : "<LABEL_1415>",
+                emoji            : "Emoji <LABEL_1734>",
+                "html-entities"  : "HTML <LABEL_1416>",
+                pagebreak        : "<LABEL_1077>",
+                watch            : "<LABEL_925>",
+                unwatch          : "<LABEL_926>",
+                preview          : "<LABEL_1078>HTML（<LABEL_1859> Shift + ESC <LABEL_1781>）",
+                fullscreen       : "<LABEL_1736>（<LABEL_1859> ESC <LABEL_1781>）",
+                clear            : "<LABEL_1737>",
+                search           : "<LABEL_1782>",
+                help             : "<LABEL_1417>",
+                info             : "<LABEL_1783>" + exports.title
             },
             buttons : {
-                enter  : "確定",
-                cancel : "取消",
-                close  : "關閉"
+                enter  : "<LABEL_1784>",
+                cancel : "<LABEL_1688>",
+                close  : "<LABEL_1785>"
             },
             dialog : {
                 link   : {
-                    title    : "添加鏈接",
-                    url      : "鏈接地址",
-                    urlTitle : "鏈接標題",
-                    urlEmpty : "錯誤：請填寫鏈接地址。"
+                    title    : "<LABEL_1418>",
+                    url      : "<LABEL_1419>",
+                    urlTitle : "<LABEL_1420>",
+                    urlEmpty : "<LABEL_1786>：<LABEL_673>。"
                 },
                 referenceLink : {
-                    title    : "添加引用鏈接",
-                    name     : "引用名稱",
-                    url      : "鏈接地址",
-                    urlId    : "鏈接ID",
-                    urlTitle : "鏈接標題",
-                    nameEmpty: "錯誤：引用鏈接的名稱不能為空。",
-                    idEmpty  : "錯誤：請填寫引用鏈接的ID。",
-                    urlEmpty : "錯誤：請填寫引用鏈接的URL地址。"
+                    title    : "<LABEL_927>",
+                    name     : "<LABEL_1421>",
+                    url      : "<LABEL_1419>",
+                    urlId    : "<LABEL_1787>ID",
+                    urlTitle : "<LABEL_1420>",
+                    nameEmpty: "<LABEL_1786>：<LABEL_175>。",
+                    idEmpty  : "<LABEL_1786>：<LABEL_518>ID。",
+                    urlEmpty : "<LABEL_1786>：<LABEL_518>URL<LABEL_1714>。"
                 },
                 image  : {
-                    title    : "添加圖片",
-                    url      : "圖片地址",
-                    link     : "圖片鏈接",
-                    alt      : "圖片描述",
-                    uploadButton     : "本地上傳",
-                    imageURLEmpty    : "錯誤：圖片地址不能為空。",
-                    uploadFileEmpty  : "錯誤：上傳的圖片不能為空！",
-                    formatNotAllowed : "錯誤：只允許上傳圖片文件，允許上傳的圖片文件格式有："
+                    title    : "<LABEL_1422>",
+                    url      : "<LABEL_1423>",
+                    link     : "<LABEL_1424>",
+                    alt      : "<LABEL_1425>",
+                    uploadButton     : "<LABEL_1426>",
+                    imageURLEmpty    : "<LABEL_1786>：<LABEL_519>。",
+                    uploadFileEmpty  : "<LABEL_1786>：<LABEL_340>！",
+                    formatNotAllowed : "<LABEL_1786>：<LABEL_341>，<LABEL_121>："
                 },
                 preformattedText : {
-                    title             : "添加預格式文本或代碼塊", 
-                    emptyAlert        : "錯誤：請填寫預格式文本或代碼的內容。"
+                    title             : "<LABEL_176>", 
+                    emptyAlert        : "<LABEL_1786>：<LABEL_56>。"
                 },
                 codeBlock : {
-                    title             : "添加代碼塊",                 
-                    selectLabel       : "代碼語言：",
-                    selectDefaultText : "請語言代碼語言",
-                    otherLanguage     : "其他語言",
-                    unselectedLanguageAlert : "錯誤：請選擇代碼所屬的語言類型。",
-                    codeEmptyAlert    : "錯誤：請填寫代碼內容。"
+                    title             : "<LABEL_1079>",                 
+                    selectLabel       : "<LABEL_1427>：",
+                    selectDefaultText : "<LABEL_674>",
+                    otherLanguage     : "<LABEL_1428>",
+                    unselectedLanguageAlert : "<LABEL_1786>：<LABEL_122>。",
+                    codeEmptyAlert    : "<LABEL_1786>：<LABEL_675>。"
                 },
                 htmlEntities : {
-                    title : "HTML實體字符"
+                    title : "HTML<LABEL_1416>"
                 },
                 help : {
-                    title : "使用幫助"
+                    title : "<LABEL_1417>"
                 }
             }
         };

@@ -15,20 +15,20 @@ var (
 )
 
 const (
-	// work 未启动或已停止
+	// work <LABEL_562>
 	RunStatusStop = 0
-	// work 运行中
+	// work <LABEL_1501>
 	RunStatusRunning = 1
 )
 
 type DocSearch struct {
-	// 并发锁，理论上不存在并发的情况，为了安全
+	// <LABEL_1502>，<LABEL_130>，<LABEL_1166>
 	lock sync.RWMutex
-	// work 运行状态
+	// work <LABEL_1167>
 	runStatus int
-	// work 中是否有任务正在运行
+	// work <LABEL_212>
 	isTaskRunning bool
-	// work 退出信号
+	// work <LABEL_1168>
 	quit chan bool
 }
 
@@ -40,9 +40,9 @@ func NewDocSearchWork() *DocSearch {
 	}
 }
 
-// Start 开始 work
+// Start <LABEL_1625> work
 func (d *DocSearch) Start() {
-	// 已经在运行
+	// <LABEL_973>
 	if d.runStatus == RunStatusRunning {
 		return
 	}
@@ -79,24 +79,24 @@ func (d *DocSearch) Start() {
 	}(d, time.Duration(timer)*time.Second)
 }
 
-// Restart 重新启动 work
+// Restart <LABEL_1169> work
 func (d *DocSearch) Restart() {
 	d.Stop()
 	time.Sleep(time.Millisecond)
 	d.Start()
 }
 
-// Stop 停止 work
+// Stop <LABEL_1626> work
 func (d *DocSearch) Stop() {
 	d.quit <- true
 }
 
-// 查找是否开启全文索引并获取配置
+// <LABEL_22>
 func (d *DocSearch) getFullTextSearchConf() (timer int64, isOpen bool) {
 	fulltextSearchOpen := models.ConfigModel.GetConfigValueByKey(models.ConfigKeyFulltextSearch, "0")
 	docSearchTimer := models.ConfigModel.GetConfigValueByKey(models.ConfigKeyDocSearchTimer, "3600")
 	timer = utils.Convert.StringToInt64(docSearchTimer)
-	// 默认 3600 s
+	// <LABEL_1613> 3600 s
 	if timer <= 0 {
 		timer = int64(3600)
 	}
@@ -114,7 +114,7 @@ func (d *DocSearch) updateAllDocIndex() {
 	d.isTaskRunning = true
 	d.lock.Unlock()
 
-	// 分批次更新，每批次 100
+	// <LABEL_974>，<LABEL_1503> 100
 	batchUpdateDocNum, _ := beego.AppConfig.Int("search::batch_update_doc_num")
 	if batchUpdateDocNum <= 0 {
 		batchUpdateDocNum = 100

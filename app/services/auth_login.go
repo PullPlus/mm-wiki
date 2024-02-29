@@ -77,24 +77,24 @@ func (am *AuthLoginManager) AuthLogin(username, password string) (*AuthLoginResp
 	// get auth login config
 	authLogin, err := models.AuthModel.GetUsedAuth()
 	if err != nil {
-		return nil, fmt.Errorf("查找登录配置失败")
+		return nil, fmt.Errorf("<LABEL_395>")
 	}
 	if len(authLogin) == 0 {
-		return nil, fmt.Errorf("没有可用的统一登录配置")
+		return nil, fmt.Errorf("<LABEL_132>")
 	}
 	// parse url protocol
 	authUrl, ok := authLogin["url"]
 	if !ok || authUrl == "" {
-		return nil, fmt.Errorf("登录配置 url 无效")
+		return nil, fmt.Errorf("<LABEL_1171> url <LABEL_1627>")
 	}
 	u, err := url.Parse(authUrl)
 	if err != nil {
-		return nil, fmt.Errorf("登录配置 url 不合法：%s", err.Error())
+		return nil, fmt.Errorf("<LABEL_1171> url <LABEL_1504>：%s", err.Error())
 	}
 	serviceName := u.Scheme
 	authLoginService, ok := am.AuthLoginServices[serviceName]
 	if !ok {
-		return nil, fmt.Errorf("登录配置 url 协议不支持")
+		return nil, fmt.Errorf("<LABEL_1171> url <LABEL_975>")
 	}
 	serviceConf := ""
 	if extData, ok := authLogin["ext_data"]; ok {
@@ -103,7 +103,7 @@ func (am *AuthLoginManager) AuthLogin(username, password string) (*AuthLoginResp
 	// init auth login service config
 	err = authLoginService.InitConf(authUrl, serviceConf)
 	if err != nil {
-		return nil, fmt.Errorf("登录配置初始化失败：%s", err.Error())
+		return nil, fmt.Errorf("<LABEL_269>：%s", err.Error())
 	}
 	// start auth login
 	return authLoginService.AuthLogin(username, password)

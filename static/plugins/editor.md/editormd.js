@@ -49,9 +49,9 @@
     /**
      * editormd
      * 
-     * @param   {String} id           编辑器的ID
-     * @param   {Object} options      配置选项 Key/Value
-     * @returns {Object} editormd     返回editormd对象
+     * @param   {String} id           <LABEL_1354>ID
+     * @param   {Object} options      <LABEL_1355> Key/Value
+     * @returns {Object} editormd     <LABEL_1724>editormd<LABEL_1725>
      */
     
     var editormd         = function (id, options) {
@@ -228,97 +228,97 @@
         
         lang : {
             name        : "zh-cn",
-            description : "开源在线Markdown编辑器<br/>Open source online Markdown editor.",
-            tocTitle    : "目录",
+            description : "<LABEL_1356>Markdown<LABEL_1560><br/>Open source online Markdown editor.",
+            tocTitle    : "<LABEL_1658>",
             toolbar     : {
-                undo             : "撤销（Ctrl+Z）",
-                redo             : "重做（Ctrl+Y）",
-                bold             : "粗体",
-                del              : "删除线",
-                italic           : "斜体",
-                quote            : "引用",
-                ucwords          : "将每个单词首字母转成大写",
-                uppercase        : "将所选转换成大写",
-                lowercase        : "将所选转换成小写",
-                h1               : "标题1",
-                h2               : "标题2",
-                h3               : "标题3",
-                h4               : "标题4",
-                h5               : "标题5",
-                h6               : "标题6",
-                "list-ul"        : "无序列表",
-                "list-ol"        : "有序列表",
-                hr               : "横线",
-                link             : "链接",
-                "reference-link" : "引用链接",
-                image            : "添加图片",
-                code             : "行内代码",
-                "preformatted-text" : "预格式文本 / 代码块（缩进风格）",
-                "code-block"     : "代码块（多语言风格）",
-                table            : "添加表格",
-                datetime         : "日期时间",
-                emoji            : "Emoji表情",
-                "html-entities"  : "HTML实体字符",
-                pagebreak        : "插入分页符",
-                "goto-line"      : "跳转到行",
-                watch            : "关闭实时预览",
-                unwatch          : "开启实时预览",
-                preview          : "全窗口预览HTML（按 Shift + ESC还原）",
-                fullscreen       : "全屏（按ESC还原）",
-                clear            : "清空",
-                search           : "搜索",
-                help             : "使用帮助",
-                info             : "关于" + editormd.title
+                undo             : "<LABEL_1726>（Ctrl+Z）",
+                redo             : "<LABEL_1727>（Ctrl+Y）",
+                bold             : "<LABEL_1728>",
+                del              : "<LABEL_1561>",
+                italic           : "<LABEL_1729>",
+                quote            : "<LABEL_1730>",
+                ucwords          : "<LABEL_114>",
+                uppercase        : "<LABEL_500>",
+                lowercase        : "<LABEL_501>",
+                h1               : "<LABEL_1731>1",
+                h2               : "<LABEL_1731>2",
+                h3               : "<LABEL_1731>3",
+                h4               : "<LABEL_1731>4",
+                h5               : "<LABEL_1731>5",
+                h6               : "<LABEL_1731>6",
+                "list-ul"        : "<LABEL_1357>",
+                "list-ol"        : "<LABEL_1358>",
+                hr               : "<LABEL_1732>",
+                link             : "<LABEL_1733>",
+                "reference-link" : "<LABEL_1359>",
+                image            : "<LABEL_1360>",
+                code             : "<LABEL_1361>",
+                "preformatted-text" : "<LABEL_1048> / <LABEL_1562>（<LABEL_1362>）",
+                "code-block"     : "<LABEL_1562>（<LABEL_1049>）",
+                table            : "<LABEL_1363>",
+                datetime         : "<LABEL_1364>",
+                emoji            : "Emoji<LABEL_1734>",
+                "html-entities"  : "HTML<LABEL_1365>",
+                pagebreak        : "<LABEL_1050>",
+                "goto-line"      : "<LABEL_1366>",
+                watch            : "<LABEL_896>",
+                unwatch          : "<LABEL_906>",
+                preview          : "<LABEL_1051>HTML（<LABEL_1859> Shift + ESC<LABEL_1735>）",
+                fullscreen       : "<LABEL_1736>（<LABEL_1859>ESC<LABEL_1735>）",
+                clear            : "<LABEL_1737>",
+                search           : "<LABEL_1622>",
+                help             : "<LABEL_1367>",
+                info             : "<LABEL_1721>" + editormd.title
             },
             buttons : {
-                enter  : "确定",
-                cancel : "取消",
-                close  : "关闭"
+                enter  : "<LABEL_1738>",
+                cancel : "<LABEL_1688>",
+                close  : "<LABEL_1739>"
             },
             dialog : {
                 link : {
-                    title    : "添加链接",
-                    url      : "链接地址",
-                    urlTitle : "链接标题",
-                    urlEmpty : "错误：请填写链接地址。"
+                    title    : "<LABEL_1181>",
+                    url      : "<LABEL_1368>",
+                    urlTitle : "<LABEL_1369>",
+                    urlEmpty : "<LABEL_1629>：<LABEL_657>。"
                 },
                 referenceLink : {
-                    title    : "添加引用链接",
-                    name     : "引用名称",
-                    url      : "链接地址",
-                    urlId    : "链接ID",
-                    urlTitle : "链接标题",
-                    nameEmpty: "错误：引用链接的名称不能为空。",
-                    idEmpty  : "错误：请填写引用链接的ID。",
-                    urlEmpty : "错误：请填写引用链接的URL地址。"
+                    title    : "<LABEL_907>",
+                    name     : "<LABEL_1370>",
+                    url      : "<LABEL_1368>",
+                    urlId    : "<LABEL_1733>ID",
+                    urlTitle : "<LABEL_1369>",
+                    nameEmpty: "<LABEL_1629>：<LABEL_165>。",
+                    idEmpty  : "<LABEL_1629>：<LABEL_502>ID。",
+                    urlEmpty : "<LABEL_1629>：<LABEL_502>URL<LABEL_1714>。"
                 },
                 image : {
-                    title    : "添加图片",
-                    url      : "图片地址",
-                    link     : "图片链接",
-                    alt      : "图片描述",
-                    uploadButton     : "本地上传",
-                    imageURLEmpty    : "错误：图片地址不能为空。",
-                    uploadFileEmpty  : "错误：上传的图片不能为空。",
-                    formatNotAllowed : "错误：只允许上传图片文件，允许上传的图片文件格式有："
+                    title    : "<LABEL_1360>",
+                    url      : "<LABEL_1371>",
+                    link     : "<LABEL_1372>",
+                    alt      : "<LABEL_1373>",
+                    uploadButton     : "<LABEL_1374>",
+                    imageURLEmpty    : "<LABEL_1629>：<LABEL_503>。",
+                    uploadFileEmpty  : "<LABEL_1629>：<LABEL_325>。",
+                    formatNotAllowed : "<LABEL_1629>：<LABEL_326>，<LABEL_115>："
                 },
                 preformattedText : {
-                    title             : "添加预格式文本或代码块", 
-                    emptyAlert        : "错误：请填写预格式文本或代码的内容。"
+                    title             : "<LABEL_166>", 
+                    emptyAlert        : "<LABEL_1629>：<LABEL_53>。"
                 },
                 codeBlock : {
-                    title             : "添加代码块",                    
-                    selectLabel       : "代码语言：",
-                    selectDefaultText : "请选择代码语言",
-                    otherLanguage     : "其他语言",
-                    unselectedLanguageAlert : "错误：请选择代码所属的语言类型。",
-                    codeEmptyAlert    : "错误：请填写代码内容。"
+                    title             : "<LABEL_1052>",                    
+                    selectLabel       : "<LABEL_1375>：",
+                    selectDefaultText : "<LABEL_658>",
+                    otherLanguage     : "<LABEL_1376>",
+                    unselectedLanguageAlert : "<LABEL_1629>：<LABEL_116>。",
+                    codeEmptyAlert    : "<LABEL_1629>：<LABEL_659>。"
                 },
                 htmlEntities : {
-                    title : "HTML 实体字符"
+                    title : "HTML <LABEL_1365>"
                 },
                 help : {
-                    title : "使用帮助"
+                    title : "<LABEL_1367>"
                 }
             }
         }
@@ -346,12 +346,12 @@
         },
         
         /**
-         * 构造函数/实例初始化
+         * <LABEL_1377>/<LABEL_1053>
          * Constructor / instance initialization
          * 
-         * @param   {String}   id            编辑器的ID
-         * @param   {Object}   [options={}]  配置选项 Key/Value
-         * @returns {editormd}               返回editormd的实例对象
+         * @param   {String}   id            <LABEL_1354>ID
+         * @param   {Object}   [options={}]  <LABEL_1355> Key/Value
+         * @returns {editormd}               <LABEL_1724>editormd<LABEL_1054>
          */
         
         init : function (id, options) {
@@ -486,10 +486,10 @@
         },
         
         /**
-         * 所需组件加载队列
+         * <LABEL_504>
          * Required components loading queue
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         loadQueues : function() {
@@ -603,10 +603,10 @@
         },
         
         /**
-         * 设置 Editor.md 的整体主题，主要是工具栏
+         * <LABEL_1740> Editor.md <LABEL_1055>，<LABEL_908>
          * Setting Editor.md theme
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setTheme : function(theme) {
@@ -622,10 +622,10 @@
         },
         
         /**
-         * 设置 CodeMirror（编辑区）的主题
+         * <LABEL_1740> CodeMirror（<LABEL_1563>）<LABEL_1564>
          * Setting CodeMirror (Editor area) theme
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setEditorTheme : function(theme) {  
@@ -643,10 +643,10 @@
         },
         
         /**
-         * setEditorTheme() 的别名
+         * setEditorTheme() <LABEL_1565>
          * setEditorTheme() alias
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setCodeMirrorTheme : function (theme) {            
@@ -656,10 +656,10 @@
         },
         
         /**
-         * 设置 Editor.md 的主题
+         * <LABEL_1740> Editor.md <LABEL_1564>
          * Setting Editor.md theme
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setPreviewTheme : function(theme) {  
@@ -675,10 +675,10 @@
         },
         
         /**
-         * 配置和初始化CodeMirror组件
+         * <LABEL_909>CodeMirror<LABEL_1741>
          * CodeMirror initialization
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setCodeMirror : function() { 
@@ -745,7 +745,7 @@
         },
         
         /**
-         * 获取CodeMirror的配置选项
+         * <LABEL_1742>CodeMirror<LABEL_1056>
          * Get CodeMirror setting options
          * 
          * @returns {Mixed}                  return CodeMirror setting option value
@@ -756,10 +756,10 @@
         },
         
         /**
-         * 配置和重配置CodeMirror的选项
+         * <LABEL_910>CodeMirror<LABEL_1566>
          * CodeMirror setting options / resettings
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setCodeMirrorOption : function(key, value) {
@@ -770,10 +770,10 @@
         },
         
         /**
-         * 添加 CodeMirror 键盘快捷键
+         * <LABEL_1713> CodeMirror <LABEL_1057>
          * Add CodeMirror keyboard shortcuts key map
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         addKeyMap : function(map, bottom) {
@@ -783,10 +783,10 @@
         },
         
         /**
-         * 移除 CodeMirror 键盘快捷键
+         * <LABEL_1686> CodeMirror <LABEL_1057>
          * Remove CodeMirror keyboard shortcuts key map
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         removeKeyMap : function(map) {
@@ -796,11 +796,11 @@
         },
         
         /**
-         * 跳转到指定的行
+         * <LABEL_660>
          * Goto CodeMirror line
          * 
          * @param   {String|Intiger}   line      line number or "first"|"last"
-         * @returns {editormd}                   返回editormd的实例对象
+         * @returns {editormd}                   <LABEL_1724>editormd<LABEL_1054>
          */
         
         gotoLine : function (line) {
@@ -880,7 +880,7 @@
         },
         
         /**
-         * 扩展当前实例对象，可同时设置多个或者只设置一个
+         * <LABEL_505>，<LABEL_54>
          * Extend editormd instance object, can mutil setting.
          * 
          * @returns {editormd}                  this(editormd instance object.)
@@ -906,7 +906,7 @@
         },
         
         /**
-         * 设置或扩展当前实例对象，单个设置
+         * <LABEL_167>，<LABEL_1378>
          * Extend editormd instance object, one by one
          * 
          * @param   {String|Object}   key       option key
@@ -927,7 +927,7 @@
         },
         
         /**
-         * 重新配置
+         * <LABEL_1379>
          * Resetting editor options
          * 
          * @param   {String|Object}   key       option key
@@ -955,11 +955,11 @@
         },
         
         /**
-         * 注册事件处理方法
+         * <LABEL_506>
          * Bind editor event handle
          * 
          * @param   {String}     eventType      event type
-         * @param   {Function}   callback       回调函数
+         * @param   {Function}   callback       <LABEL_1380>
          * @returns {editormd}                  this(editormd instance object.)
          */
         
@@ -975,7 +975,7 @@
         },
         
         /**
-         * 解除事件处理方法
+         * <LABEL_507>
          * Unbind editor event handle
          * 
          * @param   {String}   eventType          event type
@@ -994,11 +994,11 @@
         },
         
         /**
-         * 显示工具栏
+         * <LABEL_1058>
          * Display toolbar
          * 
-         * @param   {Function} [callback=function(){}] 回调函数
-         * @returns {editormd}  返回editormd的实例对象
+         * @param   {Function} [callback=function(){}] <LABEL_1380>
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         showToolbar : function(callback) {
@@ -1024,10 +1024,10 @@
         },
         
         /**
-         * 隐藏工具栏
+         * <LABEL_1059>
          * Hide toolbar
          * 
-         * @param   {Function} [callback=function(){}] 回调函数
+         * @param   {Function} [callback=function(){}] <LABEL_1380>
          * @returns {editormd}                         this(editormd instance object.)
          */
         
@@ -1044,10 +1044,10 @@
         },
         
         /**
-         * 页面滚动时工具栏的固定定位
+         * <LABEL_76>
          * Set toolbar in window scroll auto fixed position
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setToolbarAutoFixed : function(fixed) {
@@ -1098,10 +1098,10 @@
         },
         
         /**
-         * 配置和初始化工具栏
+         * <LABEL_327>
          * Set toolbar and Initialization
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setToolbar : function() {
@@ -1200,12 +1200,12 @@
         },
         
         /**
-         * 工具栏图标事件处理对象序列
+         * <LABEL_77>
          * Get toolbar icons event handlers
          * 
-         * @param   {Object}   cm    CodeMirror的实例对象
-         * @param   {String}   name  要获取的事件处理器名称
-         * @returns {Object}         返回处理对象序列
+         * @param   {Object}   cm    CodeMirror<LABEL_1054>
+         * @param   {String}   name  <LABEL_168>
+         * @returns {Object}         <LABEL_508>
          */
             
         dialogLockScreen : function() {
@@ -1227,10 +1227,10 @@
         },
         
         /**
-         * 工具栏图标事件处理器
+         * <LABEL_240>
          * Bind toolbar icons event handle
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         setToolbarHandler : function() {
@@ -1286,11 +1286,11 @@
         },
         
         /**
-         * 动态创建对话框
+         * <LABEL_661>
          * Creating custom dialogs
          * 
-         * @param   {Object} options  配置项键值对 Key/Value
-         * @returns {dialog}          返回创建的dialog的jQuery实例对象
+         * @param   {Object} options  <LABEL_911> Key/Value
+         * @returns {dialog}          <LABEL_1060>dialog<LABEL_1860>jQuery<LABEL_1381>
          */
         
         createDialog : function(options) {            
@@ -1298,10 +1298,10 @@
         },
         
         /**
-         * 创建关于Editor.md的对话框
+         * <LABEL_1382>Editor.md<LABEL_1383>
          * Create about Editor.md dialog
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         createInfoDialog : function() {
@@ -1337,10 +1337,10 @@
         },
         
         /**
-         * 关于Editor.md对话居中定位
+         * <LABEL_1721>Editor.md<LABEL_912>
          * Editor.md dialog position handle
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         infoDialogPosition : function() {
@@ -1361,10 +1361,10 @@
         },
         
         /**
-         * 显示关于Editor.md
+         * <LABEL_1384>Editor.md
          * Display about Editor.md dialog
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         showInfoDialog : function() {
@@ -1396,10 +1396,10 @@
         },
         
         /**
-         * 隐藏关于Editor.md
+         * <LABEL_1385>Editor.md
          * Hide about Editor.md dialog
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         hideInfoDialog : function() {            
@@ -1412,11 +1412,11 @@
         },
         
         /**
-         * 锁屏
+         * <LABEL_1743>
          * lock screen
          * 
-         * @param   {Boolean}    lock    Boolean 布尔值，是否锁屏
-         * @returns {editormd}           返回editormd的实例对象
+         * @param   {Boolean}    lock    Boolean <LABEL_1567>，<LABEL_1386>
+         * @returns {editormd}           <LABEL_1724>editormd<LABEL_1054>
          */
         
         lockScreen : function(lock) {
@@ -1427,10 +1427,10 @@
         },
         
         /**
-         * 编辑器界面重建，用于动态语言包或模块加载等
+         * <LABEL_662>，<LABEL_78>
          * Recreate editor
          * 
-         * @returns {editormd}  返回editormd的实例对象
+         * @returns {editormd}  <LABEL_1724>editormd<LABEL_1054>
          */
         
         recreate : function() {
@@ -1461,10 +1461,10 @@
         },
         
         /**
-         * 高亮预览HTML的pre代码部分
+         * <LABEL_1387>HTML<LABEL_1860>pre<LABEL_1388>
          * highlight of preview codes
          * 
-         * @returns {editormd}             返回editormd的实例对象
+         * @returns {editormd}             <LABEL_1724>editormd<LABEL_1054>
          */
         
         previewCodeHighlight : function() {    
@@ -1485,10 +1485,10 @@
         },
         
         /**
-         * 解析TeX(KaTeX)科学公式
+         * <LABEL_1744>TeX(KaTeX)<LABEL_1389>
          * TeX(KaTeX) Renderer
          * 
-         * @returns {editormd}             返回editormd的实例对象
+         * @returns {editormd}             <LABEL_1724>editormd<LABEL_1054>
          */
         
         katexRender : function() {
@@ -1509,10 +1509,10 @@
         },
         
         /**
-         * 解析和渲染流程图及时序图
+         * <LABEL_117>
          * FlowChart and SequenceDiagram Renderer
          * 
-         * @returns {editormd}             返回editormd的实例对象
+         * @returns {editormd}             <LABEL_1724>editormd<LABEL_1054>
          */
         
         flowChartAndSequenceDiagramRender : function() {
@@ -1569,7 +1569,7 @@
         },
         
         /**
-         * 注册键盘快捷键处理
+         * <LABEL_328>
          * Register CodeMirror keyMaps (keyboard shortcuts).
          * 
          * @param   {Object}    keyMap      KeyMap key/value {"(Ctrl/Shift/Alt)-Key" : function(){}}
@@ -1653,7 +1653,7 @@
         },
         
         /**
-         * 绑定同步滚动
+         * <LABEL_913>
          * 
          * @returns {editormd} return this
          */
@@ -1785,11 +1785,11 @@
         },
         
         /**
-         * 加载队列完成之后的显示处理
+         * <LABEL_79>
          * Display handle of the module queues loaded after.
          * 
-         * @param   {Boolean}   recreate   是否为重建编辑器
-         * @returns {editormd}             返回editormd的实例对象
+         * @param   {Boolean}   recreate   <LABEL_509>
+         * @returns {editormd}             <LABEL_1724>editormd<LABEL_1054>
          */
         
         loadedDisplay : function(recreate) {
@@ -1809,7 +1809,7 @@
                 preview.show();
             }
             
-            editor.data("oldWidth", editor.width()).data("oldHeight", editor.height()); // 为了兼容Zepto
+            editor.data("oldWidth", editor.width()).data("oldHeight", editor.height()); // <LABEL_1390>Zepto
             
             this.resize();
             this.registerKeyMaps();
@@ -1831,11 +1831,11 @@
         },
         
         /**
-         * 设置编辑器的宽度
+         * <LABEL_510>
          * Set editor width
          * 
-         * @param   {Number|String} width  编辑器宽度值
-         * @returns {editormd}             返回editormd的实例对象
+         * @param   {Number|String} width  <LABEL_914>
+         * @returns {editormd}             <LABEL_1724>editormd<LABEL_1054>
          */
         
         width : function(width) {
@@ -1847,11 +1847,11 @@
         },
         
         /**
-         * 设置编辑器的高度
+         * <LABEL_511>
          * Set editor height
          * 
-         * @param   {Number|String} height  编辑器高度值
-         * @returns {editormd}              返回editormd的实例对象
+         * @param   {Number|String} height  <LABEL_915>
+         * @returns {editormd}              <LABEL_1724>editormd<LABEL_1054>
          */
         
         height : function(height) {
@@ -1863,12 +1863,12 @@
         },
         
         /**
-         * 调整编辑器的尺寸和布局
+         * <LABEL_169>
          * Resize editor layout
          * 
-         * @param   {Number|String} [width=null]  编辑器宽度值
-         * @param   {Number|String} [height=null] 编辑器高度值
-         * @returns {editormd}                    返回editormd的实例对象
+         * @param   {Number|String} [width=null]  <LABEL_914>
+         * @param   {Number|String} [height=null] <LABEL_915>
+         * @returns {editormd}                    <LABEL_1724>editormd<LABEL_1054>
          */
         
         resize : function(width, height) {
@@ -1957,10 +1957,10 @@
         },
         
         /**
-         * 解析和保存Markdown代码
+         * <LABEL_1061>Markdown<LABEL_1745>
          * Parse & Saving Markdown source code
          * 
-         * @returns {editormd}     返回editormd的实例对象
+         * @returns {editormd}     <LABEL_1724>editormd<LABEL_1054>
          */
         
         save : function() {
@@ -2008,7 +2008,7 @@
                 tables      : true,
                 breaks      : true,
                 pedantic    : false,
-                sanitize    : (settings.htmlDecode) ? false : true,  // 关闭忽略HTML标签，即开启识别HTML标签，默认为false
+                sanitize    : (settings.htmlDecode) ? false : true,  // <LABEL_1391>HTML<LABEL_1639>，<LABEL_1062>HTML<LABEL_1639>，<LABEL_1507>false
                 smartLists  : true,
                 smartypants : true
             };
@@ -2099,10 +2099,10 @@
         },
         
         /**
-         * 聚焦光标位置
+         * <LABEL_916>
          * Focusing the cursor position
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         focus : function() {
@@ -2112,11 +2112,11 @@
         },
         
         /**
-         * 设置光标的位置
+         * <LABEL_663>
          * Set cursor position
          * 
-         * @param   {Object}    cursor 要设置的光标位置键值对象，例：{line:1, ch:0}
-         * @returns {editormd}         返回editormd的实例对象
+         * @param   {Object}    cursor <LABEL_118>，<LABEL_1855>：{line:1, ch:0}
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         setCursor : function(cursor) {
@@ -2126,10 +2126,10 @@
         },
         
         /**
-         * 获取当前光标的位置
+         * <LABEL_329>
          * Get the current position of the cursor
          * 
-         * @returns {Cursor}         返回一个光标Cursor对象
+         * @returns {Cursor}         <LABEL_917>Cursor<LABEL_1725>
          */
         
         getCursor : function() {
@@ -2137,12 +2137,12 @@
         },
         
         /**
-         * 设置光标选中的范围
+         * <LABEL_330>
          * Set cursor selected ranges
          * 
-         * @param   {Object}    from   开始位置的光标键值对象，例：{line:1, ch:0}
-         * @param   {Object}    to     结束位置的光标键值对象，例：{line:1, ch:0}
-         * @returns {editormd}         返回editormd的实例对象
+         * @param   {Object}    from   <LABEL_170>，<LABEL_1855>：{line:1, ch:0}
+         * @param   {Object}    to     <LABEL_171>，<LABEL_1855>：{line:1, ch:0}
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         setSelection : function(from, to) {
@@ -2153,10 +2153,10 @@
         },
         
         /**
-         * 获取光标选中的文本
+         * <LABEL_331>
          * Get the texts from cursor selected
          * 
-         * @returns {String}         返回选中文本的字符串形式
+         * @returns {String}         <LABEL_119>
          */
         
         getSelection : function() {
@@ -2164,7 +2164,7 @@
         },
         
         /**
-         * 设置光标选中的文本范围
+         * <LABEL_172>
          * Set the cursor selection ranges
          * 
          * @param   {Array}    ranges  cursor selection ranges array
@@ -2178,7 +2178,7 @@
         },
         
         /**
-         * 获取光标选中的文本范围
+         * <LABEL_173>
          * Get the cursor selection ranges
          * 
          * @returns {Array}         return selection ranges array
@@ -2189,11 +2189,11 @@
         },
         
         /**
-         * 替换当前光标选中的文本或在当前光标处插入新字符
+         * <LABEL_1>
          * Replace the text at the current cursor selected or insert a new character at the current cursor position
          * 
-         * @param   {String}    value  要插入的字符值
-         * @returns {editormd}         返回editormd的实例对象
+         * @param   {String}    value  <LABEL_664>
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         replaceSelection : function(value) {
@@ -2203,14 +2203,14 @@
         },
         
         /**
-         * 在当前光标处插入新字符
+         * <LABEL_174>
          * Insert a new character at the current cursor position
          *
-         * 同replaceSelection()方法
+         * <LABEL_1861>replaceSelection()<LABEL_1746>
          * With the replaceSelection() method
          * 
-         * @param   {String}    value  要插入的字符值
-         * @returns {editormd}         返回editormd的实例对象
+         * @param   {String}    value  <LABEL_664>
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         insertValue : function(value) {
@@ -2220,11 +2220,11 @@
         },
         
         /**
-         * 追加markdown
+         * <LABEL_1747>markdown
          * append Markdown to editor
          * 
-         * @param   {String}    md     要追加的markdown源文档
-         * @returns {editormd}         返回editormd的实例对象
+         * @param   {String}    md     <LABEL_1392>markdown<LABEL_1568>
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         appendMarkdown : function(md) {
@@ -2237,11 +2237,11 @@
         },
         
         /**
-         * 设置和传入编辑器的markdown源文档
+         * <LABEL_332>markdown<LABEL_1568>
          * Set Markdown source document
          * 
-         * @param   {String}    md     要传入的markdown源文档
-         * @returns {editormd}         返回editormd的实例对象
+         * @param   {String}    md     <LABEL_1393>markdown<LABEL_1568>
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         setMarkdown : function(md) {
@@ -2251,10 +2251,10 @@
         },
         
         /**
-         * 获取编辑器的markdown源文档
+         * <LABEL_918>markdown<LABEL_1568>
          * Set Editor.md markdown/CodeMirror value
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         getMarkdown : function() {
@@ -2262,10 +2262,10 @@
         },
         
         /**
-         * 获取编辑器的源文档
+         * <LABEL_333>
          * Get CodeMirror value
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         getValue : function() {
@@ -2273,11 +2273,11 @@
         },
         
         /**
-         * 设置编辑器的源文档
+         * <LABEL_334>
          * Set CodeMirror value
          * 
          * @param   {String}     value   set code/value/string/text
-         * @returns {editormd}           返回editormd的实例对象
+         * @returns {editormd}           <LABEL_1724>editormd<LABEL_1054>
          */
         
         setValue : function(value) {
@@ -2287,10 +2287,10 @@
         },
         
         /**
-         * 清空编辑器
+         * <LABEL_1063>
          * Empty CodeMirror editor container
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         clear : function() {
@@ -2300,10 +2300,10 @@
         },
         
         /**
-         * 获取解析后存放在Textarea的HTML源码
+         * <LABEL_512>Textarea<LABEL_1860>HTML<LABEL_1717>
          * Get parsed html code from Textarea
          * 
-         * @returns {String}               返回HTML源码
+         * @returns {String}               <LABEL_1724>HTML<LABEL_1717>
          */
         
         getHTML : function() {
@@ -2318,10 +2318,10 @@
         },
         
         /**
-         * getHTML()的别名
+         * getHTML()<LABEL_1565>
          * getHTML (alias)
          * 
-         * @returns {String}           Return html code 返回HTML源码
+         * @returns {String}           Return html code <LABEL_1724>HTML<LABEL_1717>
          */
         
         getTextareaSavedHTML : function() {
@@ -2329,10 +2329,10 @@
         },
         
         /**
-         * 获取预览窗口的HTML源码
+         * <LABEL_665>HTML<LABEL_1717>
          * Get html from preview container
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         getPreviewedHTML : function() {
@@ -2347,10 +2347,10 @@
         },
         
         /**
-         * 开启实时预览
+         * <LABEL_906>
          * Enable real-time watching
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         watch : function(callback) {     
@@ -2391,10 +2391,10 @@
         },
         
         /**
-         * 关闭实时预览
+         * <LABEL_896>
          * Disable real-time watching
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         unwatch : function(callback) {
@@ -2427,11 +2427,11 @@
         },
         
         /**
-         * 显示编辑器
+         * <LABEL_1064>
          * Show editor
          * 
-         * @param   {Function} [callback=function()] 回调函数
-         * @returns {editormd}                       返回editormd的实例对象
+         * @param   {Function} [callback=function()] <LABEL_1380>
+         * @returns {editormd}                       <LABEL_1724>editormd<LABEL_1054>
          */
         
         show : function(callback) {
@@ -2446,11 +2446,11 @@
         },
         
         /**
-         * 隐藏编辑器
+         * <LABEL_1065>
          * Hide editor
          * 
-         * @param   {Function} [callback=function()] 回调函数
-         * @returns {editormd}                       返回editormd的实例对象
+         * @param   {Function} [callback=function()] <LABEL_1380>
+         * @returns {editormd}                       <LABEL_1724>editormd<LABEL_1054>
          */
         
         hide : function(callback) {
@@ -2465,10 +2465,10 @@
         },
         
         /**
-         * 隐藏编辑器部分，只预览HTML
+         * <LABEL_666>，<LABEL_1569>HTML
          * Enter preview html state
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         previewing : function() {
@@ -2498,7 +2498,7 @@
                 }
             };
 
-            if (codeMirror.css("display") === "none") // 为了兼容Zepto，而不使用codeMirror.is(":hidden")
+            if (codeMirror.css("display") === "none") // <LABEL_1390>Zepto，<LABEL_1394>codeMirror.is(":hidden")
             {
                 this.state.preview = true;
 
@@ -2543,10 +2543,10 @@
         },
         
         /**
-         * 显示编辑器部分，退出只预览HTML
+         * <LABEL_667>，<LABEL_1066>HTML
          * Exit preview html state
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         previewed : function() {
@@ -2594,10 +2594,10 @@
         },
         
         /**
-         * 编辑器全屏显示
+         * <LABEL_668>
          * Fullscreen show
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         fullscreen : function() {
@@ -2651,10 +2651,10 @@
         },
         
         /**
-         * 编辑器退出全屏显示
+         * <LABEL_335>
          * Exit fullscreen state
          * 
-         * @returns {editormd}         返回editormd的实例对象
+         * @returns {editormd}         <LABEL_1724>editormd<LABEL_1054>
          */
         
         fullscreenExit : function() {
@@ -2685,12 +2685,12 @@
         },
         
         /**
-         * 加载并执行插件
+         * <LABEL_669>
          * Load and execute the plugin
          * 
          * @param   {String}     name    plugin name / function name
          * @param   {String}     path    plugin load path
-         * @returns {editormd}           返回editormd的实例对象
+         * @returns {editormd}           <LABEL_1724>editormd<LABEL_1054>
          */
         
         executePlugin : function(name, path) {
@@ -2731,7 +2731,7 @@
         },
                 
         /**
-         * 搜索替换
+         * <LABEL_1395>
          * Search & replace
          * 
          * @param   {String}     command    CodeMirror serach commands, "find, fintNext, fintPrev, clearSearch, replace, replaceAll"
@@ -2771,7 +2771,7 @@
     editormd.fn.init.prototype = editormd.fn; 
    
     /**
-     * 锁屏
+     * <LABEL_1743>
      * lock screen when dialog opening
      * 
      * @returns {void}
@@ -2788,7 +2788,7 @@
     };
    
     /**
-     * 显示透明背景层
+     * <LABEL_670>
      * Display mask layer when dialog opening
      * 
      * @param   {Object}     dialog    dialog jQuery object
@@ -3300,7 +3300,7 @@
     };
     
     /**
-     * 清除字符串两边的空格
+     * <LABEL_241>
      * Clear the space of strings both sides.
      * 
      * @param   {String}    str            string
@@ -3314,7 +3314,7 @@
     editormd.trim = trim;
     
     /**
-     * 所有单词首字母大写
+     * <LABEL_336>
      * Words first to uppercase
      * 
      * @param   {String}    str            string
@@ -3330,7 +3330,7 @@
     editormd.ucwords = editormd.wordsFirstUpperCase = ucwords;
     
     /**
-     * 字符串首字母大写
+     * <LABEL_513>
      * Only string first char to uppercase
      * 
      * @param   {String}    str            string
@@ -3376,11 +3376,11 @@
     };
 
     /**
-     * 自定义marked的解析器
+     * <LABEL_1537>marked<LABEL_1396>
      * Custom Marked renderer rules
      * 
-     * @param   {Array}    markdownToC     传入用于接收TOC的数组
-     * @returns {Renderer} markedRenderer  返回marked的Renderer自定义对象
+     * @param   {Array}    markdownToC     <LABEL_919>TOC<LABEL_1570>
+     * @returns {Renderer} markedRenderer  <LABEL_1724>marked<LABEL_1860>Renderer<LABEL_1067>
      */
 
     editormd.markedRenderer = function(markdownToC, options) {
@@ -3666,13 +3666,13 @@
     
     /**
      *
-     * 生成TOC(Table of Contents)
+     * <LABEL_1748>TOC(Table of Contents)
      * Creating ToC (Table of Contents)
      * 
-     * @param   {Array}    toc             从marked获取的TOC数组列表
-     * @param   {Element}  container       插入TOC的容器元素
-     * @param   {Integer}  startLevel      Hx 起始层级
-     * @returns {Object}   tocContainer    返回ToC列表容器层的jQuery对象元素
+     * @param   {Array}    toc             <LABEL_1862>marked<LABEL_1571>TOC<LABEL_1397>
+     * @param   {Element}  container       <LABEL_1648>TOC<LABEL_1068>
+     * @param   {Integer}  startLevel      Hx <LABEL_1398>
+     * @returns {Object}   tocContainer    <LABEL_1724>ToC<LABEL_920>jQuery<LABEL_1399>
      */
     
     editormd.markdownToCRenderer = function(toc, container, tocDropdown, startLevel) {
@@ -3734,10 +3734,10 @@
     
     /**
      *
-     * 生成TOC下拉菜单
+     * <LABEL_1748>TOC<LABEL_1400>
      * Creating ToC dropdown menu
      * 
-     * @param   {Object}   container       插入TOC的容器jQuery对象元素
+     * @param   {Object}   container       <LABEL_1648>TOC<LABEL_1572>jQuery<LABEL_1399>
      * @param   {String}   tocTitle        ToC title
      * @returns {Object}                   return toc-menu object
      */
@@ -3799,12 +3799,12 @@
     };
     
     /**
-     * 简单地过滤指定的HTML标签
+     * <LABEL_514>HTML<LABEL_1639>
      * Filter custom html tags
      * 
-     * @param   {String}   html          要过滤HTML
-     * @param   {String}   filters       要过滤的标签
-     * @returns {String}   html          返回过滤的HTML
+     * @param   {String}   html          <LABEL_1573>HTML
+     * @param   {String}   filters       <LABEL_921>
+     * @returns {String}   html          <LABEL_1069>HTML
      */
     
     editormd.filterHTMLTags = function(html, filters) {
@@ -3884,12 +3884,12 @@
     };
     
     /**
-     * 将Markdown文档解析为HTML用于前台显示
+     * <LABEL_1863>Markdown<LABEL_1070>HTML<LABEL_922>
      * Parse Markdown to HTML for Font-end preview.
      * 
-     * @param   {String}   id            用于显示HTML的对象ID
-     * @param   {Object}   [options={}]  配置选项，可选
-     * @returns {Object}   div           返回jQuery对象元素
+     * @param   {String}   id            <LABEL_1401>HTML<LABEL_1574>ID
+     * @param   {Object}   [options={}]  <LABEL_1355>，<LABEL_1749>
+     * @returns {Object}   div           <LABEL_1724>jQuery<LABEL_1399>
      */
     
     editormd.markdownToHTML = function(id, options) {
@@ -3898,7 +3898,7 @@
             toc                  : true,
             tocm                 : false,
             tocStartLevel        : 1,
-            tocTitle             : "目录",
+            tocTitle             : "<LABEL_1658>",
             tocDropdown          : false,
             tocContainer         : "",
             markdown             : "",
@@ -3952,7 +3952,7 @@
             tables      : true,
             breaks      : true,
             pedantic    : false,
-            sanitize    : (settings.htmlDecode) ? false : true, // 是否忽略HTML标签，即是否开启HTML标签解析，为了安全性，默认不开启
+            sanitize    : (settings.htmlDecode) ? false : true, // <LABEL_1402>HTML<LABEL_1639>，<LABEL_1071>HTML<LABEL_1321>，<LABEL_1036>，<LABEL_1037>
             smartLists  : true,
             smartypants : true
         };
@@ -4077,12 +4077,12 @@
     };
     
     /**
-     * 动态加载Editor.md插件，但不立即执行
+     * <LABEL_1403>Editor.md<LABEL_1750>，<LABEL_923>
      * Load editor.md plugins
      * 
-     * @param {String}   fileName              插件文件路径
-     * @param {Function} [callback=function()] 加载成功后执行的回调函数
-     * @param {String}   [into="head"]         嵌入页面的位置
+     * @param {String}   fileName              <LABEL_924>
+     * @param {Function} [callback=function()] <LABEL_120>
+     * @param {String}   [into="head"]         <LABEL_671>
      */
     
     editormd.loadPlugin = function(fileName, callback, into) {
@@ -4095,12 +4095,12 @@
     };
     
     /**
-     * 动态加载CSS文件的方法
+     * <LABEL_1403>CSS<LABEL_1072>
      * Load css file method
      * 
-     * @param {String}   fileName              CSS文件名
-     * @param {Function} [callback=function()] 加载成功后执行的回调函数
-     * @param {String}   [into="head"]         嵌入页面的位置
+     * @param {String}   fileName              CSS<LABEL_1524>
+     * @param {Function} [callback=function()] <LABEL_120>
+     * @param {String}   [into="head"]         <LABEL_671>
      */
     
     editormd.loadCSS   = function(fileName, callback, into) {
@@ -4128,12 +4128,12 @@
     editormd.isIE8   = (editormd.isIE && navigator.appVersion.match(/8./i) == "8.");
 
     /**
-     * 动态加载JS文件的方法
+     * <LABEL_1403>JS<LABEL_1072>
      * Load javascript file method
      * 
-     * @param {String}   fileName              JS文件名
-     * @param {Function} [callback=function()] 加载成功后执行的回调函数
-     * @param {String}   [into="head"]         嵌入页面的位置
+     * @param {String}   fileName              JS<LABEL_1524>
+     * @param {Function} [callback=function()] <LABEL_120>
+     * @param {String}   [into="head"]         <LABEL_671>
      */
 
     editormd.loadScript = function(fileName, callback, into) {
@@ -4176,7 +4176,7 @@
         }
     };
     
-    // 使用国外的CDN，加载速度有时会很慢，或者自定义URL
+    // <LABEL_1073>CDN，<LABEL_337>，<LABEL_1074>URL
     // You can custom KaTeX load url.
     editormd.katexURL  = {
         css : "//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min",
@@ -4186,10 +4186,10 @@
     editormd.kaTeXLoaded = false;
     
     /**
-     * 加载KaTeX文件
+     * <LABEL_1751>KaTeX<LABEL_1616>
      * load KaTeX files
      * 
-     * @param {Function} [callback=function()]  加载成功后执行的回调函数
+     * @param {Function} [callback=function()]  <LABEL_120>
      */
     
     editormd.loadKaTeX = function (callback) {
@@ -4199,10 +4199,10 @@
     };
         
     /**
-     * 锁屏
+     * <LABEL_1743>
      * lock screen
      * 
-     * @param   {Boolean}   lock   Boolean 布尔值，是否锁屏
+     * @param   {Boolean}   lock   Boolean <LABEL_1567>，<LABEL_1386>
      * @returns {void}
      */
     
@@ -4211,11 +4211,11 @@
     };
         
     /**
-     * 动态创建对话框
+     * <LABEL_661>
      * Creating custom dialogs
      * 
-     * @param   {Object} options 配置项键值对 Key/Value
-     * @returns {dialog} 返回创建的dialog的jQuery实例对象
+     * @param   {Object} options <LABEL_911> Key/Value
+     * @returns {dialog} <LABEL_1060>dialog<LABEL_1860>jQuery<LABEL_1381>
      */
 
     editormd.createDialog = function(options) {
@@ -4457,12 +4457,12 @@
     };
     
     /**
-     * 鼠标和触摸事件的判断/选择方法
+     * <LABEL_242>/<LABEL_1404>
      * MouseEvent or TouchEvent type switch
      * 
-     * @param   {String} [mouseEventType="click"]    供选择的鼠标事件
-     * @param   {String} [touchEventType="touchend"] 供选择的触摸事件
-     * @returns {String} EventType                   返回事件类型名称
+     * @param   {String} [mouseEventType="click"]    <LABEL_515>
+     * @param   {String} [touchEventType="touchend"] <LABEL_516>
+     * @returns {String} EventType                   <LABEL_517>
      */
     
     editormd.mouseOrTouch = function(mouseEventType, touchEventType) {
@@ -4480,11 +4480,11 @@
     };
     
     /**
-     * 日期时间的格式化方法
+     * <LABEL_243>
      * Datetime format method
      * 
-     * @param   {String}   [format=""]  日期时间的格式，类似PHP的格式
-     * @returns {String}   datefmt      返回格式化后的日期时间字符串
+     * @param   {String}   [format=""]  <LABEL_672>，<LABEL_1752>PHP<LABEL_1575>
+     * @returns {String}   datefmt      <LABEL_55>
      */
     
     editormd.dateFormat = function(format) {                
@@ -4536,8 +4536,8 @@
 
             case "cn-week-day" :
             case "cn-wd" :
-                    var cnWeekDays = ["日", "一", "二", "三", "四", "五", "六"];
-                    datefmt = "星期" + cnWeekDays[weekDay];
+                    var cnWeekDays = ["<LABEL_1864>", "<LABEL_1865>", "<LABEL_1866>", "<LABEL_1867>", "<LABEL_1868>", "<LABEL_1869>", "<LABEL_1870>"];
+                    datefmt = "<LABEL_1753>" + cnWeekDays[weekDay];
                 break;
 
             case "week-day" :

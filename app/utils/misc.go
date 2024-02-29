@@ -69,14 +69,14 @@ func (m *misc) GetLocalIp() string {
 	return "localhost"
 }
 
-// 分页方法
-// total: 一共多少记录
-// page:  当前是第几页
-// pagesize: 每页多少
-// url: url里面的{page}会被替换成页码
+// <LABEL_1203>
+// total: <LABEL_843>
+// page:  <LABEL_844>
+// pagesize: <LABEL_1204>
+// url: url<LABEL_1508>{page}<LABEL_594>
 // args:
-//  order 分页条的组成，是一个数组，可以按着1-6的序号，选择分页条组成部分和每个部分的顺序
-//  a_count   分页条中a页码链接的总数量,不包含当前页的a标签，默认10个。
+//  order <LABEL_845>，<LABEL_989>，<LABEL_1205>1-6<LABEL_1509>，<LABEL_14>
+//  a_count   <LABEL_1206>a<LABEL_19>a<LABEL_1639>，<LABEL_1613>10<LABEL_1831>。
 //
 func (m *misc) Page(total, page, pagesize int, url string, args ...interface{}) string {
 	order := []int{1, 2, 3, 4, 5, 6}
@@ -88,10 +88,10 @@ func (m *misc) Page(total, page, pagesize int, url string, args ...interface{}) 
 		a_count = args[1].(int)
 	}
 	a_num := a_count
-	first := "首页"
-	last := "尾页"
-	pre := "上页"
-	next := "下页"
+	first := "<LABEL_1640>"
+	last := "<LABEL_1641>"
+	pre := "<LABEL_1642>"
+	next := "<LABEL_1643>"
 	if a_num%2 == 0 {
 		a_num++
 	}
@@ -134,10 +134,10 @@ func (m *misc) Page(total, page, pagesize int, url string, args ...interface{}) 
 	if curpage != pages {
 		subfix = fmt.Sprintf(`<span class="page_bar_subfix"><a href="%s">%s</a><a href="%s">%s</a></span>`, strings.Replace(url, "{page}", fmt.Sprintf("%d", curpage+1), 1), next, strings.Replace(url, "{page}", fmt.Sprintf("%d", pages), 1), last)
 	}
-	info := fmt.Sprintf(`<span class="page_cur">第%d/%d页</span>`, curpage, pages)
+	info := fmt.Sprintf(`<span class="page_cur"><LABEL_1832>%d/%d<LABEL_1833></span>`, curpage, pages)
 	id := fmt.Sprintf("gsd09fhas9d%d%d%d", rand.Intn(1000), rand.Intn(1000), rand.Intn(1000))
-	gostr := fmt.Sprintf(`<script>function ekup(){if(event.keyCode==13){clkyup();}}function clkyup(){var num=document.getElementById('%s').value;if(!/^\d+$/.test(num)||num<=0||num>%d){alert('请输入正确页码!');return;};location='%s'.replace(/\{page\}/,document.getElementById('%s').value);}</script><span class="page_input_num"><input onkeyup="ekup()" type="text" id="%s" style="width:40px;vertical-align:text-baseline;padding:0 2px;font-size:10px;border:1px solid gray;"/></span><span class="page_btn_go" onclick="clkyup();" style="cursor:pointer;">转到</span>`, id, pages, url, id, id)
-	totalstr := fmt.Sprintf(`<span class="page_total">共%d条</span>`, total)
+	gostr := fmt.Sprintf(`<script>function ekup(){if(event.keyCode==13){clkyup();}}function clkyup(){var num=document.getElementById('%s').value;if(!/^\d+$/.test(num)||num<=0||num>%d){alert('<LABEL_453>');return;};location='%s'.replace(/\{page\}/,document.getElementById('%s').value);}</script><span class="page_input_num"><input onkeyup="ekup()" type="text" id="%s" style="width:40px;vertical-align:text-baseline;padding:0 2px;font-size:10px;border:1px solid gray;"/></span><span class="page_btn_go" onclick="clkyup();" style="cursor:pointer;"><LABEL_1644></span>`, id, pages, url, id, id)
+	totalstr := fmt.Sprintf(`<span class="page_total"><LABEL_1834>%d<LABEL_1835></span>`, total)
 	pagenation := []string{totalstr, info, prefix, body, subfix, gostr}
 	output := []string{}
 	for _, v := range order {
@@ -151,9 +151,9 @@ func (m *misc) Page(total, page, pagesize int, url string, args ...interface{}) 
 	return ""
 }
 
-// 获取字符串子串的位置
+// <LABEL_224>
 func (m *misc) GetStrUnicodeIndex(str string, substr string) int {
-	// 子串在字符串的字节位置
+	// <LABEL_148>
 	result := strings.Index(str, substr)
 	if result >= 0 {
 		return m.GetStrUnicodeIndexByByteIndex(str, result)
@@ -161,21 +161,21 @@ func (m *misc) GetStrUnicodeIndex(str string, substr string) int {
 	return -1
 }
 
-// 根据字符串字节位置获取字符串位置
+// <LABEL_20>
 func (m *misc) GetStrUnicodeIndexByByteIndex(str string, subStrByteIndex int) int {
 	if subStrByteIndex > len(str)-1 {
 		return -1
 	}
-	// 获得子串之前的字符串并转换成[]byte
+	// <LABEL_48>[]byte
 	prefix := []byte(str)[0:subStrByteIndex]
-	// 将子串之前的字符串转换成[]rune
+	// <LABEL_99>[]rune
 	rs := []rune(string(prefix))
-	// 获得子串之前的字符串的长度，便是子串在字符串的字符位置
+	// <LABEL_62>，<LABEL_63>
 	result := len(rs)
 	return result
 }
 
-// 截取包含子字符串的一段字符串，前后截取
+// <LABEL_49>，<LABEL_1207>
 func (m *misc) SubStrUnicode(str string, subStr string, preLen int, sufLen int) string {
 	subStrRune := []rune(subStr)
 	strRune := []rune(str)
@@ -192,8 +192,8 @@ func (m *misc) SubStrUnicode(str string, subStr string, preLen int, sufLen int) 
 	return string(strRune[startIndex:endIndex])
 }
 
-// 截取包含子字符串的一段字符串，前后截取
-// subStrIndex 已只子串的字节位置
+// <LABEL_49>，<LABEL_1207>
+// subStrIndex <LABEL_299>
 func (m *misc) SubStrUnicodeBySubStrIndex(str string, subStr string, subStrIndex int, preLen int, sufLen int) string {
 	subStrRune := []rune(subStr)
 	strRune := []rune(str)

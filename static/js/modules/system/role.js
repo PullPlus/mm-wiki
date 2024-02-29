@@ -1,5 +1,5 @@
 /**
- * 角色
+ * <LABEL_1634>
  * Copyright (c) 2018 phachon@163.com
  */
 var Role = {
@@ -51,7 +51,7 @@ var Role = {
 		var controllerIds = [];
 
 		navigatorIds.push(privilegeId);
-		//孩子菜单
+		//<LABEL_1487>
 		for (var i = 0; i < menus.length; i++) {
 			if(menus[i].parentId == privilegeId) {
 				menuIds.push(menus[i].privilegeId);
@@ -59,7 +59,7 @@ var Role = {
 		}
 
 		for (var i = 0; i < menuIds.length; i++) {
-			//孙子控制器
+			//<LABEL_1103>
 			for (var y = 0; y < controllers.length; y++) {
 				if(controllers[y].parentId == menuIds[i]) {
 					controllerIds.push(controllers[y].privilegeId);
@@ -77,14 +77,14 @@ var Role = {
 		var controllerIds = [];
 
 		menuIds.push(privilegeId);
-		//孩子控制器
+		//<LABEL_1104>
 		for (var i = 0; i < controllers.length; i++) {
 			if(controllers[i].parentId == privilegeId) {
 				controllerIds.push(controllers[i].privilegeId);
 			}
 		}
 
-		//父亲导航
+		//<LABEL_1488>
 		for (var i = 0; i < menus.length; i++) {
 			if(menus[i].privilegeId == privilegeId) {
 				for (var y = 0; y < navigators.length; y++) {
@@ -98,9 +98,9 @@ var Role = {
 		}
 
 		var allIds = [].concat(menuIds, controllerIds);
-		//下级
+		//<LABEL_1822>
 		Role.downLevel(allIds);
-		//上级
+		//<LABEL_1653>
 		Role.upLevel(navigatorIds);
 	},
 
@@ -110,7 +110,7 @@ var Role = {
 		var controllerIds = [];
 		controllerIds.push(privilegeId);
 
-		//菜单和导航
+		//<LABEL_1105>
 		for (var i = 0; i < controllers.length; i++) {
 			if(controllers[i].privilegeId == privilegeId) {
 				for (var y = 0; y < menus.length; y++) {
@@ -129,15 +129,15 @@ var Role = {
 			}
 		}
 
-		//下级
+		//<LABEL_1822>
 		Role.downLevel(controllerIds);
-		//上级
+		//<LABEL_1653>
 		var allIds = [].concat(navigatorIds, menuIds);
 		Role.upLevel(allIds);
 	},
 
 	/**
-	 * 所有的下级
+	 * <LABEL_1106>
 	 */
 	downLevel : function(privilegeIds) {
 		for (var i = 0; i < privilegeIds.length; i++) {
@@ -153,7 +153,7 @@ var Role = {
 	},
 
 	/**
-	 * 所有的上级
+	 * <LABEL_1107>
 	 */
 	upLevel : function(privilegeIds) {
 		for (var i = 0; i < privilegeIds.length; i++) {

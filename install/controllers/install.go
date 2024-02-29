@@ -18,18 +18,18 @@ type InstallController struct {
 	BaseController
 }
 
-// 安装首页
+// <LABEL_1113>
 func (this *InstallController) Index() {
 	this.view("install/index")
 }
 
-// 许可协议
+// <LABEL_1114>
 func (this *InstallController) License() {
 
 	if this.isPost() {
 		licenseAgree := this.GetString("license_agree", "")
 		if licenseAgree == "" || licenseAgree == "0" {
-			this.jsonError("请先同意协议后再继续")
+			this.jsonError("<LABEL_184>")
 		}
 		storage.Data.License = storage.License_Agree
 		this.jsonSuccess("", nil, "/install/env")
@@ -43,18 +43,18 @@ func (this *InstallController) License() {
 	}
 }
 
-// 环境检测
+// <LABEL_1115>
 func (this *InstallController) Env() {
 
 	if this.isPost() {
 		if storage.Data.Env == storage.Env_NotAccess {
-			this.jsonError("环境检测未通过")
+			this.jsonError("<LABEL_540>")
 		}
 		storage.Data.Env = storage.Env_Access
 		this.jsonSuccess("", nil, "/install/config")
 	}
 	storage.Data.Env = storage.Env_Access
-	//获取服务器信息
+	//<LABEL_541>
 	host := utils.Misc.GetLocalIp()
 	osSys := runtime.GOOS
 	server := map[string]string{
@@ -64,12 +64,12 @@ func (this *InstallController) Env() {
 		"version":     global.SYSTEM_VERSION,
 	}
 
-	// 环境检测
+	// <LABEL_1115>
 	vm, _ := mem.VirtualMemory()
 	vmTotal := vm.Total / 1024 / 1024
 	cpuCount, _ := cpu.Counts(true)
 	memData := map[string]interface{}{
-		"name":    "内存",
+		"name":    "<LABEL_1607>",
 		"require": "400M",
 		"value":   strconv.FormatInt(int64(vmTotal), 10) + "M",
 		"result":  "1",
@@ -80,8 +80,8 @@ func (this *InstallController) Env() {
 	}
 	cpuData := map[string]interface{}{
 		"name":    "CPU",
-		"require": "1核",
-		"value":   strconv.Itoa(cpuCount) + "核",
+		"require": "1<LABEL_1828>",
+		"value":   strconv.Itoa(cpuCount) + "<LABEL_1828>",
 		"result":  "1",
 	}
 	if cpuCount < 1 {
@@ -92,11 +92,11 @@ func (this *InstallController) Env() {
 	envData = append(envData, memData)
 	envData = append(envData, cpuData)
 
-	// 目录文件检测
+	// <LABEL_698>
 	fileTool := utils.NewFile()
 	templateConfDir := map[string]string{
 		"path":    "conf/template.conf",
-		"require": "读/写",
+		"require": "<LABEL_1829>/<LABEL_1830>",
 		"result":  "1",
 	}
 	err := fileTool.IsWriterReadable(filepath.Join(storage.RootDir, templateConfDir["path"]))
@@ -107,7 +107,7 @@ func (this *InstallController) Env() {
 
 	databaseTable := map[string]string{
 		"path":    "docs/databases/table.sql",
-		"require": "读/写",
+		"require": "<LABEL_1829>/<LABEL_1830>",
 		"result":  "1",
 	}
 	err = fileTool.IsWriterReadable(filepath.Join(storage.RootDir, databaseTable["path"]))
@@ -118,7 +118,7 @@ func (this *InstallController) Env() {
 
 	databaseData := map[string]string{
 		"path":    "docs/databases/data.sql",
-		"require": "读/写",
+		"require": "<LABEL_1829>/<LABEL_1830>",
 		"result":  "1",
 	}
 	err = fileTool.IsWriterReadable(filepath.Join(storage.RootDir, databaseData["path"]))
@@ -129,7 +129,7 @@ func (this *InstallController) Env() {
 
 	viewsDir := map[string]string{
 		"path":    "views",
-		"require": "存在且不为空",
+		"require": "<LABEL_699>",
 		"result":  "1",
 	}
 	isEmpty := utils.File.PathIsEmpty(filepath.Join(storage.RootDir, viewsDir["path"]))
@@ -140,7 +140,7 @@ func (this *InstallController) Env() {
 
 	staticDir := map[string]string{
 		"path":    "static",
-		"require": "存在且不为空",
+		"require": "<LABEL_699>",
 		"result":  "1",
 	}
 	isEmpty = utils.File.PathIsEmpty(filepath.Join(storage.RootDir, staticDir["path"]))
@@ -162,7 +162,7 @@ func (this *InstallController) Env() {
 	this.view("install/env")
 }
 
-// 系统配置
+// <LABEL_1116>
 func (this *InstallController) Config() {
 
 	if this.isPost() {
@@ -171,27 +171,27 @@ func (this *InstallController) Config() {
 		port, _ := this.GetInt32("port", 0)
 
 		if addr == "" {
-			this.jsonError("addr 不能为空，默认请填写 0.0.0.0")
+			this.jsonError("addr <LABEL_1117>，<LABEL_954> 0.0.0.0")
 		}
 		if port == 0 {
-			this.jsonError("启动端口不能为空")
+			this.jsonError("<LABEL_353>")
 		}
 		if port > int32(65535) {
-			this.jsonError("端口超出范围")
+			this.jsonError("<LABEL_700>")
 		}
 		if documentDir == "" {
-			this.jsonError("文档保存目录不能为空")
+			this.jsonError("<LABEL_185>")
 		}
 		if !filepath.IsAbs(documentDir) {
-			this.jsonError("文档保存目录不是绝对路径")
+			this.jsonError("<LABEL_81>")
 		}
 		docAbsDir, err := filepath.Abs(documentDir)
 		if err != nil {
-			this.jsonError("文档保存目录错误!")
+			this.jsonError("<LABEL_249>")
 		}
 		ok, _ := utils.File.PathIsExists(docAbsDir)
 		if !ok {
-			this.jsonError("文档保存目录不存在!")
+			this.jsonError("<LABEL_186>")
 		}
 
 		storage.Data.SystemConf = map[string]string{
@@ -208,12 +208,12 @@ func (this *InstallController) Config() {
 	this.view("install/config")
 }
 
-// 数据库配置
+// <LABEL_955>
 func (this *InstallController) Database() {
 
 	if !this.isPost() {
 		this.Data["databaseConf"] = storage.Data.DatabaseConf
-		this.viewLayoutTitle("mm-wiki-安装-数据库配置", "install/database", "install")
+		this.viewLayoutTitle("mm-wiki-<LABEL_1608>-<LABEL_955>", "install/database", "install")
 		return
 	}
 
@@ -228,37 +228,37 @@ func (this *InstallController) Database() {
 	adminPass := strings.TrimSpace(this.GetString("admin_pass", ""))
 
 	if host == "" {
-		this.jsonError("数据库 host 不能为空！")
+		this.jsonError("<LABEL_1495> host <LABEL_1117>！")
 	}
 	if port == "" {
-		this.jsonError("数据库端口不能为空！")
+		this.jsonError("<LABEL_250>！")
 	}
 	if name == "" {
-		this.jsonError("数据库名不能为空！")
+		this.jsonError("<LABEL_354>！")
 	}
 	if user == "" {
-		this.jsonError("数据库用户名不能为空！")
+		this.jsonError("<LABEL_187>！")
 	}
 	if pass == "" {
-		this.jsonError("数据库密码不能为空！")
+		this.jsonError("<LABEL_251>！")
 	}
 	if connMaxIdle == "0" {
-		this.jsonError("数据库连接数不能为0！")
+		this.jsonError("<LABEL_252>0！")
 	}
 	if connMaxConn == "0" {
-		this.jsonError("最大连接数不能为0！")
+		this.jsonError("<LABEL_355>0！")
 	}
 	if adminName == "" {
-		this.jsonError("超级管理员用户名不能为空！")
+		this.jsonError("<LABEL_82>！")
 	} else {
 		v := validation.Validation{}
 		if !v.AlphaNumeric(adminName, "admin_name").Ok {
-			this.jsonError("用户名格式不正确！")
+			this.jsonError("<LABEL_356>！")
 		}
 	}
 
 	if adminPass == "" {
-		this.jsonError("超级管理员密码不能为空！")
+		this.jsonError("<LABEL_123>！")
 	}
 
 	storage.Data.DatabaseConf = map[string]string{
@@ -276,7 +276,7 @@ func (this *InstallController) Database() {
 	this.jsonSuccess("", nil, "/install/ready")
 }
 
-// 安装准备
+// <LABEL_1118>
 func (this *InstallController) Ready() {
 
 	if this.isPost() {
@@ -284,54 +284,54 @@ func (this *InstallController) Ready() {
 			(storage.Data.Env != storage.Env_Access) ||
 			(storage.Data.System != storage.Sys_Access) ||
 			(storage.Data.Database != storage.Database_Access) {
-			this.jsonError("请先完成安装准备")
+			this.jsonError("<LABEL_357>")
 		}
 		storage.StartInstall()
 		this.jsonSuccess("", nil, "/install/end")
 	}
 
-	// 协议
+	// <LABEL_1609>
 	licenseConf := map[string]interface{}{
-		"name":   "许可协议",
-		"value":  "同意",
+		"name":   "<LABEL_1114>",
+		"value":  "<LABEL_1610>",
 		"result": "1",
 		"url":    "/install/license",
 	}
 	if storage.Data.License != storage.License_Agree {
-		licenseConf["value"] = "未同意"
+		licenseConf["value"] = "<LABEL_1496>"
 		licenseConf["result"] = "0"
 	}
-	//环境检测
+	//<LABEL_1115>
 	envConf := map[string]interface{}{
-		"name":   "环境检测",
-		"value":  "通过",
+		"name":   "<LABEL_1115>",
+		"value":  "<LABEL_1611>",
 		"result": "1",
 		"url":    "/install/env",
 	}
 	if storage.Data.Env != storage.Env_Access {
-		envConf["value"] = "未通过"
+		envConf["value"] = "<LABEL_1497>"
 		envConf["result"] = "0"
 	}
-	//系统配置
+	//<LABEL_1116>
 	sysConf := map[string]interface{}{
-		"name":   "系统配置",
-		"value":  "完成",
+		"name":   "<LABEL_1116>",
+		"value":  "<LABEL_1612>",
 		"result": "1",
 		"url":    "/install/config",
 	}
 	if storage.Data.System != storage.Sys_Access {
-		sysConf["value"] = "未完成"
+		sysConf["value"] = "<LABEL_1498>"
 		sysConf["result"] = "0"
 	}
-	//数据库配置
+	//<LABEL_955>
 	databaseConf := map[string]interface{}{
-		"name":   "数据库配置",
-		"value":  "完成",
+		"name":   "<LABEL_955>",
+		"value":  "<LABEL_1612>",
 		"result": "1",
 		"url":    "/install/database",
 	}
 	if storage.Data.Database != storage.Database_Access {
-		databaseConf["value"] = "未完成"
+		databaseConf["value"] = "<LABEL_1498>"
 		databaseConf["result"] = "0"
 	}
 
@@ -345,7 +345,7 @@ func (this *InstallController) Ready() {
 	this.view("install/ready")
 }
 
-// 安装完成
+// <LABEL_1119>
 func (this *InstallController) End() {
 
 	if storage.Data.Status == storage.Install_Ready {
@@ -355,7 +355,7 @@ func (this *InstallController) End() {
 	this.view("install/end")
 }
 
-// 获取状态
+// <LABEL_1120>
 func (this *InstallController) Status() {
 
 	data := map[string]interface{}{

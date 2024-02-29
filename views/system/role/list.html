@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="input-group">
-                        <input class="form-control" name="keyword" type="text" value="{{.keyword}}" placeholder="角色名称">
+                        <input class="form-control" name="keyword" type="text" value="{{.keyword}}" placeholder="<LABEL_1295>">
 				            <span class="input-group-btn">
 				              <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
 				            </span>
@@ -23,10 +23,10 @@
             <thead>
             <tr>
                 <th class="w8p">ID</th>
-                <th>名称</th>
-                <th class="w8p">类型</th>
-                <th class="w15p">修改时间</th>
-                <th class="w20p">操作</th>
+                <th><LABEL_1654></th>
+                <th class="w8p"><LABEL_1656></th>
+                <th class="w15p"><LABEL_1288></th>
+                <th class="w20p"><LABEL_1659></th>
             </tr>
             </thead>
             <tbody>
@@ -36,9 +36,9 @@
                 <td>{{$role.name}}</td>
                 <td class="center">
                 {{if eq $role.type "1"}}
-                    <span class="label label-danger">系统</span>
+                    <span class="label label-danger"><LABEL_1690></span>
                 {{else}}
-                    <span class="label label-success">自定义</span>
+                    <span class="label label-success"><LABEL_1537></span>
                 {{end}}
                 </td>
                 <td class="center">
@@ -46,13 +46,13 @@
                 </td>
                 <td class="center">
                     {{if eq $role.role_id "1"}}
-                     <a name="user" data-link="/system/role/user?role_id={{$role.role_id}}"><i class="glyphicon glyphicon-user"></i>用户</a>
+                     <a name="user" data-link="/system/role/user?role_id={{$role.role_id}}"><i class="glyphicon glyphicon-user"></i><LABEL_1631></a>
                     {{else}}
-                    <a name="edit" data-link="/system/role/edit?role_id={{$role.role_id}}"><i class="glyphicon glyphicon-edit" ></i>修改</a>
-                    <a name="privilege" data-link="/system/role/privilege?role_id={{$role.role_id}}"><i class="glyphicon glyphicon-lock" ></i>权限</a>
-                    <a name="user" data-link="/system/role/user?role_id={{$role.role_id}}"><i class="glyphicon glyphicon-user" ></i>用户</a>
+                    <a name="edit" data-link="/system/role/edit?role_id={{$role.role_id}}"><i class="glyphicon glyphicon-edit" ></i><LABEL_1663></a>
+                    <a name="privilege" data-link="/system/role/privilege?role_id={{$role.role_id}}"><i class="glyphicon glyphicon-lock" ></i><LABEL_1708></a>
+                    <a name="user" data-link="/system/role/user?role_id={{$role.role_id}}"><i class="glyphicon glyphicon-user" ></i><LABEL_1631></a>
                     {{if eq $role.type "0"}}
-                        <a onclick="Layers.confirm('确定删除吗？', '/system/role/delete?role_id={{$role.role_id}}');"><i class="remove glyphicon glyphicon-trash"></i>删除</a>
+                        <a onclick="Layers.confirm('<LABEL_1008>？', '/system/role/delete?role_id={{$role.role_id}}');"><i class="remove glyphicon glyphicon-trash"></i><LABEL_1664></a>
                     {{end}}
                     {{end}}
                 </td>
@@ -67,7 +67,7 @@
 </div>
 </div>
 <script type="text/javascript">
-    Layers.bindIframe("[name='edit']", "修改角色信息", "300px", "800px");
-    Layers.bindIframe("[name='privilege']", "角色授权", "500px", "1050px");
-    Layers.bindIframe("[name='user']", "角色用户", "500px", "1000px");
+    Layers.bindIframe("[name='edit']", "<LABEL_887>", "300px", "800px");
+    Layers.bindIframe("[name='privilege']", "<LABEL_1296>", "500px", "1050px");
+    Layers.bindIframe("[name='user']", "<LABEL_1297>", "500px", "1000px");
 </script>

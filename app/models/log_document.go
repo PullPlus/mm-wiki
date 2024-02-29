@@ -48,7 +48,7 @@ func (ld *LogDocument) CreateAction(userId string, documentId string, spaceId st
 		"user_id":     userId,
 		"document_id": documentId,
 		"space_id":    spaceId,
-		"comment":     "创建了文档",
+		"comment":     "<LABEL_995>",
 		"action":      LogDocument_Action_Create,
 		"create_time": time.Now().Unix(),
 	}
@@ -72,7 +72,7 @@ func (ld *LogDocument) DeleteAction(userId string, documentId string, spaceId st
 		"user_id":     userId,
 		"document_id": documentId,
 		"space_id":    spaceId,
-		"comment":     "删除了该文档",
+		"comment":     "<LABEL_849>",
 		"action":      LogDocument_Action_Delete,
 		"create_time": time.Now().Unix(),
 	}
@@ -167,7 +167,7 @@ func (ld *LogDocument) GetLogDocumentsByLimit(userId string, limit int, number i
 	var rs *mysql.ResultSet
 	where := db.AR().From(Table_LogDocument_Name)
 
-	// 查询用户空间权限
+	// <LABEL_455>
 	spaceUserRs, err := db.Query(db.AR().From(Table_SpaceUser_Name).Where(map[string]interface{}{
 		"user_id": userId,
 	}))
@@ -188,7 +188,7 @@ func (ld *LogDocument) GetLogDocumentsByLimit(userId string, limit int, number i
 		}
 	}
 
-	// 查询公共空间
+	// <LABEL_850>
 	spaceRs, err := db.Query(db.AR().From(Table_Space_Name).Where(map[string]interface{}{
 		"visit_level": "public",
 	}))

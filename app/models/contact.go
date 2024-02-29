@@ -12,7 +12,7 @@ type Contact struct {
 
 var ContactModel = Contact{}
 
-// 分页获取联系人
+// <LABEL_596>
 func (c *Contact) GetContactByLimit(limit, number int) (contact []map[string]string, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -25,7 +25,7 @@ func (c *Contact) GetContactByLimit(limit, number int) (contact []map[string]str
 	return
 }
 
-// 获取联系人总数
+// <LABEL_597>
 func (c *Contact) CountContact() (count int64, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -38,7 +38,7 @@ func (c *Contact) CountContact() (count int64, err error) {
 	return
 }
 
-// 分页筛选名字查询结果
+// <LABEL_225>
 func (c *Contact) GetContactByLimitAndName(name string, limit, number int) (contacts []map[string]string, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -53,7 +53,7 @@ func (c *Contact) GetContactByLimitAndName(name string, limit, number int) (cont
 	return
 }
 
-// 获取筛选名字查询结果条数
+// <LABEL_100>
 func (c *Contact) CountContactByName(name string) (count int64, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -68,7 +68,7 @@ func (c *Contact) CountContactByName(name string) (count int64, err error) {
 	return
 }
 
-// 通过 contact_id 获取联系人数据
+// <LABEL_1611> contact_id <LABEL_598>
 func (c *Contact) GetContactByContactId(contactId string) (contact map[string]string, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -83,7 +83,7 @@ func (c *Contact) GetContactByContactId(contactId string) (contact map[string]st
 	return
 }
 
-// 通过 contact_id 更新联系人信息
+// <LABEL_1611> contact_id <LABEL_599>
 func (c *Contact) UpdateByContactId(contact map[string]interface{}, contactId string) (affect int64, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -98,7 +98,7 @@ func (c *Contact) UpdateByContactId(contact map[string]interface{}, contactId st
 	return
 }
 
-// 通过 contact_id 更新联系人信息
+// <LABEL_1611> contact_id <LABEL_599>
 func (c *Contact) Insert(contact map[string]interface{}) (contactId int64, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -111,7 +111,7 @@ func (c *Contact) Insert(contact map[string]interface{}) (contactId int64, err e
 	return
 }
 
-// 通过 contact_id 删除联系人信息
+// <LABEL_1611> contact_id <LABEL_600>
 func (c *Contact) DeleteByContactId(contactId string) (affect int64, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet
@@ -126,7 +126,7 @@ func (c *Contact) DeleteByContactId(contactId string) (affect int64, err error) 
 	return
 }
 
-// 获取所有联系人信息
+// <LABEL_300>
 func (c *Contact) GetAllContact() (contacts []map[string]string, err error) {
 	db := G.DB()
 	var rs *mysql.ResultSet

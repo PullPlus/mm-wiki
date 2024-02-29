@@ -6,12 +6,12 @@
                 <form action="/space/addMember" method="post">
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-addon"> 空间权限</span>
+                            <span class="input-group-addon"> <LABEL_1314></span>
                             <select name="privilege" class="form-control selectpicker show-menu-arrow"
                                     data-max-options="1">
-                                <option value="0">浏览者</option>
-                                <option value="1">编辑者</option>
-                                <option value="2">管理员</option>
+                                <option value="0"><LABEL_1546></option>
+                                <option value="1"><LABEL_1547></option>
+                                <option value="2"><LABEL_1513></option>
                             </select>
                         </div>
                     </div>
@@ -20,14 +20,14 @@
                             <select name="user_id" class="form-control selectpicker show-menu-arrow"
                                     multiple data-live-search="true"
                                     data-max-options="1"
-                                    title="选择要添加的成员">
+                                    title="<LABEL_491>">
                             {{range $otherUser := $otherUsers}}
                                 <option title="{{$otherUser.username}}({{$otherUser.given_name}})" value="{{$otherUser.user_id}}">{{$otherUser.username}}({{$otherUser.given_name}})</option>
                             {{end}}
                             </select>
                             <input type="hidden" name="space_id" value="{{$spaceId}}">
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary" onclick="Form.ajaxSubmit(this.form, false);"><i class="glyphicon glyphicon-plus"></i> 添加 </button>
+                                <button type="button" class="btn btn-primary" onclick="Form.ajaxSubmit(this.form, false);"><i class="glyphicon glyphicon-plus"></i> <LABEL_1713> </button>
                             </span>
                         </div>
                     </div>
@@ -37,12 +37,12 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <td class="w20p text-left"><strong>用户名</strong></td>
-                    <td class="text-left"><strong>姓名</strong></td>
-                    <td class="w20p text-left"><strong>邮箱</strong></td>
-                    <td class="w15p text-left"><strong>手机</strong></td>
-                    <td class="w11p center"><strong>空间权限</strong></td>
-                    <td class="w10p center"><strong>操作</strong></td>
+                    <td class="w20p text-left"><strong><LABEL_1522></strong></td>
+                    <td class="text-left"><strong><LABEL_1676></strong></td>
+                    <td class="w20p text-left"><strong><LABEL_1678></strong></td>
+                    <td class="w15p text-left"><strong><LABEL_1681></strong></td>
+                    <td class="w11p center"><strong><LABEL_1314></strong></td>
+                    <td class="w10p center"><strong><LABEL_1659></strong></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,13 +54,13 @@
                     <td>{{$user.mobile}}</td>
                     <td class="center" style="padding: 4px 6px">
                         <select name="edit_privilege" class="form-control input-xs" data-link="/space/modifyMember?space_user_id={{$user.space_user_id}}&user_id={{$user.user_id}}&space_id={{$spaceId}}">
-                            <option value="0" {{if eq $user.space_privilege "0"}} selected="selected" {{end}}>浏览者</option>
-                            <option value="1" {{if eq $user.space_privilege "1"}} selected="selected" {{end}}>编辑者</option>
-                            <option value="2" {{if eq $user.space_privilege "2"}} selected="selected" {{end}}>管理员</option>
+                            <option value="0" {{if eq $user.space_privilege "0"}} selected="selected" {{end}}><LABEL_1546></option>
+                            <option value="1" {{if eq $user.space_privilege "1"}} selected="selected" {{end}}><LABEL_1547></option>
+                            <option value="2" {{if eq $user.space_privilege "2"}} selected="selected" {{end}}><LABEL_1513></option>
                         </select>
                     </td>
                     <td class="center">
-                        <a onclick="Layers.confirm('确定要移除该成员吗？', '/space/removeMember?space_user_id={{$user.space_user_id}}&space_id={{$spaceId}}&user_id={{$user.user_id}}');"><i class="glyphicon glyphicon-remove-circle"></i>移除</a>
+                        <a onclick="Layers.confirm('<LABEL_322>？', '/space/removeMember?space_user_id={{$user.space_user_id}}&space_id={{$spaceId}}&user_id={{$user.user_id}}');"><i class="glyphicon glyphicon-remove-circle"></i><LABEL_1686></a>
                     </td>
                 </tr>
                 {{end}}

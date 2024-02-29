@@ -15,7 +15,7 @@ func (this *PrivilegeController) Add() {
 
 	menus, _, err := models.PrivilegeModel.GetTypePrivileges()
 	if err != nil {
-		this.ViewError("查找权限菜单失败！")
+		this.ViewError("<LABEL_399>！")
 	}
 
 	this.Data["menus"] = menus
@@ -26,10 +26,10 @@ func (this *PrivilegeController) Add() {
 func (this *PrivilegeController) Save() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式错误", "/system/privilege/add")
+		this.ViewError("<LABEL_777>", "/system/privilege/add")
 	}
 	if beego.BConfig.RunMode != "dev" {
-		this.jsonError("只允许在开发模式下添加权限!")
+		this.jsonError("<LABEL_45>")
 	}
 
 	name := strings.TrimSpace(this.GetString("name", ""))
@@ -43,20 +43,20 @@ func (this *PrivilegeController) Save() {
 	sequence := strings.TrimSpace(this.GetString("sequence", "0"))
 
 	if name == "" {
-		this.jsonError("权限名称不能为空！")
+		this.jsonError("<LABEL_400>！")
 	}
 	if privilegeType == "" {
-		this.jsonError("没有选择权限类型！")
+		this.jsonError("<LABEL_401>！")
 	}
 	if privilegeType == "controller" {
 		if parentId == "" {
-			this.jsonError("控制器必须选择上级菜单！")
+			this.jsonError("<LABEL_133>！")
 		}
 		if controller == "" {
-			this.jsonError("控制器名称不能为空！")
+			this.jsonError("<LABEL_273>！")
 		}
 		if action == "" {
-			this.jsonError("方法名称不能为空！")
+			this.jsonError("<LABEL_402>！")
 		}
 	}
 
@@ -73,18 +73,18 @@ func (this *PrivilegeController) Save() {
 	})
 
 	if err != nil {
-		this.ErrorLog("添加权限失败：" + err.Error())
-		this.jsonError("添加权限失败")
+		this.ErrorLog("<LABEL_778>：" + err.Error())
+		this.jsonError("<LABEL_778>")
 	}
-	this.InfoLog("添加权限 " + utils.Convert.IntToString(privilegeId, 10) + " 成功")
-	this.jsonSuccess("添加权限成功", nil, "/system/privilege/list")
+	this.InfoLog("<LABEL_1172> " + utils.Convert.IntToString(privilegeId, 10) + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_779>", nil, "/system/privilege/list")
 }
 
 func (this *PrivilegeController) List() {
 
 	menus, controllers, err := models.PrivilegeModel.GetTypePrivileges()
 	if err != nil {
-		this.ViewError("查找权限失败！")
+		this.ViewError("<LABEL_780>！")
 	}
 
 	this.Data["menus"] = menus
@@ -97,21 +97,21 @@ func (this *PrivilegeController) Edit() {
 
 	privilegeId := this.GetString("privilege_id", "")
 	if privilegeId == "" {
-		this.ViewError("没有选择权限！", "/system/privilege/list")
+		this.ViewError("<LABEL_766>！", "/system/privilege/list")
 	}
 
 	privilege, err := models.PrivilegeModel.GetPrivilegeByPrivilegeId(privilegeId)
 	if err != nil {
-		this.ErrorLog("查找权限失败：" + err.Error())
-		this.ViewError("查找权限失败！", "/system/privilege/list")
+		this.ErrorLog("<LABEL_780>：" + err.Error())
+		this.ViewError("<LABEL_780>！", "/system/privilege/list")
 	}
 	if len(privilege) == 0 {
-		this.ViewError("权限不存在！", "/system/privilege/list")
+		this.ViewError("<LABEL_981>！", "/system/privilege/list")
 	}
 
 	menus, _, err := models.PrivilegeModel.GetTypePrivileges()
 	if err != nil {
-		this.ViewError("查找权限失败！", "/system/privilege/list")
+		this.ViewError("<LABEL_780>！", "/system/privilege/list")
 	}
 
 	this.Data["menus"] = menus
@@ -123,10 +123,10 @@ func (this *PrivilegeController) Edit() {
 func (this *PrivilegeController) Modify() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式错误", "/system/privilege/list")
+		this.ViewError("<LABEL_777>", "/system/privilege/list")
 	}
 	if beego.BConfig.RunMode != "dev" {
-		this.jsonError("只允许在开发模式下修改权限!")
+		this.jsonError("<LABEL_46>")
 	}
 	privilegeId := strings.TrimSpace(this.GetString("privilege_id", ""))
 	name := strings.TrimSpace(this.GetString("name", ""))
@@ -140,20 +140,20 @@ func (this *PrivilegeController) Modify() {
 	sequence := strings.TrimSpace(this.GetString("sequence", "0"))
 
 	if name == "" {
-		this.jsonError("权限名称不能为空！")
+		this.jsonError("<LABEL_400>！")
 	}
 	if privilegeType == "" {
-		this.jsonError("没有选择权限类型！")
+		this.jsonError("<LABEL_401>！")
 	}
 	if privilegeType == "controller" {
 		if parentId == "" {
-			this.jsonError("控制器必须选择上级菜单！")
+			this.jsonError("<LABEL_133>！")
 		}
 		if controller == "" {
-			this.jsonError("控制器名称不能为空！")
+			this.jsonError("<LABEL_273>！")
 		}
 		if action == "" {
-			this.jsonError("方法名称不能为空！")
+			this.jsonError("<LABEL_402>！")
 		}
 	}
 
@@ -170,49 +170,49 @@ func (this *PrivilegeController) Modify() {
 	})
 
 	if err != nil {
-		this.ErrorLog("修改权限 " + privilegeId + " 失败：" + err.Error())
-		this.jsonError("修改权限失败！")
+		this.ErrorLog("<LABEL_1173> " + privilegeId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_781>！")
 	}
-	this.InfoLog("修改权限 " + privilegeId + " 成功")
-	this.jsonSuccess("修改权限成功", nil, "/system/privilege/list")
+	this.InfoLog("<LABEL_1173> " + privilegeId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_782>", nil, "/system/privilege/list")
 }
 
 func (this *PrivilegeController) Delete() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/privilege/list")
+		this.ViewError("<LABEL_705>！", "/system/privilege/list")
 	}
 	if beego.BConfig.RunMode != "dev" {
-		this.jsonError("只允许在开发模式下删除权限!")
+		this.jsonError("<LABEL_47>")
 	}
 	privilegeId := this.GetString("privilege_id", "")
 	if privilegeId == "" {
-		this.jsonError("没有选择权限！")
+		this.jsonError("<LABEL_766>！")
 	}
 
 	privilege, err := models.PrivilegeModel.GetPrivilegeByPrivilegeId(privilegeId)
 	if err != nil {
-		this.ErrorLog("删除权限 " + privilegeId + " 失败: " + err.Error())
-		this.jsonError("删除权限失败")
+		this.ErrorLog("<LABEL_1174> " + privilegeId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_783>")
 	}
 	if len(privilege) == 0 {
-		this.jsonError("权限不存在")
+		this.jsonError("<LABEL_981>")
 	}
 
 	// delete role_privilege by privilegeId
 	err = models.RolePrivilegeModel.DeleteByPrivilegeId(privilegeId)
 	if err != nil {
-		this.ErrorLog("删除角色权限 " + privilegeId + " 失败: " + err.Error())
-		this.jsonError("删除权限失败")
+		this.ErrorLog("<LABEL_784> " + privilegeId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_783>")
 	}
 
 	// delete privilege
 	err = models.PrivilegeModel.Delete(privilegeId)
 	if err != nil {
-		this.ErrorLog("删除权限 " + privilegeId + " 失败: " + err.Error())
-		this.jsonError("删除权限失败")
+		this.ErrorLog("<LABEL_1174> " + privilegeId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_783>")
 	}
 
-	this.InfoLog("删除权限 " + privilegeId + " 成功")
-	this.jsonSuccess("删除权限成功", nil, "/system/privilege/list")
+	this.InfoLog("<LABEL_1174> " + privilegeId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_785>", nil, "/system/privilege/list")
 }

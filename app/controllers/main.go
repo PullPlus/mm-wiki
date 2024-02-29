@@ -13,8 +13,8 @@ func (this *MainController) Index() {
 
 	collectDocs, err := models.CollectionModel.GetCollectionsByUserIdAndType(this.UserId, models.Collection_Type_Doc)
 	if err != nil {
-		this.ErrorLog("查找收藏文档错误: " + err.Error())
-		this.ViewError("查找收藏文档错误！")
+		this.ErrorLog("<LABEL_386>: " + err.Error())
+		this.ViewError("<LABEL_386>！")
 	}
 	docIds := []string{}
 	for _, collectDoc := range collectDocs {
@@ -23,8 +23,8 @@ func (this *MainController) Index() {
 
 	documents, err := models.DocumentModel.GetDocumentsByDocumentIds(docIds)
 	if err != nil {
-		this.ErrorLog("查找收藏文档错误: " + err.Error())
-		this.ViewError("查找收藏文档错误！")
+		this.ErrorLog("<LABEL_386>: " + err.Error())
+		this.ViewError("<LABEL_386>！")
 	}
 
 	this.Data["documents"] = documents
@@ -47,14 +47,14 @@ func (this *MainController) Default() {
 
 	logDocuments, err := models.LogDocumentModel.GetLogDocumentsByLimit(userId, limit, number)
 	if err != nil {
-		this.ErrorLog("查找更新文档列表失败：" + err.Error())
-		this.ViewError("查找更新文档列表失败！")
+		this.ErrorLog("<LABEL_201>：" + err.Error())
+		this.ViewError("<LABEL_201>！")
 	}
 
 	count, err := models.LogDocumentModel.CountLogDocuments()
 	if err != nil {
-		this.ErrorLog("查找更新文档总数失败：" + err.Error())
-		this.ViewError("查找更新文档列表失败！")
+		this.ErrorLog("<LABEL_202>：" + err.Error())
+		this.ViewError("<LABEL_201>！")
 	}
 	if count >= int64(maxPage*number) {
 		count = int64(maxPage * number)
@@ -68,13 +68,13 @@ func (this *MainController) Default() {
 	}
 	users, err := models.UserModel.GetUsersByUserIds(userIds)
 	if err != nil {
-		this.ErrorLog("查找更新文档用户失败：" + err.Error())
-		this.ViewError("查找更新文档列表失败！")
+		this.ErrorLog("<LABEL_203>：" + err.Error())
+		this.ViewError("<LABEL_201>！")
 	}
 	docs, err := models.DocumentModel.GetAllDocumentsByDocumentIds(docIds)
 	if err != nil {
-		this.ErrorLog("查找文档信息失败：" + err.Error())
-		this.ViewError("查找更新文档列表失败！")
+		this.ErrorLog("<LABEL_387>：" + err.Error())
+		this.ViewError("<LABEL_201>！")
 	}
 	for _, logDocument := range logDocuments {
 		logDocument["username"] = ""
@@ -97,14 +97,14 @@ func (this *MainController) Default() {
 	// link
 	links, err := models.LinkModel.GetLinksOrderBySequence()
 	if err != nil {
-		this.ErrorLog("查找快捷链接失败：" + err.Error())
-		this.ViewError("查找快捷链接失败！")
+		this.ErrorLog("<LABEL_388>：" + err.Error())
+		this.ViewError("<LABEL_388>！")
 	}
 	// contacts
 	contacts, err := models.ContactModel.GetAllContact()
 	if err != nil {
-		this.ErrorLog("查找快捷链接失败：" + err.Error())
-		this.ViewError("查找快捷链接失败！")
+		this.ErrorLog("<LABEL_388>：" + err.Error())
+		this.ViewError("<LABEL_388>！")
 	}
 
 	// main title config
@@ -124,7 +124,7 @@ func (this *MainController) About() {
 	this.viewLayout("main/about", "default")
 }
 
-// 搜索，支持根据标题和内容搜索
+// <LABEL_1622>，<LABEL_128>
 func (this *MainController) Search() {
 
 	keyword := strings.TrimSpace(this.GetString("keyword", ""))
@@ -139,16 +139,16 @@ func (this *MainController) Search() {
 	}
 	var documents = []map[string]string{}
 	var err error
-	// 获取该用户有权限的空间
+	// <LABEL_129>
 	publicSpaces, err := models.SpaceModel.GetSpacesByVisitLevel(models.Space_VisitLevel_Public)
 	if err != nil {
-		this.ErrorLog("搜索文档列表获取用户空间权限出错：" + err.Error())
-		this.ViewError("搜索文档错误！")
+		this.ErrorLog("<LABEL_17>：" + err.Error())
+		this.ViewError("<LABEL_757>！")
 	}
 	spaceUsers, err := models.SpaceUserModel.GetSpaceUsersByUserId(this.UserId)
 	if err != nil {
-		this.ErrorLog("搜索文档列表获取用户空间权限出错：" + err.Error())
-		this.ViewError("搜索文档错误！")
+		this.ErrorLog("<LABEL_17>：" + err.Error())
+		this.ViewError("<LABEL_757>！")
 	}
 	spaceIdsMap := make(map[string]bool)
 	for _, publicSpace := range publicSpaces {
@@ -160,8 +160,8 @@ func (this *MainController) Search() {
 		}
 	}
 	searchDocContents := make(map[string]string)
-	// 默认根据内容搜索
-	// v0.2.1 下线全文搜索功能
+	// <LABEL_389>
+	// v0.2.1 <LABEL_390>
 	searchType = "title"
 	//if searchType == "title" {
 	//	documents, err = models.DocumentModel.GetDocumentsByLikeName(keyword)
@@ -183,10 +183,10 @@ func (this *MainController) Search() {
 	//}
 	documents, err = models.DocumentModel.GetDocumentsByLikeName(keyword)
 	if err != nil {
-		this.ErrorLog("搜索文档出错：" + err.Error())
-		this.ViewError("搜索文档错误！")
+		this.ErrorLog("<LABEL_758>：" + err.Error())
+		this.ViewError("<LABEL_757>！")
 	}
-	// 过滤一下没权限的空间
+	// <LABEL_204>
 	realDocuments := []map[string]string{}
 	for _, document := range documents {
 		spaceId, _ := document["space_id"]

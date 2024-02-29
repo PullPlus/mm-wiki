@@ -4,12 +4,12 @@
             <form action="#" onsubmit="return false">
                 <div class="form-group has-feedback">
                     <i class="glyphicon glyphicon-search form-control-feedback" style="line-height: 32px;"></i>
-                    <input class="form-control input-sm" id="collect_doc_search" type="text" value="" placeholder="搜索收藏文档..." style="padding-right: 28px;">
+                    <input class="form-control input-sm" id="collect_doc_search" type="text" value="" placeholder="<LABEL_323>" style="padding-right: 28px;">
                 </div>
             </form>
         </div>
         <div class="collection-doc">
-            <h3 class="text-left"> 收藏文档 <span class="badge">{{$count}}</span> </h3>
+            <h3 class="text-left"> <LABEL_1335> <span class="badge">{{$count}}</span> </h3>
             <hr>
             <ul id="collection_documents">
                 {{range $document := $documents}}

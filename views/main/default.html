@@ -9,7 +9,7 @@
         </div>{{$logDocuments := .logDocuments}}
         <div class="col-md-7">
             <div class="panel panel-default">
-                <div class="panel-heading"><strong><i class="fa fa-file-word-o"></i>  最近更新文档</strong></div>
+                <div class="panel-heading"><strong><i class="fa fa-file-word-o"></i>  <LABEL_902></strong></div>
                 <div class="panel-body" style="min-height: 550px">
                     <div class="document-update">
                         <ul>
@@ -33,13 +33,13 @@
                                          {{$logDocument.document_name}}</a>
                                     {{end}}
                                 </div>
-                                <span class="text text-font-12 document-user-time"><i class="fa fa-calendar"></i> 被
+                                <span class="text text-font-12 document-user-time"><i class="fa fa-calendar"></i> <LABEL_1854>
                                 {{if eq $logDocument.user_id $.login_user_id}}
                                     <a href="/system/main/index" target="_parent">{{$logDocument.username}}（{{$logDocument.given_name}}）<span class="text text-primary"></span> </a>
                                 {{else}}
                                     <a href="/user/info?user_id={{$logDocument.user_id}}">{{$logDocument.username}}（{{$logDocument.given_name}}）<span class="text text-primary"></span> </a>
                                 {{end}}
-                                {{if eq $logDocument.action "1"}}创建{{else if eq $logDocument.action "2"}}修改{{else if eq $logDocument.action "3"}}删除{{end}}于 {{dateFormat $logDocument.create_time "Y-m-d H:i:s"}}</span>
+                                {{if eq $logDocument.action "1"}}<LABEL_1662>{{else if eq $logDocument.action "2"}}<LABEL_1663>{{else if eq $logDocument.action "3"}}<LABEL_1664>{{end}}<LABEL_1842> {{dateFormat $logDocument.create_time "Y-m-d H:i:s"}}</span>
                             </li>
                             <hr>
                             {{end}}
@@ -53,7 +53,7 @@
         </div>
         <div class="col-md-5">
             <div class="panel panel-default" style="min-height: 300px">
-                <div class="panel-heading"><strong><i class="fa fa-internet-explorer"></i> 快捷链接</strong></div>
+                <div class="panel-heading"><strong><i class="fa fa-internet-explorer"></i> <LABEL_1334></strong></div>
                 <div class="panel-body">
                     <div class="row">
                         {{range $link := .links}}
@@ -67,7 +67,7 @@
         </div>
         <div class="col-md-5" >
             <div class="panel panel-default" style="min-height: 300px">
-                <div class="panel-heading"><strong><i class="fa fa-address-book-o"></i> 系统联系人</strong></div>
+                <div class="panel-heading"><strong><i class="fa fa-address-book-o"></i> <LABEL_1043></strong></div>
                 <div class="panel-body">
                     <ul class="list-group">
                         {{range $contact := .contacts}}

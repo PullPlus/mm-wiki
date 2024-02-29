@@ -17,37 +17,37 @@ func (this *AttachmentController) Page() {
 
 	documentId := this.GetString("document_id", "")
 	if documentId == "" {
-		this.ViewError("页面参数错误！", "/space/index")
+		this.ViewError("<LABEL_716>！", "/space/index")
 	}
 
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找空间文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_717> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(document) == 0 {
-		this.ViewError("文档不存在！")
+		this.ViewError("<LABEL_965>！")
 	}
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 所在空间失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_719>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(space) == 0 {
-		this.ViewError("文档所在空间不存在！")
+		this.ViewError("<LABEL_254>！")
 	}
 	// check space visit_level
 	isVisit, isEditor, isManager := this.GetDocumentPrivilege(space)
 	if !isVisit {
-		this.ViewError("您没有权限访问该空间下的文档！")
+		this.ViewError("<LABEL_37>！")
 	}
 
 	// get document attachments
 	attachments, err := models.AttachmentModel.GetAttachmentsByDocumentIdAndSource(documentId, models.Attachment_Source_Default)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 附件失败：" + err.Error())
-		this.ViewError("查找文档附件失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1139>：" + err.Error())
+		this.ViewError("<LABEL_374>！")
 	}
 
 	// get username
@@ -57,8 +57,8 @@ func (this *AttachmentController) Page() {
 	}
 	users, err := models.UserModel.GetUsersByUserIds(userIds)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 附件失败：" + err.Error())
-		this.ViewError("查找文档附件失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1139>：" + err.Error())
+		this.ViewError("<LABEL_374>！")
 	}
 	usernameMap := make(map[string]string)
 	for _, user := range users {
@@ -78,48 +78,48 @@ func (this *AttachmentController) Page() {
 func (this *AttachmentController) Upload() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/space/index")
+		this.ViewError("<LABEL_705>！", "/space/index")
 	}
 	documentId := this.GetString("document_id", "")
 	if documentId == "" {
-		this.uploadJsonError("参数错误！", "/space/index")
+		this.uploadJsonError("<LABEL_1144>！", "/space/index")
 	}
 
 	// handle document
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找空间文档 " + documentId + " 失败：" + err.Error())
-		this.uploadJsonError("查找文档失败！")
+		this.ErrorLog("<LABEL_717> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.uploadJsonError("<LABEL_718>！")
 	}
 	if len(document) == 0 {
-		this.uploadJsonError("文档不存在！")
+		this.uploadJsonError("<LABEL_965>！")
 	}
 
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 所在空间失败：" + err.Error())
-		this.uploadJsonError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_719>：" + err.Error())
+		this.uploadJsonError("<LABEL_718>！")
 	}
 	if len(space) == 0 {
-		this.uploadJsonError("文档所在空间不存在！")
+		this.uploadJsonError("<LABEL_254>！")
 	}
 	// check space visit_level
 	_, isEditor, _ := this.GetDocumentPrivilege(space)
 	if !isEditor {
-		this.uploadJsonError("您没有权限操作该空间下的文档！")
+		this.uploadJsonError("<LABEL_43>！")
 	}
 
 	// handle upload
 	f, h, err := this.GetFile("attachment")
 	if err != nil {
-		this.ErrorLog("上传附件数据错误: " + err.Error())
-		this.uploadJsonError("上传附件数据错误")
+		this.ErrorLog("<LABEL_375>: " + err.Error())
+		this.uploadJsonError("<LABEL_375>")
 		return
 	}
 	if h == nil || f == nil {
-		this.ErrorLog("上传附件错误")
-		this.uploadJsonError("上传附件错误")
+		this.ErrorLog("<LABEL_739>")
+		this.uploadJsonError("<LABEL_739>")
 		return
 	}
 	_ = f.Close()
@@ -130,8 +130,8 @@ func (this *AttachmentController) Upload() {
 	if !ok {
 		err := os.MkdirAll(saveDir, 0777)
 		if err != nil {
-			this.ErrorLog("上传附件错误: " + err.Error())
-			this.uploadJsonError("上传附件失败")
+			this.ErrorLog("<LABEL_739>: " + err.Error())
+			this.uploadJsonError("<LABEL_740>")
 			return
 		}
 	}
@@ -139,13 +139,13 @@ func (this *AttachmentController) Upload() {
 	attachmentFile := path.Join(saveDir, h.Filename)
 	ok, _ = utils.File.PathIsExists(attachmentFile)
 	if ok {
-		this.uploadJsonError("该附件已经存在！")
+		this.uploadJsonError("<LABEL_557>！")
 	}
 	// save file
 	err = this.SaveToFile("attachment", attachmentFile)
 	if err != nil {
-		this.ErrorLog("附件保存失败: " + err.Error())
-		this.uploadJsonError("附件保存失败")
+		this.ErrorLog("<LABEL_741>: " + err.Error())
+		this.uploadJsonError("<LABEL_741>")
 	}
 
 	// insert db
@@ -159,56 +159,56 @@ func (this *AttachmentController) Upload() {
 	_, err = models.AttachmentModel.Insert(attachment, spaceId)
 	if err != nil {
 		_ = os.Remove(attachmentFile)
-		this.ErrorLog("上传附件错误: " + err.Error())
-		this.uploadJsonError("附件信息保存失败")
+		this.ErrorLog("<LABEL_739>: " + err.Error())
+		this.uploadJsonError("<LABEL_376>")
 	}
 
-	this.InfoLog(fmt.Sprintf("文档 %s 上传附件 %s 成功", documentId, h.Filename))
-	this.jsonSuccess("附件上传成功", "", "/attachment/page?document_id="+documentId)
+	this.InfoLog(fmt.Sprintf("<LABEL_1619> %s <LABEL_1145> %s <LABEL_1617>", documentId, h.Filename))
+	this.jsonSuccess("<LABEL_742>", "", "/attachment/page?document_id="+documentId)
 }
 
 func (this *AttachmentController) Delete() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/space/index")
+		this.ViewError("<LABEL_705>！", "/space/index")
 	}
 	attachmentId := this.GetString("attachment_id", "")
 	if attachmentId == "" {
-		this.jsonError("没有选择附件！")
+		this.jsonError("<LABEL_743>！")
 	}
 
 	attachment, err := models.AttachmentModel.GetAttachmentByAttachmentId(attachmentId)
 	if err != nil {
-		this.ErrorLog("删除附件 " + attachmentId + " 失败: " + err.Error())
-		this.jsonError("删除附件失败")
+		this.ErrorLog("<LABEL_1146> " + attachmentId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_744>")
 	}
 	if len(attachment) == 0 {
-		this.jsonError("附件不存在")
+		this.jsonError("<LABEL_970>")
 	}
 
 	documentId := attachment["document_id"]
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找附件所属空间文档 " + documentId + " 失败：" + err.Error())
-		this.jsonError("查找附件所属文档失败！")
+		this.ErrorLog("<LABEL_195> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_196>！")
 	}
 	if len(document) == 0 {
-		this.jsonError("附件所属文档不存在！")
+		this.jsonError("<LABEL_264>！")
 	}
 
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("查找附件所属文档 " + documentId + " 所在空间失败：" + err.Error())
-		this.jsonError("查找附件所属文档空间失败！")
+		this.ErrorLog("<LABEL_377> " + documentId + " <LABEL_719>：" + err.Error())
+		this.jsonError("<LABEL_84>！")
 	}
 	if len(space) == 0 {
-		this.jsonError("附件所属文档所在空间不存在！")
+		this.jsonError("<LABEL_58>！")
 	}
 	// check space visit_level
 	_, _, isManager := this.GetDocumentPrivilege(space)
 	if !isManager {
-		this.jsonError("您没有权限删除该空间下的文档！")
+		this.jsonError("<LABEL_42>！")
 	}
 	attachmentName := attachment["name"]
 	attachmentSource := attachment["source"]
@@ -216,13 +216,13 @@ func (this *AttachmentController) Delete() {
 	// delete db
 	err = models.AttachmentModel.DeleteAttachmentDBFile(attachmentId)
 	if err != nil {
-		this.ErrorLog("删除附件 " + attachmentId + " 失败: " + err.Error())
-		this.jsonError("删除附件失败")
+		this.ErrorLog("<LABEL_1146> " + attachmentId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_744>")
 	}
 
 	// update document log
 	go func(userId string, documentId string, attachmentName string, spaceId string) {
-		_, _ = models.LogDocumentModel.UpdateAction(userId, documentId, "删除了附件 "+attachmentName, spaceId)
+		_, _ = models.LogDocumentModel.UpdateAction(userId, documentId, "<LABEL_971> "+attachmentName, spaceId)
 	}(this.UserId, documentId, attachmentName, spaceId)
 
 	redirect := fmt.Sprintf("/attachment/page?document_id=%s", documentId)
@@ -230,49 +230,49 @@ func (this *AttachmentController) Delete() {
 		redirect = fmt.Sprintf("/attachment/image?document_id=%s", documentId)
 	}
 
-	this.InfoLog("删除文档 " + documentId + " 附件 " + attachmentName + " 成功")
-	this.jsonSuccess("删除成功", nil, redirect)
+	this.InfoLog("<LABEL_1138> " + documentId + " <LABEL_1620> " + attachmentName + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_1147>", nil, redirect)
 }
 
 func (this *AttachmentController) Download() {
 
 	attachmentId := this.GetString("attachment_id", "")
 	if attachmentId == "" {
-		this.ViewError("没有选择附件！")
+		this.ViewError("<LABEL_743>！")
 	}
 
 	attachment, err := models.AttachmentModel.GetAttachmentByAttachmentId(attachmentId)
 	if err != nil {
-		this.ErrorLog("下载附件 " + attachmentId + " 失败: " + err.Error())
-		this.ViewError("下载附件失败")
+		this.ErrorLog("<LABEL_1148> " + attachmentId + " <LABEL_1618>: " + err.Error())
+		this.ViewError("<LABEL_745>")
 	}
 	if len(attachment) == 0 {
-		this.ViewError("附件不存在")
+		this.ViewError("<LABEL_970>")
 	}
 
 	documentId := attachment["document_id"]
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找附件所属空间文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("查找附件所属文档失败！")
+		this.ErrorLog("<LABEL_195> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_196>！")
 	}
 	if len(document) == 0 {
-		this.ViewError("附件所属文档不存在！")
+		this.ViewError("<LABEL_264>！")
 	}
 
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("查找附件所属文档 " + documentId + " 所在空间失败：" + err.Error())
-		this.ViewError("查找附件所属文档空间失败！")
+		this.ErrorLog("<LABEL_377> " + documentId + " <LABEL_719>：" + err.Error())
+		this.ViewError("<LABEL_84>！")
 	}
 	if len(space) == 0 {
-		this.ViewError("附件所属文档所在空间不存在！")
+		this.ViewError("<LABEL_58>！")
 	}
 	// check space visit_level
 	isVisit, _, _ := this.GetDocumentPrivilege(space)
 	if !isVisit {
-		this.ViewError("您没有权限访问或下载该空间下的资料！")
+		this.ViewError("<LABEL_12>！")
 	}
 	attachmentFilePath := path.Join(app.DocumentAbsDir, attachment["path"])
 	attachmentName := attachment["name"]
@@ -284,37 +284,37 @@ func (this *AttachmentController) Image() {
 
 	documentId := this.GetString("document_id", "")
 	if documentId == "" {
-		this.ViewError("页面参数错误！", "/space/index")
+		this.ViewError("<LABEL_716>！", "/space/index")
 	}
 
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找空间文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_717> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(document) == 0 {
-		this.ViewError("文档不存在！")
+		this.ViewError("<LABEL_965>！")
 	}
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 所在空间失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_719>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(space) == 0 {
-		this.ViewError("文档所在空间不存在！")
+		this.ViewError("<LABEL_254>！")
 	}
 	// check space visit_level
 	isVisit, isEditor, _ := this.GetDocumentPrivilege(space)
 	if !isVisit {
-		this.ViewError("您没有权限访问该空间下的文档！")
+		this.ViewError("<LABEL_37>！")
 	}
 
 	// get document attachment images
 	attachments, err := models.AttachmentModel.GetAttachmentsByDocumentIdAndSource(documentId, models.Attachment_Source_Image)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 图片失败：" + err.Error())
-		this.ViewError("查找文档图片失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1149>：" + err.Error())
+		this.ViewError("<LABEL_378>！")
 	}
 
 	// get username
@@ -324,8 +324,8 @@ func (this *AttachmentController) Image() {
 	}
 	users, err := models.UserModel.GetUsersByUserIds(userIds)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 图片失败：" + err.Error())
-		this.ViewError("查找文档图片失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1149>：" + err.Error())
+		this.ViewError("<LABEL_378>！")
 	}
 	usernameMap := make(map[string]string)
 	for _, user := range users {

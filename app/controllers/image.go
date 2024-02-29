@@ -23,48 +23,48 @@ type ImageController struct {
 func (this *ImageController) Upload() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/space/index")
+		this.ViewError("<LABEL_705>！", "/space/index")
 	}
 	documentId := this.GetString("document_id", "")
 	if documentId == "" {
-		this.jsonError("参数错误！")
+		this.jsonError("<LABEL_1144>！")
 	}
 
 	// handle document
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找空间文档 " + documentId + " 失败：" + err.Error())
-		this.jsonError("查找文档失败！")
+		this.ErrorLog("<LABEL_717> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_718>！")
 	}
 	if len(document) == 0 {
-		this.jsonError("文档不存在！")
+		this.jsonError("<LABEL_965>！")
 	}
 
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 所在空间失败：" + err.Error())
-		this.jsonError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_719>：" + err.Error())
+		this.jsonError("<LABEL_718>！")
 	}
 	if len(space) == 0 {
-		this.jsonError("文档所在空间不存在！")
+		this.jsonError("<LABEL_254>！")
 	}
 	// check space visit_level
 	_, isEditor, _ := this.GetDocumentPrivilege(space)
 	if !isEditor {
-		this.jsonError("您没有权限操作该空间下的文档！")
+		this.jsonError("<LABEL_43>！")
 	}
 
 	// handle upload
 	f, h, err := this.GetFile("editormd-image-file")
 	if err != nil {
-		this.ErrorLog("上传图片数据错误: " + err.Error())
-		this.jsonError("上传图片数据错误")
+		this.ErrorLog("<LABEL_380>: " + err.Error())
+		this.jsonError("<LABEL_380>")
 		return
 	}
 	if h == nil || f == nil {
-		this.ErrorLog("上传图片错误")
-		this.jsonError("上传图片错误")
+		this.ErrorLog("<LABEL_747>")
+		this.jsonError("<LABEL_747>")
 		return
 	}
 	_ = f.Close()
@@ -75,8 +75,8 @@ func (this *ImageController) Upload() {
 	if !ok {
 		err := os.MkdirAll(saveDir, 0777)
 		if err != nil {
-			this.ErrorLog("上传图片错误: " + err.Error())
-			this.jsonError("上传图片失败")
+			this.ErrorLog("<LABEL_747>: " + err.Error())
+			this.jsonError("<LABEL_748>")
 			return
 		}
 	}
@@ -84,13 +84,13 @@ func (this *ImageController) Upload() {
 	imageFile := path.Join(saveDir, h.Filename)
 	ok, _ = utils.File.PathIsExists(imageFile)
 	if ok {
-		this.jsonError("该图片已经上传过！")
+		this.jsonError("<LABEL_381>！")
 	}
 	// save file
 	err = this.SaveToFile("editormd-image-file", imageFile)
 	if err != nil {
-		this.ErrorLog("图片保存失败: " + err.Error())
-		this.jsonError("图片保存失败")
+		this.ErrorLog("<LABEL_749>: " + err.Error())
+		this.jsonError("<LABEL_749>")
 	}
 
 	// insert db
@@ -104,12 +104,12 @@ func (this *ImageController) Upload() {
 	_, err = models.AttachmentModel.Insert(attachment, spaceId)
 	if err != nil {
 		_ = os.Remove(imageFile)
-		this.ErrorLog("上传图片保存信息错误: " + err.Error())
-		this.jsonError("图片信息保存失败")
+		this.ErrorLog("<LABEL_198>: " + err.Error())
+		this.jsonError("<LABEL_382>")
 	}
 
-	this.InfoLog(fmt.Sprintf("文档 %s 上传图片 %s 成功", documentId, h.Filename))
-	this.jsonSuccess("上传成功", fmt.Sprintf("/%s", attachment["path"]))
+	this.InfoLog(fmt.Sprintf("<LABEL_1619> %s <LABEL_1153> %s <LABEL_1617>", documentId, h.Filename))
+	this.jsonSuccess("<LABEL_1154>", fmt.Sprintf("/%s", attachment["path"]))
 }
 
 func (this *ImageController) jsonError(message string) {

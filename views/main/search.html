@@ -5,16 +5,16 @@
                 <form action="/main/search" method="get">
                     <div class="col-md-3">
                         <div class="input-group">
-                            <span class="input-group-addon"> 搜索方式</span>
+                            <span class="input-group-addon"> <LABEL_1336></span>
                             <select class="form-control" name="search_type">
-                                <option value="title" {{if eq $.search_type "title"}} selected="selected" {{end}}>文档标题</option>
-{{/*                                <option value="content" {{if eq $.search_type "content"}} selected="selected" {{end}}>文档内容</option>*/}}
+                                <option value="title" {{if eq $.search_type "title"}} selected="selected" {{end}}><LABEL_1337></option>
+{{/*                                <option value="content" {{if eq $.search_type "content"}} selected="selected" {{end}}><LABEL_1338></option>*/}}
                             </select>
                         </div>
                     </div>
                     <div class="col-md-9">
                         <div class="input-group">
-                            <input class="form-control" name="keyword" type="text" value="{{.keyword}}" placeholder="请输入搜索关键字...">
+                            <input class="form-control" name="keyword" type="text" value="{{.keyword}}" placeholder="<LABEL_162>">
                             <span class="input-group-btn">
 				              <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
 				            </span>
@@ -25,7 +25,7 @@
             <hr>
             {{if eq .count 0}}
                 <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-bottom: 0">
-                    <p><i class="glyphicon glyphicon-volume-up"></i> 抱歉，暂时没有搜索到您想要的结果</p>
+                    <p><i class="glyphicon glyphicon-volume-up"></i> <LABEL_1621>，<LABEL_75></p>
                 </div>
             {{else}}
             <div class="row">
@@ -43,7 +43,7 @@
                                 {{$document.name}}</a>
                             </div>
                             <span class="text text-font-12 document-user-time"><i class="fa fa-calendar"></i>
-                    创建于 {{dateFormat $document.create_time "Y-m-d H:i:s"}}，修改于{{dateFormat $document.update_time "Y-m-d H:i:s"}}
+                    <LABEL_1550> {{dateFormat $document.create_time "Y-m-d H:i:s"}}，<LABEL_1551>{{dateFormat $document.update_time "Y-m-d H:i:s"}}
                             </span>
                         </li>
                         <hr>

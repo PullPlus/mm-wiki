@@ -2,16 +2,16 @@
 	$.extend({
 		myTime: {
 			/**
-			 * 当前时间戳
-			 * @return <int>        unix时间戳(秒)
+			 * <LABEL_1110>
+			 * @return <int>        unix<LABEL_1511>(<LABEL_1837>)
 			 */
 			CurTime: function(){
 				return Date.parse(new Date())/1000;
 			},
 			/**
-			 * 日期 转换为 Unix时间戳
-			 * @param <string> 2014-01-01 20:20:20  日期格式
-			 * @return <int>        unix时间戳(秒)
+			 * <LABEL_951> Unix<LABEL_1511>
+			 * @param <string> 2014-01-01 20:20:20  <LABEL_1490>
+			 * @return <int>        unix<LABEL_1511>(<LABEL_1837>)
 			 */
 			DateToUnix: function(string) {
 				var f = string.split(' ', 2);
@@ -27,10 +27,10 @@
 					)).getTime() / 1000;
 			},
 			/**
-			 * 时间戳转换日期
-			 * @param <int> unixTime    待时间戳(秒)
-			 * @param <bool> isFull    返回完整时间(Y-m-d 或者 Y-m-d H:i:s)
-			 * @param <int>  timeZone   时区
+			 * <LABEL_697>
+			 * @param <int> unixTime    <LABEL_1491>(<LABEL_1837>)
+			 * @param <bool> isFull    <LABEL_952>(Y-m-d <LABEL_1824> Y-m-d H:i:s)
+			 * @param <int>  timeZone   <LABEL_1825>
 			 */
 			UnixToDate: function(unixTime, isFull, timeZone) {
                 function add0(m){return m<10?'0'+m:m }

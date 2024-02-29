@@ -21,27 +21,27 @@ func (this *LinkController) Add() {
 func (this *LinkController) Save() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/link/list")
+		this.ViewError("<LABEL_705>！", "/system/link/list")
 	}
 	name := strings.TrimSpace(this.GetString("name", ""))
 	url := strings.TrimSpace(this.GetString("url", ""))
 	sequence := strings.TrimSpace(this.GetString("sequence", "0"))
 	if name == "" {
-		this.jsonError("链接名称不能为空！")
+		this.jsonError("<LABEL_415>！")
 	}
 	if url == "" {
-		this.jsonError("链接地址不能为空！")
+		this.jsonError("<LABEL_416>！")
 	}
 	if valid.Validate(url, is.URL) != nil {
-		this.jsonError("链接地址格式不正确！")
+		this.jsonError("<LABEL_277>！")
 	}
 	ok, err := models.LinkModel.HasLinkName(name)
 	if err != nil {
-		this.ErrorLog("添加链接失败：" + err.Error())
-		this.jsonError("添加链接失败！")
+		this.ErrorLog("<LABEL_806>：" + err.Error())
+		this.jsonError("<LABEL_806>！")
 	}
 	if ok {
-		this.jsonError("链接名已经存在！")
+		this.jsonError("<LABEL_582>！")
 	}
 
 	linkId, err := models.LinkModel.Insert(map[string]interface{}{
@@ -51,11 +51,11 @@ func (this *LinkController) Save() {
 	})
 
 	if err != nil {
-		this.ErrorLog("添加链接失败：" + err.Error())
-		this.jsonError("添加链接失败")
+		this.ErrorLog("<LABEL_806>：" + err.Error())
+		this.jsonError("<LABEL_806>")
 	}
-	this.InfoLog("添加链接 " + utils.Convert.IntToString(linkId, 10) + " 成功")
-	this.jsonSuccess("添加链接成功", nil, "/system/link/list")
+	this.InfoLog("<LABEL_1181> " + utils.Convert.IntToString(linkId, 10) + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_807>", nil, "/system/link/list")
 }
 
 func (this *LinkController) List() {
@@ -76,8 +76,8 @@ func (this *LinkController) List() {
 		links, err = models.LinkModel.GetLinksByLimit(limit, number)
 	}
 	if err != nil {
-		this.ErrorLog("获取链接列表失败: " + err.Error())
-		this.ViewError("获取链接列表失败", "/system/main/index")
+		this.ErrorLog("<LABEL_417>: " + err.Error())
+		this.ViewError("<LABEL_417>", "/system/main/index")
 	}
 
 	this.Data["links"] = links
@@ -90,12 +90,12 @@ func (this *LinkController) Edit() {
 
 	linkId := this.GetString("link_id", "")
 	if linkId == "" {
-		this.ViewError("链接不存在", "/system/link/list")
+		this.ViewError("<LABEL_983>", "/system/link/list")
 	}
 
 	link, err := models.LinkModel.GetLinkByLinkId(linkId)
 	if err != nil {
-		this.ViewError("链接不存在", "/system/link/list")
+		this.ViewError("<LABEL_983>", "/system/link/list")
 	}
 
 	this.Data["link"] = link
@@ -105,7 +105,7 @@ func (this *LinkController) Edit() {
 func (this *LinkController) Modify() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/link/list")
+		this.ViewError("<LABEL_705>！", "/system/link/list")
 	}
 	linkId := this.GetString("link_id", "")
 	name := strings.TrimSpace(this.GetString("name", ""))
@@ -113,30 +113,30 @@ func (this *LinkController) Modify() {
 	sequence := strings.TrimSpace(this.GetString("sequence", ""))
 
 	if linkId == "" {
-		this.jsonError("链接不存在！")
+		this.jsonError("<LABEL_983>！")
 	}
 	if name == "" {
-		this.jsonError("链接名称不能为空！")
+		this.jsonError("<LABEL_415>！")
 	}
 	if url == "" {
-		this.jsonError("链接地址不能为空！")
+		this.jsonError("<LABEL_416>！")
 	}
 	if valid.Validate(url, is.URL) != nil {
-		this.jsonError("链接地址格式不正确！")
+		this.jsonError("<LABEL_277>！")
 	}
 
 	link, err := models.LinkModel.GetLinkByLinkId(linkId)
 	if err != nil {
-		this.ErrorLog("修改链接 " + linkId + " 失败: " + err.Error())
-		this.jsonError("修改链接失败！")
+		this.ErrorLog("<LABEL_1182> " + linkId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_808>！")
 	}
 	if len(link) == 0 {
-		this.jsonError("链接不存在！")
+		this.jsonError("<LABEL_983>！")
 	}
 
 	ok, _ := models.LinkModel.HasSameName(linkId, name)
 	if ok {
-		this.jsonError("链接名已经存在！")
+		this.jsonError("<LABEL_582>！")
 	}
 	_, err = models.LinkModel.Update(linkId, map[string]interface{}{
 		"name":     name,
@@ -145,38 +145,38 @@ func (this *LinkController) Modify() {
 	})
 
 	if err != nil {
-		this.ErrorLog("修改链接 " + linkId + " 失败：" + err.Error())
-		this.jsonError("修改链接失败")
+		this.ErrorLog("<LABEL_1182> " + linkId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_808>")
 	}
-	this.InfoLog("修改链接 " + linkId + " 成功")
-	this.jsonSuccess("修改链接成功", nil, "/system/link/list")
+	this.InfoLog("<LABEL_1182> " + linkId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_809>", nil, "/system/link/list")
 }
 
 func (this *LinkController) Delete() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/link/list")
+		this.ViewError("<LABEL_705>！", "/system/link/list")
 	}
 	linkId := this.GetString("link_id", "")
 	if linkId == "" {
-		this.jsonError("没有选择链接！")
+		this.jsonError("<LABEL_810>！")
 	}
 
 	link, err := models.LinkModel.GetLinkByLinkId(linkId)
 	if err != nil {
-		this.ErrorLog("删除链接 " + linkId + " 失败: " + err.Error())
-		this.jsonError("删除链接失败")
+		this.ErrorLog("<LABEL_1183> " + linkId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_811>")
 	}
 	if len(link) == 0 {
-		this.jsonError("链接不存在")
+		this.jsonError("<LABEL_983>")
 	}
 
 	err = models.LinkModel.Delete(linkId)
 	if err != nil {
-		this.ErrorLog("删除链接 " + linkId + " 失败: " + err.Error())
-		this.jsonError("删除链接失败")
+		this.ErrorLog("<LABEL_1183> " + linkId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_811>")
 	}
 
-	this.InfoLog("删除链接 " + linkId + " 成功")
-	this.jsonSuccess("删除链接成功", nil, "/system/link/list")
+	this.InfoLog("<LABEL_1183> " + linkId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_812>", nil, "/system/link/list")
 }

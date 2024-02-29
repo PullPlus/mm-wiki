@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong><i class="fa fa-clock-o"></i> 服务器时间</strong></div>
+                    <div class="panel-heading"><strong><i class="fa fa-clock-o"></i> <LABEL_1031></strong></div>
                     <div class="panel-body center">
                         <div class="faces">
                             <div class="face face4">
@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong><i class="fa fa-calendar"></i> 系统已正常运行</strong></div>
+                    <div class="panel-heading"><strong><i class="fa fa-calendar"></i> <LABEL_644></strong></div>
                     <div class="panel-body">
                         <div id="system-runtime">
                             <ul class="countdown">
@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong><i class="fa fa-warning"></i> 系统错误日志数（<a href="/system/log/system?level=3">查看</a>）</strong></div>
+                    <div class="panel-heading"><strong><i class="fa fa-warning"></i> <LABEL_645>（<a href="/system/log/system?level=3"><LABEL_1675></a>）</strong></div>
                     <div class="panel-body">
                         <div class="metric-text number-roll">
                         {{.errorLogCount}}
@@ -58,14 +58,14 @@
             </div>
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong><i class="fa fa-bars"></i> 系统最近错误日志（<a href="/system/log/system?level=3">查看更多</a>）</strong></div>
+                    <div class="panel-heading"><strong><i class="fa fa-bars"></i> <LABEL_489>（<a href="/system/log/system?level=3"><LABEL_1304></a>）</strong></div>
                     <div class="panel-body" style="height: 240px;overflow-y: auto">
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <td class="w15p"><strong>用户</strong></td>
-                                <td><strong>错误描述</strong></td>
-                                <td class="w15p center"><strong>时间</strong></td>
+                                <td class="w15p"><strong><LABEL_1631></strong></td>
+                                <td><strong><LABEL_1305></strong></td>
+                                <td class="w15p center"><strong><LABEL_1661></strong></td>
                             </tr>
                             </thead>
                             <tbody>
@@ -85,25 +85,25 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong><i class="fa fa-server"></i> 服务器版本信息</strong></div>
+                    <div class="panel-heading"><strong><i class="fa fa-server"></i> <LABEL_646></strong></div>
                     <div class="panel-body">
                         <br>
                         <ul class="list-group">
                             <li class="list-group-item"><i class="fa fa-globe fa-fw"></i> IP：{{.serverInfo.localIp}}</li>
-                            <li class="list-group-item"><i class="fa fa-user-circle-o fa-fw"></i> 主机名：{{.serverInfo.hostname}}</li>
-                            <li class="list-group-item"><i class="fa fa-desktop fa-fw"></i> 操作系统：{{.serverInfo.os}}</li>
-                            <li class="list-group-item"><i class="fa fa-flag fa-fw"></i> 系统版本：{{.serverInfo.platform}}</li>
-                            <li class="list-group-item"><i class="fa fa-flag-checkered fa-fw"></i> 版本家族：{{.serverInfo.platformFamily}}</li>
+                            <li class="list-group-item"><i class="fa fa-user-circle-o fa-fw"></i> <LABEL_1544>：{{.serverInfo.hostname}}</li>
+                            <li class="list-group-item"><i class="fa fa-desktop fa-fw"></i> <LABEL_1230>：{{.serverInfo.os}}</li>
+                            <li class="list-group-item"><i class="fa fa-flag fa-fw"></i> <LABEL_1306>：{{.serverInfo.platform}}</li>
+                            <li class="list-group-item"><i class="fa fa-flag-checkered fa-fw"></i> <LABEL_1307>：{{.serverInfo.platformFamily}}</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong><i class="fa fa-align-left"></i> 服务器状态</strong></div>
+                    <div class="panel-heading"><strong><i class="fa fa-align-left"></i> <LABEL_1032></strong></div>
                     <div class="panel-body">
                         <br>
-                        <p> CPU使用率：<strong class="cpu_text">0%</strong></p>
+                        <p> CPU<LABEL_1545>：<strong class="cpu_text">0%</strong></p>
                         <div class="progress" style="height: 14px">
                             <div id="cpu_progress" class="progress-bar progress-bar-success progress-bar-striped active"
                                  role="progressbar"
@@ -114,7 +114,7 @@
                                 <div style="font-size:10px;line-height:14px;" class="cpu_text"> 0%</div>
                             </div>
                         </div>
-                        <p>磁盘使用率：<strong class="disk_text">0%</strong></p>
+                        <p><LABEL_1033>：<strong class="disk_text">0%</strong></p>
                         <div class="progress" style="height: 14px">
                             <div id="disk_progress" class="progress-bar progress-bar-warning progress-bar-striped active"
                                  role="progressbar"
@@ -125,7 +125,7 @@
                                 <div style="font-size:10px;line-height:14px;" class="disk_text"> 0%</div>
                             </div>
                         </div>
-                        <p>内存使用率：<strong class="memory_text">0%</strong></p>
+                        <p><LABEL_1034>：<strong class="memory_text">0%</strong></p>
                         <div class="progress" style="height: 14px">
                             <div id="memory_progress" class="progress-bar progress-bar-danger progress-bar-striped active"
                                  role="progressbar"

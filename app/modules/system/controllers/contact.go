@@ -21,7 +21,7 @@ func (this *ContactController) Add() {
 func (this *ContactController) Save() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/contact/list")
+		this.ViewError("<LABEL_705>！", "/system/contact/list")
 	}
 	name := strings.Trim(this.GetString("name", ""), "")
 	mobile := strings.Trim(this.GetString("mobile", ""), "")
@@ -30,13 +30,13 @@ func (this *ContactController) Save() {
 
 	v := validation.Validation{}
 	if name == "" {
-		this.jsonError("联系人姓名不能为空！")
+		this.jsonError("<LABEL_270>！")
 	}
 	if email == "" {
-		this.jsonError("邮箱不能为空！")
+		this.jsonError("<LABEL_774>！")
 	}
 	if !v.Email(email, "email").Ok {
-		this.jsonError("邮箱格式不正确！")
+		this.jsonError("<LABEL_568>！")
 	}
 
 	contact := map[string]interface{}{
@@ -48,11 +48,11 @@ func (this *ContactController) Save() {
 
 	contactId, err := models.ContactModel.Insert(contact)
 	if err != nil {
-		this.ErrorLog("添加联系人失败：" + err.Error())
-		this.jsonError("添加联系人失败")
+		this.ErrorLog("<LABEL_569>：" + err.Error())
+		this.jsonError("<LABEL_569>")
 	}
-	this.InfoLog("添加联系人 " + utils.Convert.IntToString(contactId, 10) + " 成功")
-	this.jsonSuccess("添加联系人成功", nil, "/system/contact/list")
+	this.InfoLog("<LABEL_978> " + utils.Convert.IntToString(contactId, 10) + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_570>", nil, "/system/contact/list")
 }
 
 func (this *ContactController) List() {
@@ -62,8 +62,8 @@ func (this *ContactController) List() {
 	contacts, err = models.ContactModel.GetAllContact()
 
 	if err != nil {
-		this.ErrorLog("获取联系人列表出错: " + err.Error())
-		this.ViewError("获取联系人列表出错", "/system/main/index")
+		this.ErrorLog("<LABEL_271>: " + err.Error())
+		this.ViewError("<LABEL_271>", "/system/main/index")
 	}
 
 	this.Data["contacts"] = contacts
@@ -74,12 +74,12 @@ func (this *ContactController) Edit() {
 
 	contactId := this.GetString("contact_id", "")
 	if contactId == "" {
-		this.ViewError("联系人不存在", "/system/contact/list")
+		this.ViewError("<LABEL_775>", "/system/contact/list")
 	}
 
 	contact, err := models.ContactModel.GetContactByContactId(contactId)
 	if err != nil {
-		this.ViewError("联系人不存在", "/system/contact/list")
+		this.ViewError("<LABEL_775>", "/system/contact/list")
 	}
 
 	this.Data["contact"] = contact
@@ -89,7 +89,7 @@ func (this *ContactController) Edit() {
 func (this *ContactController) Modify() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/contact/list")
+		this.ViewError("<LABEL_705>！", "/system/contact/list")
 	}
 	contactId := strings.Trim(this.GetString("contact_id", ""), "")
 	name := strings.Trim(this.GetString("name", ""), "")
@@ -99,25 +99,25 @@ func (this *ContactController) Modify() {
 
 	v := validation.Validation{}
 	if contactId == "" {
-		this.jsonError("参数错误！")
+		this.jsonError("<LABEL_1144>！")
 	}
 	if name == "" {
-		this.jsonError("联系人姓名不能为空！")
+		this.jsonError("<LABEL_270>！")
 	}
 	if position == "" {
-		this.jsonError("职位不能为空！")
+		this.jsonError("<LABEL_776>！")
 	}
 	if mobile == "" {
-		this.jsonError("联系电话不能为空！")
+		this.jsonError("<LABEL_396>！")
 	}
 	if !v.Phone(mobile, "mobile").Ok {
-		this.jsonError("联系电话格式不正确！")
+		this.jsonError("<LABEL_272>！")
 	}
 	if email == "" {
-		this.jsonError("邮箱不能为空！")
+		this.jsonError("<LABEL_774>！")
 	}
 	if !v.Email(email, "email").Ok {
-		this.jsonError("邮箱格式不正确！")
+		this.jsonError("<LABEL_568>！")
 	}
 
 	contact := map[string]interface{}{
@@ -129,43 +129,43 @@ func (this *ContactController) Modify() {
 	}
 	_, err := models.ContactModel.UpdateByContactId(contact, contactId)
 	if err != nil {
-		this.ErrorLog("修改联系人 " + contactId + " 失败：" + err.Error())
-		this.jsonError("修改联系人失败")
+		this.ErrorLog("<LABEL_979> " + contactId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_571>")
 	}
-	this.InfoLog("修改联系人 " + contactId + " 成功")
-	this.jsonSuccess("修改联系人成功", nil, "/system/contact/list")
+	this.InfoLog("<LABEL_979> " + contactId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_572>", nil, "/system/contact/list")
 }
 
 func (this *ContactController) Delete() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/contact/list")
+		this.ViewError("<LABEL_705>！", "/system/contact/list")
 	}
 	contactId := this.GetString("contact_id", "")
 	if contactId == "" {
-		this.jsonError("没有选择联系人！")
+		this.jsonError("<LABEL_573>！")
 	}
 
 	contact, err := models.ContactModel.GetContactByContactId(contactId)
 	if err != nil {
-		this.ErrorLog("删除联系人 " + contactId + " 失败: " + err.Error())
-		this.jsonError("删除联系人失败")
+		this.ErrorLog("<LABEL_980> " + contactId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_574>")
 	}
 	if len(contact) == 0 {
-		this.jsonError("联系人不存在")
+		this.jsonError("<LABEL_775>")
 	}
 
 	_, err = models.ContactModel.DeleteByContactId(contactId)
 	if err != nil {
-		this.ErrorLog("删除联系人 " + contactId + " 失败: " + err.Error())
-		this.jsonError("删除联系人失败")
+		this.ErrorLog("<LABEL_980> " + contactId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_574>")
 	}
 
-	this.InfoLog("删除联系人 " + contactId + " 成功")
-	this.jsonSuccess("删除联系人成功", nil, "/system/contact/list")
+	this.InfoLog("<LABEL_980> " + contactId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_575>", nil, "/system/contact/list")
 }
 
-// 从用户导入联系人
+// <LABEL_397>
 func (this *ContactController) Import() {
 
 	keywords := map[string]string{}
@@ -188,8 +188,8 @@ func (this *ContactController) Import() {
 		users, err = models.UserModel.GetUsersByLimit(limit, number)
 	}
 	if err != nil {
-		this.ErrorLog("获取用户列表失败: " + err.Error())
-		this.ViewError("获取用户列表失败", "/system/main/index")
+		this.ErrorLog("<LABEL_398>: " + err.Error())
+		this.ViewError("<LABEL_398>", "/system/main/index")
 	}
 
 	this.Data["users"] = users

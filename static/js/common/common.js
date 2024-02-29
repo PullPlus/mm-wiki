@@ -83,7 +83,7 @@ var Common = {
 	},
 
 	/**
-	 * 成功提示
+	 * <LABEL_1492>
 	 * @param element
 	 * @param message
 	 */
@@ -92,13 +92,13 @@ var Common = {
 		$(element).removeClass();
 		$(element).addClass('alert alert-success');
 		$(element).append('<a class="close" href="#" onclick="$(this).parent().hide();">×</a>');
-		$(element).append('<strong><i class="glyphicon glyphicon-ok-circle"></i> 操作成功：</strong>');
+		$(element).append('<strong><i class="glyphicon glyphicon-ok-circle"></i> <LABEL_1489>：</strong>');
 		$(element).append(message);
 		$(element).show();
 	},
 
 	/**
-	 * 错误提示
+	 * <LABEL_1476>
 	 * @param element
 	 * @param message
 	 */
@@ -107,13 +107,13 @@ var Common = {
 		$(element).removeClass('hide');
 		$(element).addClass('alert alert-danger');
 		$(element).append('<a class="close" href="#" onclick="$(this).parent().hide();">×</a>');
-		$(element).append('<strong><i class="glyphicon glyphicon-remove-circle"></i> 操作失败：</strong>');
+		$(element).append('<strong><i class="glyphicon glyphicon-remove-circle"></i> <LABEL_1152>：</strong>');
 		$(element).append(message);
 		$(element).show();
 	},
 
 	/**
-	 * 警告提示
+	 * <LABEL_1493>
 	 * @param element
 	 * @param message
 	 */
@@ -122,18 +122,18 @@ var Common = {
 		$(element).removeClass();
 		$(element).addClass('alert alert-warning');
 		$(element).append('<a class="close" href="#" onclick="$(this).parent().hide();">×</a>');
-		$(element).append('<strong><i class="glyphicon glyphicon-volume-up"></i> 警告：</strong>');
+		$(element).append('<strong><i class="glyphicon glyphicon-volume-up"></i> <LABEL_1689>：</strong>');
 		$(element).append(message);
 		$(element).show();
 	},
 
 	/**
-	 * 时间格式化
+	 * <LABEL_1112>
 	 * @param s
 	 * @returns {{s: (string|*), d: (string|*), h: (string|*), m: (string|*)}}
 	 */
     secondsFormat: function (s) {
-		var day = Math.floor( s/ (24*3600) ); // Math.floor()向下取整
+		var day = Math.floor( s/ (24*3600) ); // Math.floor()<LABEL_1494>
 		var hour = Math.floor( (s - day*24*3600) / 3600);
 		var minute = Math.floor( (s - day*24*3600 - hour*3600) /60 );
 		var second = s - day * 24 * 3600 - hour * 3600 - minute * 60;
@@ -159,7 +159,7 @@ var Common = {
 	},
 
 	/**
-	 * 判断是否是移动端
+	 * <LABEL_539>
 	 * @returns {boolean}
 	 * @constructor
 	 */

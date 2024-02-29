@@ -19,31 +19,31 @@
 		var langs = {
 			"zh-cn" : {
 				toolbar : {
-					table : "表格"
+					table : "<LABEL_1788>"
 				},
 				dialog : {
 					table : {
-						title      : "添加表格",
-						cellsLabel : "单元格数",
-						alignLabel : "对齐方式",
-						rows       : "行数",
-						cols       : "列数",
-						aligns     : ["默认", "左对齐", "居中对齐", "右对齐"]
+						title      : "<LABEL_1363>",
+						cellsLabel : "<LABEL_1429>",
+						alignLabel : "<LABEL_1430>",
+						rows       : "<LABEL_1789>",
+						cols       : "<LABEL_1790>",
+						aligns     : ["<LABEL_1613>", "<LABEL_1580>", "<LABEL_1431>", "<LABEL_1581>"]
 					}
 				}
 			},
 			"zh-tw" : {
 				toolbar : {
-					table : "添加表格"
+					table : "<LABEL_1363>"
 				},
 				dialog : {
 					table : {
-						title      : "添加表格",
-						cellsLabel : "單元格數",
-						alignLabel : "對齊方式",
-						rows       : "行數",
-						cols       : "列數",
-						aligns     : ["默認", "左對齊", "居中對齊", "右對齊"]
+						title      : "<LABEL_1363>",
+						cellsLabel : "<LABEL_1432>",
+						alignLabel : "<LABEL_1433>",
+						rows       : "<LABEL_1791>",
+						cols       : "<LABEL_1792>",
+						aligns     : ["<LABEL_1793>", "<LABEL_1582>", "<LABEL_1434>", "<LABEL_1583>"]
 					}
 				}
 			},

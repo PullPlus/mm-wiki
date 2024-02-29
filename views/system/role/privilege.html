@@ -4,7 +4,7 @@
         <div class="panel-body">
             <form class="form-horizontal" method="post" action="/system/role/grantPrivilege">
                 <input type="hidden" name="role_id" value="{{.role.role_id}}" />
-                <h4><span class="label label-default">{{$.role.name}}权限</span> </h4>
+                <h4><span class="label label-default">{{$.role.name}}<LABEL_1708></span> </h4>
                 <hr>
                 {{range $menu := $.menus}}
                     <ul class="list-group w240 inline-group">
@@ -18,7 +18,7 @@
                 {{end}}
                 <div class="form-group">
                     <div class="col-md-8" style="margin-left:10px;">
-                        <button type="button" onclick="Form.ajaxSubmit(this.form, true)" class="btn btn-primary">保存</button>
+                        <button type="button" onclick="Form.ajaxSubmit(this.form, true)" class="btn btn-primary"><LABEL_1655></button>
                     </div>
                 </div>
             </form>

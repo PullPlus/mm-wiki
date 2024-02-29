@@ -27,7 +27,7 @@ func (di *DocIndex) IsUpdateDocIndex() bool {
 	return false
 }
 
-// ForceDelDocIdIndex 强制删除索引
+// ForceDelDocIdIndex <LABEL_770>
 func (di *DocIndex) ForceDelDocIdIndex(docId string) {
 	if docId == "" {
 		return
@@ -40,7 +40,7 @@ func (di *DocIndex) ForceDelDocIdIndex(docId string) {
 	global.DocSearcher.IndexDoc(docId, data, true)
 }
 
-// UpdateDocIndex 更新单个文件的索引
+// UpdateDocIndex <LABEL_268>
 func (di *DocIndex) ForceUpdateDocIndexByDocId(docId string) error {
 	if docId == "" {
 		return nil
@@ -62,7 +62,7 @@ func (di *DocIndex) ForceUpdateDocIndexByDocId(docId string) error {
 	return nil
 }
 
-// UpdateDocIndex 更新单个文件的索引
+// UpdateDocIndex <LABEL_268>
 func (di *DocIndex) UpdateDocIndex(doc map[string]string) {
 	docId, ok := doc["document_id"]
 	if !ok || docId == "" {
@@ -81,7 +81,7 @@ func (di *DocIndex) UpdateDocIndex(doc map[string]string) {
 	global.DocSearcher.IndexDoc(docId, data)
 }
 
-// UpdateDocsIndex 批量更新多个文件的索引
+// UpdateDocsIndex <LABEL_131>
 func (di *DocIndex) UpdateDocsIndex(docs []map[string]string) {
 	if len(docs) == 0 {
 		return
@@ -106,7 +106,7 @@ func (di *DocIndex) UpdateDocsIndex(docs []map[string]string) {
 	wait.Wait()
 }
 
-// UpdateAllDocIndex 更新所有的文档
+// UpdateAllDocIndex <LABEL_563>
 func (di *DocIndex) UpdateAllDocIndex(batchNum int) {
 	if !di.IsUpdateDocIndex() {
 		return
@@ -122,7 +122,7 @@ func (di *DocIndex) UpdateAllDocIndex(batchNum int) {
 	}
 }
 
-// 获取分批文档
+// <LABEL_771>
 func (di *DocIndex) getBatchDocs(allDocs []map[string]string, n int) [][]map[string]string {
 
 	groupNum := len(allDocs) / n
@@ -143,7 +143,7 @@ func (di *DocIndex) getBatchDocs(allDocs []map[string]string, n int) [][]map[str
 	return res
 }
 
-// FlushIndex 所有索引
+// FlushIndex <LABEL_1170>
 func (di *DocIndex) Flush() {
 	global.DocSearcher.Flush()
 }

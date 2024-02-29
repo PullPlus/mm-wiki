@@ -5,28 +5,28 @@
                 <h3><i class="fa fa-address-card-o"></i> {{$user.username}}（{{$user.given_name}}）</h3>
             </div>
             <ul class="nav nav-tabs">
-                <li><a href="/system/profile/info">用户信息</a></li>
-                <li class="active"><a href="/system/profile/followUser">关注用户</a></li>
-                <li><a href="/system/profile/followDoc">关注文档</a></li>
+                <li><a href="/system/profile/info"><LABEL_1176></a></li>
+                <li class="active"><a href="/system/profile/followUser"><LABEL_1244></a></li>
+                <li><a href="/system/profile/followDoc"><LABEL_1245></a></li>
             </ul>
             <br>
             <div class="row">
                 <div class="col-md-6">
                     <div style="margin: 10px 0 15px 0">
-                        <span class="label label-default">我的关注</span>
+                        <span class="label label-default"><LABEL_1250></span>
                     </div>
                     {{if eq .followCount 0}}
                     <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-bottom: 0">
-                        <p><i class="glyphicon glyphicon-volume-up"></i> 还没有关注任何用户！</p>
+                        <p><i class="glyphicon glyphicon-volume-up"></i> <LABEL_310>！</p>
                     </div>
                     {{else}}
                     <table class="table">
                         <thead>
                         <tr>
-                            <td class="w25p text-left"><strong>用户名</strong></td>
-                            <td class="text-left"><strong>姓名</strong></td>
-                            <td class="text-left"><strong>邮箱</strong></td>
-                            <td class="w12p center"><strong>取消</strong></td>
+                            <td class="w25p text-left"><strong><LABEL_1522></strong></td>
+                            <td class="text-left"><strong><LABEL_1676></strong></td>
+                            <td class="text-left"><strong><LABEL_1678></strong></td>
+                            <td class="w12p center"><strong><LABEL_1688></strong></td>
                         </tr>
                         </thead>
                         <tbody>
@@ -48,19 +48,19 @@
                 </div>
                 <div class="col-md-6">
                     <div style="margin: 10px 0 15px 0">
-                        <span class="label label-default">我的粉丝</span>
+                        <span class="label label-default"><LABEL_1251></span>
                     </div>
                     {{if eq .fansCount 0}}
                     <div class="alert alert-info alert-dismissible fade in" role="alert" style="margin-bottom: 0">
-                        <p><i class="glyphicon glyphicon-volume-up"></i> 暂时还没有粉丝！</p>
+                        <p><i class="glyphicon glyphicon-volume-up"></i> <LABEL_627>！</p>
                     </div>
                     {{else}}
                     <table class="table">
                         <thead>
                         <tr>
-                            <td class="w25p text-left"><strong>用户名</strong></td>
-                            <td class="text-left"><strong>姓名</strong></td>
-                            <td class="text-left"><strong>邮箱</strong></td>
+                            <td class="w25p text-left"><strong><LABEL_1522></strong></td>
+                            <td class="text-left"><strong><LABEL_1676></strong></td>
+                            <td class="text-left"><strong><LABEL_1678></strong></td>
                         </tr>
                         </thead>
                         <tbody>

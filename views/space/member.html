@@ -8,11 +8,11 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <td class="w20p text-left"><strong>用户名</strong></td>
-                    <td class="text-left"><strong>姓名</strong></td>
-                    <td class="w20p text-left"><strong>邮箱</strong></td>
-                    <td class="w20p text-left"><strong>手机</strong></td>
-                    <td class="w13p center"><strong>空间权限</strong></td>
+                    <td class="w20p text-left"><strong><LABEL_1522></strong></td>
+                    <td class="text-left"><strong><LABEL_1676></strong></td>
+                    <td class="w20p text-left"><strong><LABEL_1678></strong></td>
+                    <td class="w20p text-left"><strong><LABEL_1681></strong></td>
+                    <td class="w13p center"><strong><LABEL_1314></strong></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -24,11 +24,11 @@
                     <td>{{$user.mobile}}</td>
                     <td class="center">
                     {{if eq $user.space_privilege "1" }}
-                        <span class="label label-info">编辑者</span>
+                        <span class="label label-info"><LABEL_1547></span>
                     {{else if eq $user.space_privilege "2"}}
-                        <span class="label label-success">管理员</span>
+                        <span class="label label-success"><LABEL_1513></span>
                     {{else}}
-                        <span class="label label-default">浏览者</span>
+                        <span class="label label-default"><LABEL_1546></span>
                     {{end}}
                     </td>
                 </tr>

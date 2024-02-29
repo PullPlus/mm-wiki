@@ -72,7 +72,7 @@
 
                     if(checkColse){
                         this.tocContent += new Array(y+1).join('</li></ul>');
-                        this._tempLists.length = this._tempLists.length - y ;//更新栈的长度。
+                        this._tempLists.length = this._tempLists.length - y ;//<LABEL_904>。
                     } else {
                         this._tempLists.push(this._elTitleElement);
                         this.tocContent += '<ul>';
@@ -100,10 +100,10 @@
         this.toc.innerHTML = this.tocContent;
         this.toc.setAttribute('class',this.tocClass);
         if(! this.options.targetId){
-            // 没有传入目标id，追加到生成目录的div内
+            // <LABEL_905>id，<LABEL_499>div<LABEL_1858>
             this.el.appendChild(this.toc);
         }else{
-            //有传入目标id，直接在目标id内生成div
+            //<LABEL_1046>id，<LABEL_1047>id<LABEL_1559>div
             document.getElementById(this.options.targetId).appendChild(this.toc);
         }
 

@@ -129,7 +129,7 @@ func (z *zipx) compress(file *os.File, prefix string, zw *zip.Writer) error {
 	return nil
 }
 
-//解压
+//<LABEL_1636>
 func (z *zipx) DeCompress(zipFile, dest string) error {
 	reader, err := zip.OpenReader(zipFile)
 	if err != nil {

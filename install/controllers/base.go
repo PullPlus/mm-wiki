@@ -35,7 +35,7 @@ func (this *BaseController) Prepare() {
 	}
 	if storage.Data.Status == storage.Install_End {
 		if storage.Data.IsSuccess == storage.Install_Failed {
-			// 重置
+			// <LABEL_1606>
 			storage.Data.IsSuccess = storage.Install_Default
 			storage.Data.Status = storage.Install_Ready
 			storage.Data.Result = ""

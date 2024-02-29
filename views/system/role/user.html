@@ -15,13 +15,13 @@
             <thead>
             <tr>
                 <th class="w8p">ID</th>
-                <th class="w15p">用户名</th>
-                <th>姓名</th>
-                <th class="w15p">邮箱</th>
-                <th class="w11p">手机号</th>
-                <th class="w8p">状态</th>
-                <th class="w15p">角色</th>
-                <th class="w10p">操作</th>
+                <th class="w15p"><LABEL_1522></th>
+                <th><LABEL_1676></th>
+                <th class="w15p"><LABEL_1678></th>
+                <th class="w11p"><LABEL_1525></th>
+                <th class="w8p"><LABEL_1702></th>
+                <th class="w15p"><LABEL_1634></th>
+                <th class="w10p"><LABEL_1659></th>
             </tr>
             </thead>
             <tbody>
@@ -34,9 +34,9 @@
                 <td class="center">{{$user.mobile}}</td>
                 <td class="center">
                 {{if eq $user.is_forbidden "1"}}
-                    <span class="label label-danger">屏蔽</span>
+                    <span class="label label-danger"><LABEL_1703></span>
                 {{else}}
-                    <span class="label label-success">正常</span>
+                    <span class="label label-success"><LABEL_1704></span>
                 {{end}}
                 </td>
                 <td class="center">
@@ -44,9 +44,9 @@
                 </td>
                 <td class="center">
                     {{if eq $user.user_id "1"}}
-                    无
+                    <LABEL_1853>
                     {{else}}
-                        <a onclick="Layers.confirm('确定重置该用户为默认角色吗？', '/system/role/resetUser?user_id={{$user.user_id}}');"><i class="remove glyphicon glyphicon-refresh"></i>重置角色</a>
+                        <a onclick="Layers.confirm('<LABEL_72>？', '/system/role/resetUser?user_id={{$user.user_id}}');"><i class="remove glyphicon glyphicon-refresh"></i><LABEL_1294></a>
                     {{end}}
                 </td>
             </tr>

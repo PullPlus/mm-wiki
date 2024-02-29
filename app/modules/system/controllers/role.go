@@ -18,20 +18,20 @@ func (this *RoleController) Add() {
 func (this *RoleController) Save() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/role/list")
+		this.ViewError("<LABEL_705>！", "/system/role/list")
 	}
 	name := strings.TrimSpace(this.GetString("name", ""))
 	if name == "" {
-		this.jsonError("角色名称不能为空！")
+		this.jsonError("<LABEL_422>！")
 	}
 
 	ok, err := models.RoleModel.HasRoleName(name)
 	if err != nil {
-		this.ErrorLog("添加角色失败：" + err.Error())
-		this.jsonError("添加角色失败！")
+		this.ErrorLog("<LABEL_813>：" + err.Error())
+		this.jsonError("<LABEL_813>！")
 	}
 	if ok {
-		this.jsonError("角色名已经存在！")
+		this.jsonError("<LABEL_587>！")
 	}
 
 	roleId, err := models.RoleModel.Insert(map[string]interface{}{
@@ -39,11 +39,11 @@ func (this *RoleController) Save() {
 	})
 
 	if err != nil {
-		this.ErrorLog("添加角色失败：" + err.Error())
-		this.jsonError("添加角色失败")
+		this.ErrorLog("<LABEL_813>：" + err.Error())
+		this.jsonError("<LABEL_813>")
 	}
-	this.InfoLog("添加角色 " + utils.Convert.IntToString(roleId, 10) + " 成功")
-	this.jsonSuccess("添加角色成功", nil, "/system/role/list")
+	this.InfoLog("<LABEL_1187> " + utils.Convert.IntToString(roleId, 10) + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_814>", nil, "/system/role/list")
 }
 
 func (this *RoleController) List() {
@@ -64,8 +64,8 @@ func (this *RoleController) List() {
 		roles, err = models.RoleModel.GetRolesByLimit(limit, number)
 	}
 	if err != nil {
-		this.ErrorLog("获取角色列表失败: " + err.Error())
-		this.ViewError("获取角色列表失败", "/system/main/index")
+		this.ErrorLog("<LABEL_423>: " + err.Error())
+		this.ViewError("<LABEL_423>", "/system/main/index")
 	}
 
 	this.Data["roles"] = roles
@@ -78,19 +78,19 @@ func (this *RoleController) Edit() {
 
 	roleId := this.GetString("role_id", "")
 	if roleId == "" {
-		this.ViewError("角色不存在", "/system/role/list")
+		this.ViewError("<LABEL_986>", "/system/role/list")
 	}
 	if roleId == fmt.Sprintf("%d", models.Role_Root_Id) {
-		this.ViewError("不能修改超级管理员", "/system/role/list")
+		this.ViewError("<LABEL_290>", "/system/role/list")
 	}
 
 	role, err := models.RoleModel.GetRoleByRoleId(roleId)
 	if err != nil {
-		this.ErrorLog("查找角色错误：" + err.Error())
-		this.ViewError("查找角色错误", "/system/role/list")
+		this.ErrorLog("<LABEL_815>：" + err.Error())
+		this.ViewError("<LABEL_815>", "/system/role/list")
 	}
 	if len(role) == 0 {
-		this.ViewError("角色不存在", "/system/role/list")
+		this.ViewError("<LABEL_986>", "/system/role/list")
 	}
 
 	this.Data["role"] = role
@@ -100,47 +100,47 @@ func (this *RoleController) Edit() {
 func (this *RoleController) Modify() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/role/list")
+		this.ViewError("<LABEL_705>！", "/system/role/list")
 	}
 	roleId := this.GetString("role_id", "")
 	name := strings.TrimSpace(this.GetString("name", ""))
 
 	if roleId == "" {
-		this.jsonError("角色不存在！")
+		this.jsonError("<LABEL_986>！")
 	}
 	if roleId == fmt.Sprintf("%d", models.Role_Root_Id) {
-		this.jsonError("超级管理员不能修改！")
+		this.jsonError("<LABEL_291>！")
 	}
 	if name == "" {
-		this.jsonError("角色名称不能为空！")
+		this.jsonError("<LABEL_422>！")
 	}
 
 	role, err := models.RoleModel.GetRoleByRoleId(roleId)
 	if err != nil {
-		this.ErrorLog("修改角色 " + roleId + " 失败: " + err.Error())
-		this.jsonError("修改角色失败！")
+		this.ErrorLog("<LABEL_1188> " + roleId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_816>！")
 	}
 	if len(role) == 0 {
-		this.jsonError("角色不存在！")
+		this.jsonError("<LABEL_986>！")
 	}
 	if role["role_id"] == fmt.Sprintf("%d", models.Role_Root_Id) {
-		this.jsonError("超级管理员角色不能修改！")
+		this.jsonError("<LABEL_141>！")
 	}
 
 	ok, _ := models.RoleModel.HasSameName(roleId, name)
 	if ok {
-		this.jsonError("角色名已经存在！")
+		this.jsonError("<LABEL_587>！")
 	}
 	_, err = models.RoleModel.Update(roleId, map[string]interface{}{
 		"name": name,
 	})
 
 	if err != nil {
-		this.ErrorLog("修改角色 " + roleId + " 失败：" + err.Error())
-		this.jsonError("修改角色" + roleId + "失败")
+		this.ErrorLog("<LABEL_1188> " + roleId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_1188>" + roleId + "<LABEL_1618>")
 	}
-	this.InfoLog("修改角色 " + roleId + " 成功")
-	this.jsonSuccess("修改角色成功", nil, "/system/role/list")
+	this.InfoLog("<LABEL_1188> " + roleId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_817>", nil, "/system/role/list")
 }
 
 func (this *RoleController) User() {
@@ -150,7 +150,7 @@ func (this *RoleController) User() {
 	roleId := strings.TrimSpace(this.GetString("role_id", ""))
 
 	if roleId == "" {
-		this.ViewError("没有选择角色！")
+		this.ViewError("<LABEL_792>！")
 	}
 	keywords["role_id"] = roleId
 
@@ -161,19 +161,19 @@ func (this *RoleController) User() {
 	var users []map[string]string
 	count, err = models.UserModel.CountUsersByKeywords(keywords)
 	if err != nil {
-		this.ErrorLog("获取角色用户列表失败: " + err.Error())
-		this.ViewError("获取角色用户列表失败！", "/system/role/list")
+		this.ErrorLog("<LABEL_215>: " + err.Error())
+		this.ViewError("<LABEL_215>！", "/system/role/list")
 	}
 	users, err = models.UserModel.GetUsersByKeywordsAndLimit(keywords, limit, number)
 	if err != nil {
-		this.ErrorLog("获取用户列表失败: " + err.Error())
-		this.ViewError("获取用户列表失败！", "/system/role/list")
+		this.ErrorLog("<LABEL_398>: " + err.Error())
+		this.ViewError("<LABEL_398>！", "/system/role/list")
 	}
 
 	role, err := models.RoleModel.GetRoleByRoleId(roleId)
 	if err != nil {
-		this.ErrorLog("获取用户列表失败: " + err.Error())
-		this.ViewError("获取角色用户列表失败！", "/system/main/index")
+		this.ErrorLog("<LABEL_398>: " + err.Error())
+		this.ViewError("<LABEL_215>！", "/system/main/index")
 	}
 	for _, user := range users {
 		user["role_name"] = role["name"]
@@ -189,21 +189,21 @@ func (this *RoleController) Privilege() {
 
 	roleId := this.GetString("role_id", "")
 	if roleId == "" {
-		this.ViewError("角色不存在", "/system/role/list")
+		this.ViewError("<LABEL_986>", "/system/role/list")
 	}
 
 	role, err := models.RoleModel.GetRoleByRoleId(roleId)
 	if err != nil {
-		this.ErrorLog("查找角色权限失败：" + err.Error())
-		this.ViewError("查看角色权限失败！", "/system/role/list")
+		this.ErrorLog("<LABEL_424>：" + err.Error())
+		this.ViewError("<LABEL_425>！", "/system/role/list")
 	}
 	if len(role) == 0 {
-		this.ViewError("角色不存在", "/system/role/list")
+		this.ViewError("<LABEL_986>", "/system/role/list")
 	}
 
 	menus, controllers, err := models.PrivilegeModel.GetTypePrivileges()
 	if err != nil {
-		this.ViewError("查找角色权限失败！")
+		this.ViewError("<LABEL_424>！")
 	}
 
 	var rolePrivileges = []map[string]string{}
@@ -213,7 +213,7 @@ func (this *RoleController) Privilege() {
 		rolePrivileges, err = models.RolePrivilegeModel.GetRolePrivilegesByRoleId(roleId)
 	}
 	if err != nil {
-		this.ViewError("查找用户权限出错")
+		this.ViewError("<LABEL_426>")
 	}
 
 	this.Data["role"] = role
@@ -228,130 +228,130 @@ func (this *RoleController) Privilege() {
 func (this *RoleController) GrantPrivilege() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/role/list")
+		this.ViewError("<LABEL_705>！", "/system/role/list")
 	}
 	privilegeIds := this.GetStrings("privilege_id", []string{})
 	roleId := this.GetString("role_id", "")
 
 	if roleId == "" {
-		this.jsonError("没有选择角色!")
+		this.jsonError("<LABEL_588>")
 	}
 	//if len(privilegeIds) == 0 {
-	//	this.jsonError("没有选择权限!")
+	//	this.jsonError("<LABEL_589>")
 	//}
 	// add default privileges
 	privilegeIds = append(privilegeIds, models.Privilege_Default_Ids...)
 
 	role, err := models.RoleModel.GetRoleByRoleId(roleId)
 	if err != nil {
-		this.ErrorLog("角色 " + roleId + " 授权失败：" + err.Error())
-		this.jsonError("角色不存在")
+		this.ErrorLog("<LABEL_1634> " + roleId + " <LABEL_1189>：" + err.Error())
+		this.jsonError("<LABEL_986>")
 	}
 	if len(role) == 0 {
-		this.jsonError("角色不存在")
+		this.jsonError("<LABEL_986>")
 	}
 
 	if role["role_id"] == fmt.Sprintf("%d", models.Role_Root_Id) {
-		this.jsonError("超级管理员不需要授权！")
+		this.jsonError("<LABEL_216>！")
 	}
 
 	res, err := models.RolePrivilegeModel.GrantRolePrivileges(roleId, privilegeIds)
 	if err != nil {
-		this.ErrorLog("角色 " + roleId + " 授权失败：" + err.Error())
-		this.jsonError("角色授权失败！")
+		this.ErrorLog("<LABEL_1634> " + roleId + " <LABEL_1189>：" + err.Error())
+		this.jsonError("<LABEL_818>！")
 	}
 	if !res {
-		this.jsonError("角色授权失败")
+		this.jsonError("<LABEL_818>")
 	}
 
-	this.InfoLog("角色 " + roleId + " 授权成功")
-	this.jsonSuccess("角色授权成功", nil, "/system/role/list")
+	this.InfoLog("<LABEL_1634> " + roleId + " <LABEL_1190>")
+	this.jsonSuccess("<LABEL_819>", nil, "/system/role/list")
 }
 
 func (this *RoleController) Delete() {
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/role/list")
+		this.ViewError("<LABEL_705>！", "/system/role/list")
 	}
 
 	roleId := this.GetString("role_id", "")
 	if roleId == "" {
-		this.jsonError("没有选择角色！")
+		this.jsonError("<LABEL_792>！")
 	}
 	if roleId == fmt.Sprintf("%d", models.Role_Root_Id) {
-		this.jsonError("超级管理员不能删除！")
+		this.jsonError("<LABEL_292>！")
 	}
 
 	role, err := models.RoleModel.GetRoleByRoleId(roleId)
 	if err != nil {
-		this.ErrorLog("删除角色 " + roleId + " 失败: " + err.Error())
-		this.jsonError("删除角色失败")
+		this.ErrorLog("<LABEL_1191> " + roleId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_820>")
 	}
 	if len(role) == 0 {
-		this.jsonError("角色不存在")
+		this.jsonError("<LABEL_986>")
 	}
 	if role["type"] == fmt.Sprintf("%d", models.Role_Type_System) {
-		this.jsonError("系统角色不能删除！")
+		this.jsonError("<LABEL_427>！")
 	}
 
 	// check role user
 	users, err := models.UserModel.GetUsersByRoleId(roleId)
 	if err != nil {
-		this.ErrorLog("删除角色 " + roleId + " 失败: " + err.Error())
-		this.jsonError("删除角色失败")
+		this.ErrorLog("<LABEL_1191> " + roleId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_820>")
 	}
 	if len(users) > 0 {
-		this.jsonError("不能删除角色，请先移除该角色下用户!")
+		this.jsonError("<LABEL_821>，<LABEL_142>")
 	}
 
 	// delete role privilege by role id
 	err = models.RolePrivilegeModel.DeleteByRoleId(roleId)
 	if err != nil {
-		this.ErrorLog("删除角色 " + roleId + " 权限失败: " + err.Error())
-		this.jsonError("删除角色失败")
+		this.ErrorLog("<LABEL_1191> " + roleId + " <LABEL_1151>: " + err.Error())
+		this.jsonError("<LABEL_820>")
 	}
 
 	// delete role by role id
 	err = models.RoleModel.Delete(roleId)
 	if err != nil {
-		this.ErrorLog("删除角色 " + roleId + " 失败: " + err.Error())
-		this.jsonError("删除角色失败")
+		this.ErrorLog("<LABEL_1191> " + roleId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_820>")
 	}
 
-	this.InfoLog("删除角色 " + roleId + " 成功")
-	this.jsonSuccess("删除角色成功", nil, "/system/role/list")
+	this.InfoLog("<LABEL_1191> " + roleId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_822>", nil, "/system/role/list")
 }
 
 func (this *RoleController) ResetUser() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/role/list")
+		this.ViewError("<LABEL_705>！", "/system/role/list")
 	}
 	userId := this.GetString("user_id", "")
 	if userId == "" {
-		this.jsonError("用户不存在")
+		this.jsonError("<LABEL_962>")
 	}
 
 	if this.UserId == "1" {
-		this.jsonError("root 用户不能重置角色！")
+		this.jsonError("root <LABEL_428>！")
 	}
 
 	user, err := models.UserModel.GetUserByUserId(userId)
 	if err != nil {
-		this.ErrorLog("重置用户 " + userId + " 角色失败: " + err.Error())
-		this.jsonError("重置用户角色失败")
+		this.ErrorLog("<LABEL_1192> " + userId + " <LABEL_1193>: " + err.Error())
+		this.jsonError("<LABEL_429>")
 	}
 	if len(user) == 0 {
-		this.jsonError("用户不存在")
+		this.jsonError("<LABEL_962>")
 	}
 
 	_, err = models.UserModel.Update(userId, map[string]interface{}{
 		"role_id": models.Role_Default_Id,
 	})
 	if err != nil {
-		this.ErrorLog("重置用户 " + userId + " 角色失败: " + err.Error())
-		this.jsonError("重置用户角色失败")
+		this.ErrorLog("<LABEL_1192> " + userId + " <LABEL_1193>: " + err.Error())
+		this.jsonError("<LABEL_429>")
 	}
 
-	this.InfoLog("重置用户 " + userId + " 角色成功")
-	this.jsonSuccess("重置用户角色成功", nil, "/system/role/list")
+	this.InfoLog("<LABEL_1192> " + userId + " <LABEL_1194>")
+	this.jsonSuccess("<LABEL_430>", nil, "/system/role/list")
 }

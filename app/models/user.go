@@ -141,7 +141,7 @@ func (u *User) ChangePassword(userId, newPassword, oldPassword string) (err erro
 	db := G.DB()
 	userValue, err := u.GetUserByUserId(userId)
 	if userValue["password"] != u.EncodePassword(oldPassword) {
-		return errors.New("旧密码错误")
+		return errors.New("<LABEL_991>")
 	}
 	if err != nil {
 		return

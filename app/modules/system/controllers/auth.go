@@ -31,8 +31,8 @@ func (this *AuthController) List() {
 		auths, err = models.AuthModel.GetAuthsByLimit(limit, number)
 	}
 	if err != nil {
-		this.ErrorLog("获取登录认证列表失败: " + err.Error())
-		this.ViewError("获取登录认证列表失败", "/system/main/index")
+		this.ErrorLog("<LABEL_219>: " + err.Error())
+		this.ViewError("<LABEL_219>", "/system/main/index")
 	}
 
 	this.Data["auths"] = auths
@@ -48,7 +48,7 @@ func (this *AuthController) Add() {
 func (this *AuthController) Save() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/auth/list")
+		this.ViewError("<LABEL_705>！", "/system/auth/list")
 	}
 	name := strings.TrimSpace(this.GetString("name", ""))
 	authUrl := strings.TrimSpace(this.GetString("url", ""))
@@ -57,42 +57,42 @@ func (this *AuthController) Save() {
 
 	//v := validation.Validation{}
 	if name == "" {
-		this.jsonError("登录认证名称不能为空！")
+		this.jsonError("<LABEL_220>！")
 	}
 	//if usernamePrefix == "" {
-	//	this.jsonError("用户名前缀不能为空！")
+	//	this.jsonError("<LABEL_296>！")
 	//}
 	//if !v.AlphaNumeric(usernamePrefix, "username_prefix").Ok {
-	//	this.jsonError("用户名前缀格式不正确！")
+	//	this.jsonError("<LABEL_221>！")
 	//}
 	if authUrl == "" {
-		this.jsonError("认证URL不能为空！")
+		this.jsonError("<LABEL_1635>URL<LABEL_1117>！")
 	}
 	u, err := url.Parse(authUrl)
 	if err != nil || u == nil {
-		this.jsonError("认证 URL 解析错误！")
+		this.jsonError("<LABEL_1635> URL <LABEL_1199>！")
 		return
 	}
 	if !services.AuthLogin.UrlIsSupport(u.Scheme) {
-		this.jsonError("认证 URL 协议不支持！")
+		this.jsonError("<LABEL_1635> URL <LABEL_975>！")
 	}
 
 	ok, err := models.AuthModel.HasAuthName(name)
 	if err != nil {
-		this.ErrorLog("添加登录认证失败：" + err.Error())
-		this.jsonError("添加登录认证失败！")
+		this.ErrorLog("<LABEL_439>：" + err.Error())
+		this.jsonError("<LABEL_439>！")
 	}
 	if ok {
-		this.jsonError("登录认证名称已经存在！")
+		this.jsonError("<LABEL_222>！")
 	}
 
 	//ok, err = models.AuthModel.HasAuthUsernamePrefix(usernamePrefix)
 	//if err != nil {
-	//	this.ErrorLog("添加登录认证失败：" + err.Error())
-	//	this.jsonError("添加登录认证失败！")
+	//	this.ErrorLog("<LABEL_439>：" + err.Error())
+	//	this.jsonError("<LABEL_439>！")
 	//}
 	//if ok {
-	//	this.jsonError("用户名前缀已经存在！")
+	//	this.jsonError("<LABEL_297>！")
 	//}
 
 	authId, err := models.AuthModel.Insert(map[string]interface{}{
@@ -103,23 +103,23 @@ func (this *AuthController) Save() {
 	})
 
 	if err != nil {
-		this.ErrorLog("添加登录认证失败：" + err.Error())
-		this.jsonError("添加登录认证失败")
+		this.ErrorLog("<LABEL_439>：" + err.Error())
+		this.jsonError("<LABEL_439>")
 	}
-	this.InfoLog("添加登录认证 " + utils.Convert.IntToString(authId, 10) + " 成功")
-	this.jsonSuccess("添加登录认证成功", nil, "/system/auth/list")
+	this.InfoLog("<LABEL_830> " + utils.Convert.IntToString(authId, 10) + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_440>", nil, "/system/auth/list")
 }
 
 func (this *AuthController) Edit() {
 
 	authId := this.GetString("login_auth_id", "")
 	if authId == "" {
-		this.ViewError("登录认证不存在", "/system/auth/list")
+		this.ViewError("<LABEL_591>", "/system/auth/list")
 	}
 
 	auth, err := models.AuthModel.GetAuthByAuthId(authId)
 	if err != nil {
-		this.ViewError("登录认证不存在", "/system/auth/list")
+		this.ViewError("<LABEL_591>", "/system/auth/list")
 	}
 
 	this.Data["auth"] = auth
@@ -129,7 +129,7 @@ func (this *AuthController) Edit() {
 func (this *AuthController) Modify() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/auth/list")
+		this.ViewError("<LABEL_705>！", "/system/auth/list")
 	}
 	authId := this.GetString("login_auth_id", "")
 	name := strings.TrimSpace(this.GetString("name", ""))
@@ -139,45 +139,45 @@ func (this *AuthController) Modify() {
 
 	//v := validation.Validation{}
 	if authId == "" {
-		this.jsonError("登录认证不存在！")
+		this.jsonError("<LABEL_591>！")
 	}
 	if name == "" {
-		this.jsonError("登录认证名称不能为空！")
+		this.jsonError("<LABEL_220>！")
 	}
 	//if usernamePrefix == "" {
-	//	this.jsonError("用户名前缀不能为空！")
+	//	this.jsonError("<LABEL_296>！")
 	//}
 	//if !v.AlphaNumeric(usernamePrefix, "username_prefix").Ok {
-	//	this.jsonError("用户名前缀格式不正确！")
+	//	this.jsonError("<LABEL_221>！")
 	//}
 	if authUrl == "" {
-		this.jsonError("认证URL不能为空！")
+		this.jsonError("<LABEL_1635>URL<LABEL_1117>！")
 	}
 	u, err := url.Parse(authUrl)
 	if err != nil || u == nil {
-		this.jsonError("认证 URL 解析错误！")
+		this.jsonError("<LABEL_1635> URL <LABEL_1199>！")
 		return
 	}
 	if !services.AuthLogin.UrlIsSupport(u.Scheme) {
-		this.jsonError("认证 URL 协议不支持！")
+		this.jsonError("<LABEL_1635> URL <LABEL_975>！")
 	}
 
 	auth, err := models.AuthModel.GetAuthByAuthId(authId)
 	if err != nil {
-		this.ErrorLog("修改登录认证 " + authId + " 失败: " + err.Error())
-		this.jsonError("修改登录认证失败！")
+		this.ErrorLog("<LABEL_831> " + authId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_441>！")
 	}
 	if len(auth) == 0 {
-		this.jsonError("登录认证不存在！")
+		this.jsonError("<LABEL_591>！")
 	}
 
 	//ok, _ := models.AuthModel.HasSameName(authId, name)
 	//if ok {
-	//	this.jsonError("登录认证名称已经存在！")
+	//	this.jsonError("<LABEL_222>！")
 	//}
 	//ok, _ = models.AuthModel.HasSameUsernamePrefix(authId, usernamePrefix)
 	//if ok {
-	//	this.jsonError("用户名前缀已经存在！")
+	//	this.jsonError("<LABEL_297>！")
 	//}
 
 	_, err = models.AuthModel.Update(authId, map[string]interface{}{
@@ -188,68 +188,68 @@ func (this *AuthController) Modify() {
 	})
 
 	if err != nil {
-		this.ErrorLog("修改登录认证 " + authId + " 失败：" + err.Error())
-		this.jsonError("修改登录认证失败")
+		this.ErrorLog("<LABEL_831> " + authId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_441>")
 	}
-	this.InfoLog("修改登录认证 " + authId + " 成功")
-	this.jsonSuccess("修改登录认证成功", nil, "/system/auth/list")
+	this.InfoLog("<LABEL_831> " + authId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_442>", nil, "/system/auth/list")
 }
 
 func (this *AuthController) Delete() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/auth/list")
+		this.ViewError("<LABEL_705>！", "/system/auth/list")
 	}
 	authId := this.GetString("login_auth_id", "")
 	if authId == "" {
-		this.jsonError("没有选择登录认证！")
+		this.jsonError("<LABEL_443>！")
 	}
 
 	auth, err := models.AuthModel.GetAuthByAuthId(authId)
 	if err != nil {
-		this.ErrorLog("删除登录认证 " + authId + " 失败: " + err.Error())
-		this.jsonError("删除登录认证失败")
+		this.ErrorLog("<LABEL_832> " + authId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_444>")
 	}
 	if len(auth) == 0 {
-		this.jsonError("登录认证不存在")
+		this.jsonError("<LABEL_591>")
 	}
 
 	err = models.AuthModel.Delete(authId)
 	if err != nil {
-		this.ErrorLog("删除登录认证 " + authId + " 失败: " + err.Error())
-		this.jsonError("删除登录认证失败")
+		this.ErrorLog("<LABEL_832> " + authId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_444>")
 	}
 
-	this.InfoLog("删除登录认证 " + authId + " 成功")
-	this.jsonSuccess("删除登录认证成功", nil, "/system/auth/list")
+	this.InfoLog("<LABEL_832> " + authId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_445>", nil, "/system/auth/list")
 }
 
 func (this *AuthController) Used() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/auth/list")
+		this.ViewError("<LABEL_705>！", "/system/auth/list")
 	}
 	authId := this.GetString("login_auth_id", "")
 	if authId == "" {
-		this.jsonError("没有选择登录认证！")
+		this.jsonError("<LABEL_443>！")
 	}
 
 	auth, err := models.AuthModel.GetAuthByAuthId(authId)
 	if err != nil {
-		this.ErrorLog("登录认证 " + authId + " 启用失败: " + err.Error())
-		this.jsonError("登录认证启用失败")
+		this.ErrorLog("<LABEL_1200> " + authId + " <LABEL_1184>: " + err.Error())
+		this.jsonError("<LABEL_446>")
 	}
 	if len(auth) == 0 {
-		this.jsonError("登录认证不存在")
+		this.jsonError("<LABEL_591>")
 	}
 	_, err = models.AuthModel.SetAuthUsed(authId)
 	if err != nil {
-		this.ErrorLog("登录认证 " + authId + " 启用失败: " + err.Error())
-		this.jsonError("登录认证启用失败")
+		this.ErrorLog("<LABEL_1200> " + authId + " <LABEL_1184>: " + err.Error())
+		this.jsonError("<LABEL_446>")
 	}
 
-	this.InfoLog("启用登录认证 " + authId + " 成功")
-	this.jsonSuccess("启用登录认证成功", nil, "/system/auth/list")
+	this.InfoLog("<LABEL_833> " + authId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_447>", nil, "/system/auth/list")
 }
 
 func (this *AuthController) Doc() {

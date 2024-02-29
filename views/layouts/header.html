@@ -14,15 +14,15 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li {{if eq .navName "main"}}class="active"{{end}}><a href="/"><i class="fa fa-home"></i>&nbsp;主页</a></li>
-                    <li {{if eq .navName "space"}}class="active"{{end}}><a href="/space/index"><i class="fa fa-cube"></i>&nbsp;空间</a></li>
-                    <li {{if eq .navName "user"}}class="active"{{end}}><a href="/user/index"><i class="fa fa-user "></i>&nbsp;用户</a></li>
-                    <li {{if eq .navName "system"}}class="active"{{end}}><a href="/system/main/index"><i class="fa fa-cog"></i>&nbsp;系统</a></li>
+                    <li {{if eq .navName "main"}}class="active"{{end}}><a href="/"><i class="fa fa-home"></i>&nbsp;<LABEL_1720></a></li>
+                    <li {{if eq .navName "space"}}class="active"{{end}}><a href="/space/index"><i class="fa fa-cube"></i>&nbsp;<LABEL_1624></a></li>
+                    <li {{if eq .navName "user"}}class="active"{{end}}><a href="/user/index"><i class="fa fa-user "></i>&nbsp;<LABEL_1631></a></li>
+                    <li {{if eq .navName "system"}}class="active"{{end}}><a href="/system/main/index"><i class="fa fa-cog"></i>&nbsp;<LABEL_1690></a></li>
                 </ul>
                 <form class="navbar-form navbar-left visible-md visible-lg" action="#" method="post">
                     <div class="form-group has-feedback">
                         <div class="input-group input-group-sm" style="width: 320px">
-                            <input class="form-control input-sm" name="keyword" type="text" onkeydown="KeyDown('#search_btn')" placeholder="请输入关键字搜索...">
+                            <input class="form-control input-sm" name="keyword" type="text" onkeydown="KeyDown('#search_btn')" placeholder="<LABEL_163>">
                             <span class="input-group-btn" style="width: 30px">
                                 <button class="btn btn-primary" type="button" name="search" id="search_btn" onclick="mainSearch(this.form, '/main/search')"><i class="fa fa-search"></i></button>
                             </span>
@@ -36,14 +36,14 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a type="button" data-toggle="web-popover" data-placement="bottom">
-                            <span class="fa fa-question-circle"></span>&nbsp;帮助
+                            <span class="fa fa-question-circle"></span>&nbsp;<LABEL_1673>
                             <span class="caret"></span>
                         </a>
                         <div class="webui-popover-content">
                             <ul class="dropdown-menu webui-popover-menu">
-                                <li><a href="https://github.com/phachon/mm-wiki/issues" target="_blank"><span class="fa fa-question-circle"></span>&nbsp;问题反馈</a></li>
-                                <li><a href="https://github.com/phachon/mm-wiki" target="_blank"><span class="fa fa-book"></span>&nbsp;在线文档</a></li>
-                                <li><a name="about" data-link="/main/about"><span class="fa fa-send"></span>&nbsp;关于软件</a></li>
+                                <li><a href="https://github.com/phachon/mm-wiki/issues" target="_blank"><span class="fa fa-question-circle"></span>&nbsp;<LABEL_1234></a></li>
+                                <li><a href="https://github.com/phachon/mm-wiki" target="_blank"><span class="fa fa-book"></span>&nbsp;<LABEL_1235></a></li>
+                                <li><a name="about" data-link="/main/about"><span class="fa fa-send"></span>&nbsp;<LABEL_1341></a></li>
                             </ul>
                         </div>
                     </li>
@@ -54,9 +54,9 @@
                         </a>
                         <div class="webui-popover-content">
                             <ul class="dropdown-menu webui-popover-menu">
-                                <li><a href="/system/main/index"><span class="glyphicon glyphicon-leaf"></span>&nbsp;个人中心</a></li>
-                                <li><a name="repass" data-link="/system/profile/password"><span class="glyphicon glyphicon-lock"></span>&nbsp;修改密码</a></li>
-                                <li><a href="/author/logout"><span class="glyphicon glyphicon-off"></span>&nbsp;安全退出</a></li>
+                                <li><a href="/system/main/index"><span class="glyphicon glyphicon-leaf"></span>&nbsp;<LABEL_1342></a></li>
+                                <li><a name="repass" data-link="/system/profile/password"><span class="glyphicon glyphicon-lock"></span>&nbsp;<LABEL_1343></a></li>
+                                <li><a href="/author/logout"><span class="glyphicon glyphicon-off"></span>&nbsp;<LABEL_1344></a></li>
                             </ul>
                         </div>
                     </li>
@@ -85,7 +85,7 @@
         layer.open({
             type: 2,
             skin: Layers.skin,
-            title: '<strong>搜索文档</strong>',
+            title: '<strong><LABEL_1345></strong>',
             shadeClose: true,
             shade : 0.6,
             maxmin: true,
@@ -94,6 +94,6 @@
             padding:"10px"
         });
     }
-    Layers.bindIframe("a[name='repass']", "修改密码", "325px", "800px");
-    Layers.bindIframe("a[name='about']", "关于MM-Wiki", "338px", "600px");
+    Layers.bindIframe("a[name='repass']", "<LABEL_1343>", "325px", "800px");
+    Layers.bindIframe("a[name='about']", "<LABEL_1721>MM-Wiki", "338px", "600px");
 </script>

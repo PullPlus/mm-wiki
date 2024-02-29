@@ -4,8 +4,8 @@
         <div class="panel-body">
             <div class="row">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="/attachment/page?document_id={{$documentId}}">附件</a></li>
-                    <li><a href="/attachment/image?document_id={{$documentId}}">图片</a></li>
+                    <li class="active"><a href="/attachment/page?document_id={{$documentId}}"><LABEL_1620></a></li>
+                    <li><a href="/attachment/image?document_id={{$documentId}}"><LABEL_1650></a></li>
                 </ul>
             </div>
         </div>
@@ -22,10 +22,10 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <td class="text-left"><strong>文件名</strong></td>
-                    <td class="w15p text-left"><strong>上传用户</strong></td>
-                    <td class="w20p text-left"><strong>上传时间</strong></td>
-                    <td class="w11p center"><strong>操作</strong></td>
+                    <td class="text-left"><strong><LABEL_1524></strong></td>
+                    <td class="w15p text-left"><strong><LABEL_1238></strong></td>
+                    <td class="w20p text-left"><strong><LABEL_1239></strong></td>
+                    <td class="w11p center"><strong><LABEL_1659></strong></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,7 +36,7 @@
                         <td>{{dateFormat $attachment.create_time "Y-m-d H:i:s"}}</td>
                         <td class="center">
                             {{if eq $isDelete true}}
-                            <a onclick="Layers.confirm('确定删除附件吗？', '/attachment/delete?attachment_id={{$attachment.attachment_id}}');"><i class="glyphicon glyphicon-trash"></i></a>
+                            <a onclick="Layers.confirm('<LABEL_612>？', '/attachment/delete?attachment_id={{$attachment.attachment_id}}');"><i class="glyphicon glyphicon-trash"></i></a>
                             {{end}}
                             <a href="/attachment/download?attachment_id={{$attachment.attachment_id}}"><i class="glyphicon glyphicon-download"></i></a>
                         </td>
@@ -61,7 +61,7 @@
         uploadExtraData: {
             document_id: "{{$documentId}}",
         },
-        msgUploadEnd: "上传完成",
+        msgUploadEnd: "<LABEL_1240>",
         elErrorContainer: "#failedBox"
     };
     var attachmentObj = $("#attach_upload").fileinput(attachmentOption);

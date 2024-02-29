@@ -25,58 +25,58 @@ func (this *PageController) View() {
 
 	documentId := this.GetString("document_id", "")
 	if documentId == "" {
-		this.ViewError("文档未找到！")
+		this.ViewError("<LABEL_972>！")
 	}
 
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(document) == 0 {
-		this.ViewError("文档不存在！")
+		this.ViewError("<LABEL_965>！")
 	}
 
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 所在空间失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_719>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(space) == 0 {
-		this.ViewError("文档所在空间不存在！")
+		this.ViewError("<LABEL_254>！")
 	}
 	// check space visit_level
 	isVisit, isEditor, _ := this.GetDocumentPrivilege(space)
 	if !isVisit {
-		this.ViewError("您没有权限访问该空间！")
+		this.ViewError("<LABEL_199>！")
 	}
 
 	// get parent documents by document
 	parentDocuments, pageFile, err := models.DocumentModel.GetParentDocumentsByDocument(document)
 	if err != nil {
-		this.ErrorLog("查找父文档失败：" + err.Error())
-		this.ViewError("查找父文档失败！")
+		this.ErrorLog("<LABEL_550>：" + err.Error())
+		this.ViewError("<LABEL_550>！")
 	}
 	if len(parentDocuments) == 0 {
-		this.ViewError("父文档不存在！")
+		this.ViewError("<LABEL_723>！")
 	}
 
 	// get document content
 	documentContent, err := utils.Document.GetContentByPageFile(pageFile)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("文档不存在！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_965>！")
 	}
 
 	// get edit user and create user
 	users, err := models.UserModel.GetUsersByUserIds([]string{document["create_user_id"], document["edit_user_id"]})
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(users) == 0 {
-		this.ViewError("文档创建用户不存在！")
+		this.ViewError("<LABEL_266>！")
 	}
 
 	var createUser = map[string]string{}
@@ -93,8 +93,8 @@ func (this *PageController) View() {
 	collectionId := "0"
 	collection, err := models.CollectionModel.GetCollectionByUserIdTypeAndResourceId(this.UserId, models.Collection_Type_Doc, documentId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("文档查找失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_750>！")
 	}
 	if len(collection) > 0 {
 		collectionId = collection["collection_id"]
@@ -116,45 +116,45 @@ func (this *PageController) Edit() {
 
 	documentId := this.GetString("document_id", "")
 	if documentId == "" {
-		this.ViewError("文档未找到！")
+		this.ViewError("<LABEL_972>！")
 	}
 
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("修改文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("修改文档失败！")
+		this.ErrorLog("<LABEL_1155> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_751>！")
 	}
 	if len(document) == 0 {
-		this.ViewError("文档不存在！")
+		this.ViewError("<LABEL_965>！")
 	}
 
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("修改文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("修改文档失败！")
+		this.ErrorLog("<LABEL_1155> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_751>！")
 	}
 	if len(space) == 0 {
-		this.ViewError("文档所在空间不存在！")
+		this.ViewError("<LABEL_254>！")
 	}
 	// check space visit_level
 	_, isEditor, _ := this.GetDocumentPrivilege(space)
 	if !isEditor {
-		this.ViewError("您没有权限修改该空间下文档！")
+		this.ViewError("<LABEL_59>！")
 	}
 
 	// get parent documents by document
 	_, pageFile, err := models.DocumentModel.GetParentDocumentsByDocument(document)
 	if err != nil {
-		this.ErrorLog("查找父文档失败：" + err.Error())
-		this.ViewError("查找父文档失败！")
+		this.ErrorLog("<LABEL_550>：" + err.Error())
+		this.ViewError("<LABEL_550>！")
 	}
 
 	// get document content
 	documentContent, err := utils.Document.GetContentByPageFile(pageFile)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("文档不存在！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_965>！")
 	}
 
 	autoFollowDoc := models.ConfigModel.GetConfigValueByKey(models.ConfigKeyAutoFollowdoc, "0")
@@ -171,7 +171,7 @@ func (this *PageController) Edit() {
 func (this *PageController) Modify() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/space/index")
+		this.ViewError("<LABEL_705>！", "/space/index")
 	}
 	documentId := this.GetString("document_id", "")
 	newName := strings.TrimSpace(this.GetString("name", ""))
@@ -184,47 +184,47 @@ func (this *PageController) Modify() {
 	this.Ctx.Request.PostForm.Del("document_page_editor-markdown-doc")
 
 	if documentId == "" {
-		this.jsonError("您没有选择文档！")
+		this.jsonError("<LABEL_559>！")
 	}
 	if newName == "" {
-		this.jsonError("文档名称不能为空！")
+		this.jsonError("<LABEL_366>！")
 	}
 	match, err := regexp.MatchString(`[\\\\/:*?\"<>、|]`, newName)
 	if err != nil {
-		this.jsonError("文档名称格式不正确！")
+		this.jsonError("<LABEL_256>！")
 	}
 	if match {
-		this.jsonError("文档名称格式不正确！")
+		this.jsonError("<LABEL_256>！")
 	}
 	if newName == utils.Document_Default_FileName {
-		this.jsonError("文档名称不能为 " + utils.Document_Default_FileName + " ！")
+		this.jsonError("<LABEL_552> " + utils.Document_Default_FileName + " ！")
 	}
 	//if comment == "" {
-	//	this.jsonError("必须输入此次修改的备注！")
+	//	this.jsonError("<LABEL_127>！")
 	//}
 
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("修改文档 " + documentId + " 失败：" + err.Error())
-		this.jsonError("保存文档失败！")
+		this.ErrorLog("<LABEL_1155> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_752>！")
 	}
 	if len(document) == 0 {
-		this.jsonError("文档不存在！")
+		this.jsonError("<LABEL_965>！")
 	}
 
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("修改文档 " + documentId + " 失败：" + err.Error())
-		this.jsonError("保存文档失败！")
+		this.ErrorLog("<LABEL_1155> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_752>！")
 	}
 	if len(space) == 0 {
-		this.jsonError("文档所在空间不存在！")
+		this.jsonError("<LABEL_254>！")
 	}
 	// check space document privilege
 	_, isEditor, _ := this.GetDocumentPrivilege(space)
 	if !isEditor {
-		this.jsonError("您没有权限修改该空间下文档！")
+		this.jsonError("<LABEL_59>！")
 	}
 
 	// not allow update space document home page name
@@ -236,11 +236,11 @@ func (this *PageController) Modify() {
 		newDocument, err := models.DocumentModel.GetDocumentByNameParentIdAndSpaceId(newName,
 			document["parent_id"], document["space_id"], utils.Convert.StringToInt(document["type"]))
 		if err != nil {
-			this.ErrorLog("修改文档失败：" + err.Error())
-			this.jsonError("保存文档失败！")
+			this.ErrorLog("<LABEL_751>：" + err.Error())
+			this.jsonError("<LABEL_752>！")
 		}
 		if len(newDocument) != 0 {
-			this.jsonError("该文档名称已经存在！")
+			this.jsonError("<LABEL_257>！")
 		}
 	}
 
@@ -251,8 +251,8 @@ func (this *PageController) Modify() {
 	}
 	_, err = models.DocumentModel.UpdateDBAndFile(documentId, spaceId, document, documentContent, updateValue, comment)
 	if err != nil {
-		this.ErrorLog("修改文档 " + documentId + " 失败：" + err.Error())
-		this.jsonError("修改文档失败！")
+		this.ErrorLog("<LABEL_1155> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_751>！")
 	}
 
 	// send email to follow user
@@ -262,10 +262,10 @@ func (this *PageController) Modify() {
 		go func(documentId string, username string, comment string, url string) {
 			err := sendEmail(documentId, username, comment, url)
 			if err != nil {
-				logInfo["message"] = "更新文档时发送邮件通知失败：" + err.Error()
+				logInfo["message"] = "<LABEL_60>：" + err.Error()
 				logInfo["level"] = models.Log_Level_Error
 				models.LogModel.Insert(logInfo)
-				logs.Error("更新文档时发送邮件通知失败：" + err.Error())
+				logs.Error("<LABEL_60>：" + err.Error())
 			}
 		}(documentId, this.User["username"], comment, url)
 	}
@@ -275,13 +275,13 @@ func (this *PageController) Modify() {
 			_, _ = models.FollowModel.FollowDocument(userId, documentId)
 		}(this.UserId, documentId)
 	}
-	// 更新文档索引
+	// <LABEL_753>
 	go func(documentId string) {
 		_ = services.DocIndexService.ForceUpdateDocIndexByDocId(documentId)
 	}(documentId)
 
-	this.InfoLog("修改文档 " + documentId + " 成功")
-	this.jsonSuccess("文档修改成功！", nil, "/document/index?document_id="+documentId)
+	this.InfoLog("<LABEL_1155> " + documentId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_754>！", nil, "/document/index?document_id="+documentId)
 }
 
 // document share display
@@ -289,59 +289,59 @@ func (this *PageController) Display() {
 
 	documentId := this.GetString("document_id", "")
 	if documentId == "" {
-		this.ViewError("文档未找到！")
+		this.ViewError("<LABEL_972>！")
 	}
 
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(document) == 0 {
-		this.ViewError("文档不存在！")
+		this.ViewError("<LABEL_965>！")
 	}
 
 	// get document space
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("分享文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("保存文档失败！")
+		this.ErrorLog("<LABEL_1156> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_752>！")
 	}
 	if len(space) == 0 {
-		this.ViewError("文档所在空间不存在！")
+		this.ViewError("<LABEL_254>！")
 	}
 
 	// check space is allow display
 	if space["is_share"] != fmt.Sprintf("%d", models.Space_Share_True) {
-		this.ViewError("该文档不能被分享！")
+		this.ViewError("<LABEL_383>！")
 	}
 
 	// get parent documents by document
 	parentDocuments, pageFile, err := models.DocumentModel.GetParentDocumentsByDocument(document)
 	if err != nil {
-		this.ErrorLog("查找父文档失败：" + err.Error())
-		this.ViewError("查找父文档失败！")
+		this.ErrorLog("<LABEL_550>：" + err.Error())
+		this.ViewError("<LABEL_550>！")
 	}
 	if len(parentDocuments) == 0 {
-		this.ViewError("父文档不存在！")
+		this.ViewError("<LABEL_723>！")
 	}
 
 	// get document content
 	documentContent, err := utils.Document.GetContentByPageFile(pageFile)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 内容失败：" + err.Error())
-		this.ViewError("文档不存在！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1157>：" + err.Error())
+		this.ViewError("<LABEL_965>！")
 	}
 
 	// get edit user and create user
 	users, err := models.UserModel.GetUsersByUserIds([]string{document["create_user_id"], document["edit_user_id"]})
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(users) == 0 {
-		this.ViewError("文档创建用户不存在！")
+		this.ViewError("<LABEL_266>！")
 	}
 
 	var createUser = map[string]string{}
@@ -368,47 +368,47 @@ func (this *PageController) Export() {
 
 	documentId := this.GetString("document_id", "")
 	if documentId == "" {
-		this.ViewError("文档未找到！")
+		this.ViewError("<LABEL_972>！")
 	}
 
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_1618>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(document) == 0 {
-		this.ViewError("文档不存在！")
+		this.ViewError("<LABEL_965>！")
 	}
 
 	spaceId := document["space_id"]
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("查找文档 " + documentId + " 所在空间失败：" + err.Error())
-		this.ViewError("查找文档失败！")
+		this.ErrorLog("<LABEL_1132> " + documentId + " <LABEL_719>：" + err.Error())
+		this.ViewError("<LABEL_718>！")
 	}
 	if len(space) == 0 {
-		this.ViewError("文档所在空间不存在！")
+		this.ViewError("<LABEL_254>！")
 	}
 
 	// check space document privilege
 	isVisit, _, _ := this.GetDocumentPrivilege(space)
 	if !isVisit {
-		this.ViewError("您没有权限导出该空间下文档！")
+		this.ViewError("<LABEL_61>！")
 	}
 
 	// check space is allow export
 	if space["is_export"] != fmt.Sprintf("%d", models.Space_Download_True) {
-		this.ViewError("该文档不允许被导出！")
+		this.ViewError("<LABEL_267>！")
 	}
 
 	// get parent documents by document
 	parentDocuments, pageFile, err := models.DocumentModel.GetParentDocumentsByDocument(document)
 	if err != nil {
-		this.ErrorLog("查找父文档失败：" + err.Error())
-		this.ViewError("查找父文档失败！")
+		this.ErrorLog("<LABEL_550>：" + err.Error())
+		this.ViewError("<LABEL_550>！")
 	}
 	if len(parentDocuments) == 0 {
-		this.ViewError("父文档不存在！")
+		this.ViewError("<LABEL_723>！")
 	}
 
 	packFiles := []*utils.CompressFileInfo{}
@@ -423,8 +423,8 @@ func (this *PageController) Export() {
 	// get document attachments
 	attachments, err := models.AttachmentModel.GetAttachmentsByDocumentId(documentId)
 	if err != nil {
-		this.ErrorLog("查找文档附件失败：" + err.Error())
-		this.ViewError("查找文档附件失败！")
+		this.ErrorLog("<LABEL_374>：" + err.Error())
+		this.ViewError("<LABEL_374>！")
 	}
 	for _, attachment := range attachments {
 		if attachment["path"] == "" {
@@ -441,8 +441,8 @@ func (this *PageController) Export() {
 	var dest = fmt.Sprintf("%s/mm_wiki/%s.zip", os.TempDir(), document["name"])
 	err = utils.Zipx.PackFile(packFiles, dest)
 	if err != nil {
-		this.ErrorLog("导出文档附件失败：" + err.Error())
-		this.ViewError("导出文档失败！")
+		this.ErrorLog("<LABEL_384>：" + err.Error())
+		this.ViewError("<LABEL_755>！")
 	}
 
 	this.Ctx.Output.Download(dest, document["name"]+".zip")
@@ -453,7 +453,7 @@ func sendEmail(documentId string, username string, comment string, url string) e
 	// get document by documentId
 	document, err := models.DocumentModel.GetDocumentByDocumentId(documentId)
 	if err != nil {
-		return errors.New("发送邮件通知查找文档失败：" + err.Error())
+		return errors.New("<LABEL_85>：" + err.Error())
 	}
 
 	// get send email open config
@@ -465,7 +465,7 @@ func sendEmail(documentId string, username string, comment string, url string) e
 	// get email config
 	emailConfig, err := models.EmailModel.GetUsedEmail()
 	if err != nil {
-		return errors.New("发送邮件通知查找邮件服务器配置失败：" + err.Error())
+		return errors.New("<LABEL_13>：" + err.Error())
 	}
 	if len(emailConfig) == 0 {
 		return nil
@@ -474,7 +474,7 @@ func sendEmail(documentId string, username string, comment string, url string) e
 	// get follow doc user
 	follows, err := models.FollowModel.GetFollowsByObjectIdAndType(documentId, models.Follow_Type_Doc)
 	if err != nil {
-		return errors.New("发送邮件查找关注文档用户失败：" + err.Error())
+		return errors.New("<LABEL_44>：" + err.Error())
 	}
 	if len(follows) == 0 {
 		return nil
@@ -485,7 +485,7 @@ func sendEmail(documentId string, username string, comment string, url string) e
 	}
 	users, err := models.UserModel.GetUsersByUserIds(userIds)
 	if err != nil {
-		return errors.New("发送邮件查找关注文档用户失败：" + err.Error())
+		return errors.New("<LABEL_44>：" + err.Error())
 	}
 	if len(users) == 0 {
 		return nil
@@ -500,15 +500,15 @@ func sendEmail(documentId string, username string, comment string, url string) e
 	// get parent documents by document
 	parentDocuments, pageFile, err := models.DocumentModel.GetParentDocumentsByDocument(document)
 	if err != nil {
-		return errors.New("查找文档内容失败: " + err.Error())
+		return errors.New("<LABEL_385>: " + err.Error())
 	}
 	if len(parentDocuments) == 0 {
-		return errors.New("查找文档内容失败")
+		return errors.New("<LABEL_385>")
 	}
 	// get document content
 	documentContent, err := utils.Document.GetContentByPageFile(pageFile)
 	if err != nil {
-		return errors.New("查找文档内容失败: " + err.Error())
+		return errors.New("<LABEL_385>: " + err.Error())
 	}
 
 	if len([]byte(documentContent)) > 500 {
@@ -524,8 +524,8 @@ func sendEmail(documentId string, username string, comment string, url string) e
 	emailTemplate := beego.BConfig.WebConfig.ViewsPath + "/system/email/template.html"
 	body, err := utils.Email.MakeDocumentHtmlBody(documentValue, emailTemplate)
 	if err != nil {
-		return errors.New("发送邮件生成模板失败：" + err.Error())
+		return errors.New("<LABEL_200>：" + err.Error())
 	}
 	// start send email
-	return utils.Email.Send(emailConfig, emails, "文档更新通知", body)
+	return utils.Email.Send(emailConfig, emails, "<LABEL_756>", body)
 }

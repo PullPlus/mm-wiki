@@ -45,15 +45,15 @@ func (ah *AuthLoinHttpService) AuthLogin(username string, password string) (*Aut
 		return nil, err
 	}
 	if len(body) == 0 {
-		return nil, fmt.Errorf("登录认证失败, httpCode=%d", code)
+		return nil, fmt.Errorf("<LABEL_564> httpCode=%d", code)
 	}
 	v := &AuthLoginHttpRes{}
 	err = json.Unmarshal(body, &v)
 	if err != nil {
-		return nil, fmt.Errorf("登录认证失败，返回结果不合法 err=%s", err.Error())
+		return nil, fmt.Errorf("<LABEL_772>，<LABEL_565> err=%s", err.Error())
 	}
 	if v.Message != "" {
-		return nil, fmt.Errorf("登录认证失败, message=%s", v.Message)
+		return nil, fmt.Errorf("<LABEL_564> message=%s", v.Message)
 	}
 	return v.Data, nil
 }

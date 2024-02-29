@@ -21,41 +21,41 @@ func (this *StaticController) Default() {
 
 	normalUserCount, err := models.UserModel.CountNormalUsers()
 	if err != nil {
-		this.ErrorLog("查找正常用户数出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_293>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 
 	forbiddenUserCount, err := models.UserModel.CountForbiddenUsers()
 	if err != nil {
-		this.ErrorLog("查找屏蔽用户数出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_294>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 
 	spaceCount, err := models.SpaceModel.CountSpaces()
 	if err != nil {
-		this.ErrorLog("查找空间总数出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_431>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 
 	documentCount, err := models.DocumentModel.CountDocuments()
 	if err != nil {
-		this.ErrorLog("查找文档总数出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_432>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 
 	time.Now().Unix()
 	today := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 0, 0, 0, 0, time.Local).Unix()
 	todayLoginUserCount, err := models.UserModel.CountUsersByLastTime(today)
 	if err != nil {
-		this.ErrorLog("查找今日登录用户数出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_143>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 
 	createUserId := "0"
 	createUserIds, err := models.DocumentModel.GetDocumentGroupCreateUserId()
 	if err != nil {
-		this.ErrorLog("查找创建文档最多用户出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_93>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 	if len(createUserIds) > 0 {
 		createUserId = createUserIds[0]["create_user_id"]
@@ -64,8 +64,8 @@ func (this *StaticController) Default() {
 	editUserId := "0"
 	editUserIds, err := models.DocumentModel.GetDocumentGroupEditUserId()
 	if err != nil {
-		this.ErrorLog("查找修改文档最多用户出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_94>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 	if len(editUserIds) > 0 {
 		editUserId = editUserIds[0]["edit_user_id"]
@@ -74,8 +74,8 @@ func (this *StaticController) Default() {
 	collectUserId := "0"
 	collectUserIds, err := models.CollectionModel.GetCollectionGroupUserId(models.Collection_Type_Doc)
 	if err != nil {
-		this.ErrorLog("查找收藏文档最多用户出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_95>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 	if len(collectUserIds) > 0 {
 		collectUserId = collectUserIds[0]["user_id"]
@@ -84,8 +84,8 @@ func (this *StaticController) Default() {
 	fansUserId := "0"
 	fansUserIds, err := models.FollowModel.GetFansUserGroupUserId()
 	if err != nil {
-		this.ErrorLog("查找粉丝数最多用户出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_144>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 	if len(fansUserIds) > 0 {
 		fansUserId = fansUserIds[0]["object_id"]
@@ -94,8 +94,8 @@ func (this *StaticController) Default() {
 	userIds := []string{createUserId, editUserId, collectUserId, fansUserId}
 	users, err := models.UserModel.GetUsersByUserIds(userIds)
 	if err != nil {
-		this.ErrorLog("查找文档总数出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_432>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 
 	var createMaxUser = map[string]string{"user_id": createUserId, "username": ""}
@@ -137,8 +137,8 @@ func (this *StaticController) SpaceDocsRank() {
 	spaceDocsRank := []map[string]string{}
 	spaceDocCountIds, err := models.DocumentModel.GetSpaceIdsOrderByCountDocumentLimit(number)
 	if err != nil {
-		this.ErrorLog("查找空间文档排行出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_217>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 	if len(spaceDocCountIds) > 0 {
 		spaceIds := []string{}
@@ -147,8 +147,8 @@ func (this *StaticController) SpaceDocsRank() {
 		}
 		spaces, err := models.SpaceModel.GetSpaceBySpaceIds(spaceIds)
 		if err != nil {
-			this.ErrorLog("查找空间文档排行出错：" + err.Error())
-			this.jsonError("查找数据出错")
+			this.ErrorLog("<LABEL_217>：" + err.Error())
+			this.jsonError("<LABEL_823>")
 		}
 		for _, spaceDocCountId := range spaceDocCountIds {
 			spaceDocCount := map[string]string{
@@ -174,8 +174,8 @@ func (this *StaticController) CollectDocRank() {
 	collectDocsRank := []map[string]string{}
 	collectionDocIds, err := models.CollectionModel.GetResourceIdsOrderByCountLimit(number, models.Collection_Type_Doc)
 	if err != nil {
-		this.ErrorLog("查找收藏文档排行出错：" + err.Error())
-		this.jsonError("查找数据出错")
+		this.ErrorLog("<LABEL_218>：" + err.Error())
+		this.jsonError("<LABEL_823>")
 	}
 	if len(collectionDocIds) > 0 {
 		documentIds := []string{}
@@ -184,8 +184,8 @@ func (this *StaticController) CollectDocRank() {
 		}
 		documents, err := models.DocumentModel.GetDocumentsByDocumentIds(documentIds)
 		if err != nil {
-			this.ErrorLog("查找收藏文档排行出错：" + err.Error())
-			this.jsonError("查找数据出错")
+			this.ErrorLog("<LABEL_218>：" + err.Error())
+			this.jsonError("<LABEL_823>")
 		}
 		for _, collectionDocId := range collectionDocIds {
 			collectDocCount := map[string]string{
@@ -212,8 +212,8 @@ func (this *StaticController) DocCountByTime() {
 
 	documentCountDate, err := models.DocumentModel.GetCountGroupByCreateTime(startTime)
 	if err != nil {
-		this.ErrorLog("查找文档数量增长趋势出错：" + err.Error())
-		this.jsonError("查找文档数量增长趋势出错")
+		this.ErrorLog("<LABEL_96>：" + err.Error())
+		this.jsonError("<LABEL_96>")
 	}
 
 	this.jsonSuccess("ok", documentCountDate)
@@ -223,7 +223,7 @@ func (this *StaticController) Monitor() {
 
 	hostInfo, err := host.Info()
 	if err != nil {
-		this.ErrorLog("获取服务器数据错误")
+		this.ErrorLog("<LABEL_295>")
 	}
 
 	serverInfo := map[string]string{
@@ -236,12 +236,12 @@ func (this *StaticController) Monitor() {
 
 	errorLogCount, err := models.LogModel.CountLogsByLevel(models.Log_Level_Error)
 	if err != nil {
-		this.ErrorLog("获取数据错误")
+		this.ErrorLog("<LABEL_824>")
 	}
 
 	errLogs, err := models.LogModel.GetLogsByKeywordAndLimit(fmt.Sprintf("%d", models.Log_Level_Error), "", "", 0, 5)
 	if err != nil {
-		this.ErrorLog("获取数据错误")
+		this.ErrorLog("<LABEL_824>")
 	}
 	this.Data["serverInfo"] = serverInfo
 	this.Data["errorLogCount"] = errorLogCount

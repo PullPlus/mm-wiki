@@ -1,6 +1,6 @@
 
 if(!window.localStorage){
-    alert("浏览器支持localstorage");
+    alert("<LABEL_1108>localstorage");
 }
 
 var Storage = {

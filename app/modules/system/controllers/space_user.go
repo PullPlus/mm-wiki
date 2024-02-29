@@ -13,37 +13,37 @@ type Space_UserController struct {
 func (this *Space_UserController) Save() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/space/list")
+		this.ViewError("<LABEL_705>！", "/system/space/list")
 	}
 	spaceId := strings.TrimSpace(this.GetString("space_id", ""))
 	userId := this.GetString("user_id", "")
 	privilege := strings.TrimSpace(this.GetString("privilege", "0"))
 
 	if spaceId == "" {
-		this.jsonError("空间不存在！")
+		this.jsonError("<LABEL_966>！")
 	}
 	if userId == "" {
-		this.jsonError("没有选择用户！")
+		this.jsonError("<LABEL_760>！")
 	}
 	if privilege == "" {
-		this.jsonError("没有选择用户空间权限！")
+		this.jsonError("<LABEL_207>！")
 	}
 	space, err := models.SpaceModel.GetSpaceBySpaceId(spaceId)
 	if err != nil {
-		this.ErrorLog("添加空间 " + spaceId + " 成员 " + userId + " 失败: " + err.Error())
-		this.jsonError("添加空间成员失败！")
+		this.ErrorLog("<LABEL_1160> " + spaceId + " <LABEL_1623> " + userId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_392>！")
 	}
 	if len(space) == 0 {
-		this.jsonError("空间不存在！")
+		this.jsonError("<LABEL_966>！")
 	}
 
 	spaceUser, err := models.SpaceUserModel.GetSpaceUserBySpaceIdAndUserId(spaceId, userId)
 	if err != nil {
-		this.ErrorLog("添加空间 " + spaceId + " 成员 " + userId + " 失败: " + err.Error())
-		this.jsonError("添加空间成员失败！")
+		this.ErrorLog("<LABEL_1160> " + spaceId + " <LABEL_1623> " + userId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_392>！")
 	}
 	if len(spaceUser) > 0 {
-		this.jsonError("该用户已经是空间成员！")
+		this.jsonError("<LABEL_208>！")
 	}
 
 	insertValue := map[string]interface{}{
@@ -53,47 +53,47 @@ func (this *Space_UserController) Save() {
 	}
 	_, err = models.SpaceUserModel.Insert(insertValue)
 	if err != nil {
-		this.ErrorLog("空间 " + spaceId + " 添加成员 " + userId + " 失败: " + err.Error())
-		this.jsonError("添加成员失败！")
+		this.ErrorLog("<LABEL_1624> " + spaceId + " <LABEL_1162> " + userId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_761>！")
 	}
 
-	this.InfoLog("空间 " + spaceId + " 添加成员 " + userId + " 成功")
-	this.jsonSuccess("添加成员成功！", nil, "/system/space/member?space_id="+spaceId)
+	this.InfoLog("<LABEL_1624> " + spaceId + " <LABEL_1162> " + userId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_762>！", nil, "/system/space/member?space_id="+spaceId)
 }
 
 func (this *Space_UserController) Remove() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/space/list")
+		this.ViewError("<LABEL_705>！", "/system/space/list")
 	}
 	spaceId := this.GetString("space_id", "")
 	userId := this.GetString("user_id", "")
 	spaceUserId := this.GetString("space_user_id", "")
 
 	if spaceUserId == "" {
-		this.jsonError("空间成员不存在！")
+		this.jsonError("<LABEL_560>！")
 	}
 	if spaceId == "" {
-		this.jsonError("空间不存在！")
+		this.jsonError("<LABEL_966>！")
 	}
 	if userId == "" {
-		this.jsonError("用户不存在！")
+		this.jsonError("<LABEL_962>！")
 	}
 
 	err := models.SpaceUserModel.Delete(spaceUserId)
 	if err != nil {
-		this.ErrorLog("移除空间 " + spaceId + " 下成员 " + userId + " 失败：" + err.Error())
-		this.jsonError("移除成员失败！")
+		this.ErrorLog("<LABEL_1163> " + spaceId + " <LABEL_1500> " + userId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_763>！")
 	}
 
-	this.InfoLog("移除空间 " + spaceId + " 下成员 " + userId + " 成功")
-	this.jsonSuccess("移除成员成功！", nil, "/system/space/member?space_id="+spaceId)
+	this.InfoLog("<LABEL_1163> " + spaceId + " <LABEL_1500> " + userId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_764>！", nil, "/system/space/member?space_id="+spaceId)
 }
 
 func (this *Space_UserController) Modify() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/space/list")
+		this.ViewError("<LABEL_705>！", "/system/space/list")
 	}
 	spaceUserId := this.GetString("space_user_id", "")
 	privilege := this.GetString("privilege", "0")
@@ -101,10 +101,10 @@ func (this *Space_UserController) Modify() {
 	spaceId := this.GetString("space_id", "")
 
 	if spaceUserId == "" {
-		this.jsonError("更新权限错误！")
+		this.jsonError("<LABEL_765>！")
 	}
 	if privilege == "" {
-		this.jsonError("没有选择权限！")
+		this.jsonError("<LABEL_766>！")
 	}
 
 	_, err := models.SpaceUserModel.Update(spaceUserId, map[string]interface{}{
@@ -112,10 +112,10 @@ func (this *Space_UserController) Modify() {
 		"update_time": time.Now().Unix(),
 	})
 	if err != nil {
-		this.ErrorLog("更新空间 " + spaceId + " 下成员 " + userId + " 权限失败：" + err.Error())
-		this.jsonError("更新权限失败！")
+		this.ErrorLog("<LABEL_1164> " + spaceId + " <LABEL_1500> " + userId + " <LABEL_1151>：" + err.Error())
+		this.jsonError("<LABEL_768>！")
 	}
 
-	this.InfoLog("更新空间 " + spaceId + " 下成员 " + userId + " 权限成功")
-	this.jsonSuccess("更新权限成功！", nil)
+	this.InfoLog("<LABEL_1164> " + spaceId + " <LABEL_1500> " + userId + " <LABEL_1165>")
+	this.jsonSuccess("<LABEL_769>！", nil)
 }

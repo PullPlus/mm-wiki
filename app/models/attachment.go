@@ -165,9 +165,9 @@ func (a *Attachment) Insert(attachmentValue map[string]interface{}, spaceId stri
 
 	// create document log
 	go func(attachmentValue map[string]interface{}, spaceId string) {
-		comment := fmt.Sprintf("上传了附件 %s", attachmentValue["name"].(string))
+		comment := fmt.Sprintf("<LABEL_992> %s", attachmentValue["name"].(string))
 		if attachmentValue["source"].(int) == Attachment_Source_Image {
-			comment = fmt.Sprintf("上传了图片 %s", attachmentValue["name"].(string))
+			comment = fmt.Sprintf("<LABEL_993> %s", attachmentValue["name"].(string))
 		}
 		_, _ = LogDocumentModel.UpdateAction(attachmentValue["user_id"].(string),
 			attachmentValue["document_id"].(string), comment, spaceId)

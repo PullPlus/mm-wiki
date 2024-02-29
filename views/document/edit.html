@@ -6,7 +6,7 @@
             <form class="form-horizontal" method="post" action="/document/modify" onsubmit="return false">
                 <input type="hidden" name="document_id" value="{{$document.document_id}}">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><span class="text-danger"> * </span> 上级</label>
+                    <label class="col-sm-2 control-label"><span class="text-danger"> * </span> <LABEL_1653></label>
                     <div class="col-sm-6 form-comment">
                         <span class="control-label">
                         {{range $parentDocument := $parentDocuments}}
@@ -20,14 +20,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label"><span class="text-danger"> * </span> 名称</label>
+                    <label class="col-sm-2 control-label"><span class="text-danger"> * </span> <LABEL_1654></label>
                     <div class="col-sm-5">
-                        <input type="text" name="name" class="form-control" placeholder="请输入文档名称" value="{{$document.name}}">
+                        <input type="text" name="name" class="form-control" placeholder="<LABEL_604>" value="{{$document.name}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" onclick="Form.ajaxSubmit(this.form, true);" class="btn btn-primary">保存</button>
+                        <button type="button" onclick="Form.ajaxSubmit(this.form, true);" class="btn btn-primary"><LABEL_1655></button>
                     </div>
                 </div>
             </form>

@@ -35,14 +35,14 @@ func (this *UserController) List() {
 		users, err = models.UserModel.GetUsersByLimit(limit, number)
 	}
 	if err != nil {
-		this.ErrorLog("获取全部用户列表失败: " + err.Error())
-		this.ViewError("获取全部用户列表失败", "/main/index")
+		this.ErrorLog("<LABEL_189>: " + err.Error())
+		this.ViewError("<LABEL_189>", "/main/index")
 	}
 
 	followUsers, err := models.FollowModel.GetFollowsByUserIdAndType(this.UserId, models.Follow_Type_User)
 	if err != nil {
-		this.ErrorLog("获取全部用户列表失败: " + err.Error())
-		this.ViewError("获取全部用户列表失败", "/main/index")
+		this.ErrorLog("<LABEL_189>: " + err.Error())
+		this.ViewError("<LABEL_189>", "/main/index")
 	}
 
 	for _, user := range users {
@@ -68,8 +68,8 @@ func (this *UserController) Follow() {
 
 	followUsers, err := models.FollowModel.GetFollowsByUserIdAndType(this.UserId, models.Follow_Type_User)
 	if err != nil {
-		this.ErrorLog("获取关注用户列表失败: " + err.Error())
-		this.ViewError("获取关注用户列表失败", "/user/list")
+		this.ErrorLog("<LABEL_190>: " + err.Error())
+		this.ViewError("<LABEL_190>", "/user/list")
 	}
 
 	userIds := []string{}
@@ -78,8 +78,8 @@ func (this *UserController) Follow() {
 	}
 	users, err := models.UserModel.GetUsersByUserIds(userIds)
 	if err != nil {
-		this.ErrorLog("获取关注用户列表失败: " + err.Error())
-		this.ViewError("获取关注用户列表失败", "/user/list")
+		this.ErrorLog("<LABEL_190>: " + err.Error())
+		this.ViewError("<LABEL_190>", "/user/list")
 	}
 	for _, user := range users {
 		user["follow_id"] = "0"
@@ -100,7 +100,7 @@ func (this *UserController) Info() {
 
 	userId := this.GetString("user_id", "")
 	if userId == "" {
-		this.ViewError("用户不存在！", "/main/index")
+		this.ViewError("<LABEL_962>！", "/main/index")
 	}
 
 	if this.UserId == userId {
@@ -109,17 +109,17 @@ func (this *UserController) Info() {
 
 	user, err := models.UserModel.GetUserByUserId(userId)
 	if err != nil {
-		this.ErrorLog("查找用户出错：" + err.Error())
-		this.ViewError("查找用户出错！", "/main/index")
+		this.ErrorLog("<LABEL_711>：" + err.Error())
+		this.ViewError("<LABEL_711>！", "/main/index")
 	}
 	if len(user) == 0 {
-		this.ViewError("用户不存在！", "/main/index")
+		this.ViewError("<LABEL_962>！", "/main/index")
 	}
 
 	logDocuments, err := models.LogDocumentModel.GetLogDocumentsByUserIdAndLimit(userId, 0, 10)
 	if err != nil {
-		this.ErrorLog("查找用户活动出错：" + err.Error())
-		this.ViewError("查找用户活动出错！", "/main/index")
+		this.ErrorLog("<LABEL_363>：" + err.Error())
+		this.ViewError("<LABEL_363>！", "/main/index")
 	}
 
 	docIds := []string{}
@@ -128,8 +128,8 @@ func (this *UserController) Info() {
 	}
 	documents, err := models.DocumentModel.GetDocumentsByDocumentIds(docIds)
 	if err != nil {
-		this.ErrorLog("查找用户活动出错: " + err.Error())
-		this.ViewError("查找用户活动出错", "/main/index")
+		this.ErrorLog("<LABEL_363>: " + err.Error())
+		this.ViewError("<LABEL_363>", "/main/index")
 	}
 
 	for _, logDocument := range logDocuments {
@@ -153,23 +153,23 @@ func (this *UserController) FollowUser() {
 
 	userId := this.GetString("user_id", "")
 	if userId == "" {
-		this.ViewError("用户不存在！", "/user/list")
+		this.ViewError("<LABEL_962>！", "/user/list")
 	}
 
 	user, err := models.UserModel.GetUserByUserId(userId)
 	if err != nil {
-		this.ErrorLog("查找用户出错：" + err.Error())
-		this.ViewError("查找用户出错！", "/user/list")
+		this.ErrorLog("<LABEL_711>：" + err.Error())
+		this.ViewError("<LABEL_711>！", "/user/list")
 	}
 	if len(user) == 0 {
-		this.ViewError("用户不存在！", "/user/list")
+		this.ViewError("<LABEL_962>！", "/user/list")
 	}
 
 	// follow users
 	followUsers, err := models.FollowModel.GetFollowsByUserIdAndType(userId, models.Follow_Type_User)
 	if err != nil {
-		this.ErrorLog("获取关注用户列表失败: " + err.Error())
-		this.ViewError("获取关注用户列表失败", "/user/list")
+		this.ErrorLog("<LABEL_190>: " + err.Error())
+		this.ViewError("<LABEL_190>", "/user/list")
 	}
 	userIds := []string{}
 	for _, followUser := range followUsers {
@@ -177,8 +177,8 @@ func (this *UserController) FollowUser() {
 	}
 	users, err := models.UserModel.GetUsersByUserIds(userIds)
 	if err != nil {
-		this.ErrorLog("获取关注用户列表失败: " + err.Error())
-		this.ViewError("获取关注用户列表失败", "/user/list")
+		this.ErrorLog("<LABEL_190>: " + err.Error())
+		this.ViewError("<LABEL_190>", "/user/list")
 	}
 	for _, user := range users {
 		user["follow_id"] = "0"
@@ -193,8 +193,8 @@ func (this *UserController) FollowUser() {
 	// fans users
 	followedUsers, err := models.FollowModel.GetFollowsByObjectIdAndType(userId, models.Follow_Type_User)
 	if err != nil {
-		this.ErrorLog("获取关注用户列表失败: " + err.Error())
-		this.ViewError("获取关注用户列表失败", "/user/list")
+		this.ErrorLog("<LABEL_190>: " + err.Error())
+		this.ViewError("<LABEL_190>", "/user/list")
 	}
 	followedUserIds := []string{}
 	for _, followedUser := range followedUsers {
@@ -202,8 +202,8 @@ func (this *UserController) FollowUser() {
 	}
 	fansUsers, err := models.UserModel.GetUsersByUserIds(followedUserIds)
 	if err != nil {
-		this.ErrorLog("获取关注用户列表失败: " + err.Error())
-		this.ViewError("获取关注用户列表失败", "/user/list")
+		this.ErrorLog("<LABEL_190>: " + err.Error())
+		this.ViewError("<LABEL_190>", "/user/list")
 	}
 
 	this.Data["users"] = users
@@ -218,22 +218,22 @@ func (this *UserController) FollowPage() {
 
 	userId := this.GetString("user_id", "")
 	if userId == "" {
-		this.ViewError("用户不存在！", "/user/list")
+		this.ViewError("<LABEL_962>！", "/user/list")
 	}
 
 	user, err := models.UserModel.GetUserByUserId(userId)
 	if err != nil {
-		this.ErrorLog("查找用户出错：" + err.Error())
-		this.ViewError("查找用户出错！", "/user/list")
+		this.ErrorLog("<LABEL_711>：" + err.Error())
+		this.ViewError("<LABEL_711>！", "/user/list")
 	}
 	if len(user) == 0 {
-		this.ViewError("用户不存在！", "/user/list")
+		this.ViewError("<LABEL_962>！", "/user/list")
 	}
 
 	followPages, err := models.FollowModel.GetFollowsByUserIdAndType(userId, models.Follow_Type_Doc)
 	if err != nil {
-		this.ErrorLog("获取用户关注页面列表失败: " + err.Error())
-		this.ViewError("获取用户关注页面列表失败", "/user/list")
+		this.ErrorLog("<LABEL_83>: " + err.Error())
+		this.ViewError("<LABEL_83>", "/user/list")
 	}
 
 	documentIds := []string{}
@@ -243,8 +243,8 @@ func (this *UserController) FollowPage() {
 
 	pages, err := models.DocumentModel.GetDocumentsByDocumentIds(documentIds)
 	if err != nil {
-		this.ErrorLog("获取用户关注页面列表失败: " + err.Error())
-		this.ViewError("获取用户关注页面列表失败", "/user/list")
+		this.ErrorLog("<LABEL_83>: " + err.Error())
+		this.ViewError("<LABEL_83>", "/user/list")
 	}
 
 	for _, page := range pages {

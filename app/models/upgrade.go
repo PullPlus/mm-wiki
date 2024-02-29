@@ -91,9 +91,9 @@ func (up *Upgrade) Start(dbVersion string) (err error) {
 func (up *Upgrade) v0ToV012() (err error) {
 
 	// 1. add privilege '/email/test'
-	// INSERT INTO mw_privilege (name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES ('测试邮件服务器', 53, 'controller', 'email', 'test', 'glyphicon-list', 0, 80, unix_timestamp(now()), unix_timestamp(now()));
+	// INSERT INTO mw_privilege (name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES ('<LABEL_601>', 53, 'controller', 'email', 'test', 'glyphicon-list', 0, 80, unix_timestamp(now()), unix_timestamp(now()));
 	privilege := map[string]interface{}{
-		"name":       "测试邮件服务器",
+		"name":       "<LABEL_601>",
 		"type":       "controller",
 		"parent_id":  53,
 		"controller": "email",
@@ -109,10 +109,10 @@ func (up *Upgrade) v0ToV012() (err error) {
 	}
 
 	// 2. table mw_email add field 'is_ssl'
-	// alter table mw_email add `is_ssl` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否使用ssl， 0 默认不使用 1 使用' after `password`
+	// alter table mw_email add `is_ssl` tinyint(1) NOT NULL DEFAULT '0' COMMENT '<LABEL_1210>ssl， 0 <LABEL_996> 1 <LABEL_1649>' after `password`
 	db := G.DB()
 	db.Exec(db.AR().Raw("alter table mw_email DROP COLUMN `is_ssl`"))
-	_, err = db.Exec(db.AR().Raw("alter table mw_email add `is_ssl` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否使用ssl， 0 默认不使用 1 使用' after `password`"))
+	_, err = db.Exec(db.AR().Raw("alter table mw_email add `is_ssl` tinyint(1) NOT NULL DEFAULT '0' COMMENT '<LABEL_1210>ssl， 0 <LABEL_996> 1 <LABEL_1649>' after `password`"))
 
 	return
 }
@@ -123,17 +123,17 @@ func (up *Upgrade) v012ToV013() error {
 	// create attachment table
 	sql := "DROP TABLE IF EXISTS `mw_attachment`;" +
 		"CREATE TABLE `mw_attachment` (" +
-		"`attachment_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '附件 id'," +
-		"`user_id` int(10) NOT NULL DEFAULT '0' COMMENT '创建用户id'," +
-		"`document_id` int(10) NOT NULL DEFAULT '0' COMMENT '所属文档id'," +
-		"`name` varchar(50) NOT NULL DEFAULT '' COMMENT '附件名称'," +
-		"`path` varchar(100) NOT NULL DEFAULT '' COMMENT '附件路径'," +
-		"`source` tinyint(1) NOT NULL DEFAULT '0' COMMENT '附件来源， 0 默认是附件 1 图片'," +
-		"`create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间'," +
-		"`update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间'," +
+		"`attachment_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '<LABEL_1620> id'," +
+		"`user_id` int(10) NOT NULL DEFAULT '0' COMMENT '<LABEL_1211>id'," +
+		"`document_id` int(10) NOT NULL DEFAULT '0' COMMENT '<LABEL_1212>id'," +
+		"`name` varchar(50) NOT NULL DEFAULT '' COMMENT '<LABEL_1213>'," +
+		"`path` varchar(100) NOT NULL DEFAULT '' COMMENT '<LABEL_1214>'," +
+		"`source` tinyint(1) NOT NULL DEFAULT '0' COMMENT '<LABEL_1215>， 0 <LABEL_997> 1 <LABEL_1650>'," +
+		"`create_time` int(11) NOT NULL DEFAULT '0' COMMENT '<LABEL_1216>'," +
+		"`update_time` int(11) NOT NULL DEFAULT '0' COMMENT '<LABEL_1217>'," +
 		"PRIMARY KEY (`attachment_id`)," +
 		"KEY (`document_id`, `source`)" +
-		") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='附件信息表';"
+		") ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='<LABEL_998>';"
 
 	return up.createTable(sql)
 }
@@ -142,18 +142,18 @@ func (up *Upgrade) v012ToV013() error {
 func (up *Upgrade) v013ToV018() error {
 	db := G.DB()
 
-	// 1. 文档日志表增加 space_id 字段
-	// `space_id` int(10) NOT NULL DEFAULT '0' COMMENT '空间id'
-	_, err := db.Exec(db.AR().Raw("alter table mw_log_document add `space_id` int(10) NOT NULL DEFAULT '0' COMMENT '空间ID'"))
+	// 1<LABEL_301> space_id <LABEL_1651>
+	// `space_id` int(10) NOT NULL DEFAULT '0' COMMENT '<LABEL_1624>id'
+	_, err := db.Exec(db.AR().Raw("alter table mw_log_document add `space_id` int(10) NOT NULL DEFAULT '0' COMMENT '<LABEL_1624>ID'"))
 	if err == nil {
-		// 文档日志表里的 space_id
+		// <LABEL_602> space_id
 		_, err = db.Exec(db.AR().Raw("update mw_log_document as logDocment, mw_document as document set logDocment.space_id = document.space_id WHERE logDocment.document_id = document.document_id"))
 		if err != nil {
 			return err
 		}
 	}
 
-	// 2. 修改文档表里的排序号，需要先判断排序号是否已经修改过（只修改sequence=0）
+	// 2<LABEL_101>，<LABEL_24>（<LABEL_1514>sequence=0）
 	_, err = db.Exec(db.AR().Raw("update mw_document set mw_document.sequence = mw_document.document_id WHERE sequence=0"))
 	if err != nil {
 		return err
@@ -164,31 +164,31 @@ func (up *Upgrade) v013ToV018() error {
 
 // upgrade v0.1.8 ~ v0.2.0
 func (up *Upgrade) v018ToV020() error {
-	// 配置表增加数据
+	// <LABEL_603>
 	db := G.DB()
 	updateTime := time.Now().Unix()
-	// 1. 配置表增加全文搜索开关
-	insertSql := fmt.Sprintf("INSERT INTO `mw_config` (name, `key`, value, create_time, update_time) VALUES ('开启全文搜索', 'fulltext_search_open', '1', %d, %d)", updateTime, updateTime)
+	// 1<LABEL_64>
+	insertSql := fmt.Sprintf("INSERT INTO `mw_config` (name, `key`, value, create_time, update_time) VALUES ('<LABEL_851>', 'fulltext_search_open', '1', %d, %d)", updateTime, updateTime)
 	_, err := db.Exec(db.AR().Raw(insertSql))
 	if err != nil {
 		return err
 	}
-	// 2. 配置表增加搜索索引时间间隔
-	insertSql = fmt.Sprintf("INSERT INTO `mw_config` (name, `key`, value, create_time, update_time) VALUES ('索引更新间隔', 'doc_search_timer', '3600', %d, %d)", updateTime, updateTime)
+	// 2<LABEL_25>
+	insertSql = fmt.Sprintf("INSERT INTO `mw_config` (name, `key`, value, create_time, update_time) VALUES ('<LABEL_852>', 'doc_search_timer', '3600', %d, %d)", updateTime, updateTime)
 	_, err = db.Exec(db.AR().Raw(insertSql))
 	if err != nil {
 		return err
 	}
-	// 3. 配置表增加系统名称配置
-	insertSql = fmt.Sprintf("INSERT INTO `mw_config` (name, `key`, value, create_time, update_time) VALUES ('系统名称', 'system_name', 'Markdown Mini Wiki', %d, %d)", updateTime, updateTime)
+	// 3<LABEL_65>
+	insertSql = fmt.Sprintf("INSERT INTO `mw_config` (name, `key`, value, create_time, update_time) VALUES ('<LABEL_1218>', 'system_name', 'Markdown Mini Wiki', %d, %d)", updateTime, updateTime)
 	_, err = db.Exec(db.AR().Raw(insertSql))
 	if err != nil {
 		return err
 	}
-	// 4. 权限表增加导入联系人权限
-	// INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (93, '导入联系人', 71, 'controller', 'contact', 'import', 'glyphicon-list', '', 0, 97, unix_timestamp(now()), unix_timestamp(now()));
+	// 4<LABEL_50>
+	// INSERT INTO mw_privilege (privilege_id, name, parent_id, type, controller, action, icon, target, is_display, sequence, create_time, update_time) VALUES (93, '<LABEL_999>', 71, 'controller', 'contact', 'import', 'glyphicon-list', '', 0, 97, unix_timestamp(now()), unix_timestamp(now()));
 	privilege := map[string]interface{}{
-		"name":       "导入联系人",
+		"name":       "<LABEL_999>",
 		"type":       "controller",
 		"parent_id":  71,
 		"controller": "contact",
@@ -241,7 +241,7 @@ func (up *Upgrade) upgradeAfter(version string) (err error) {
 	}
 	if len(config) == 0 {
 		configValue := map[string]interface{}{
-			"name":  "系统版本号",
+			"name":  "<LABEL_957>",
 			"key":   "system_version",
 			"value": version,
 		}

@@ -4,7 +4,7 @@ var Email = {
 
     // test send
     testSend : function (element, url) {
-        layer.prompt({title: '请输入收件人邮箱地址，多个以 ; 隔开', formType: 2}, function(text, index) {
+        layer.prompt({title: '<LABEL_248>，<LABEL_1603> ; <LABEL_1820>', formType: 2}, function(text, index) {
             layer.close(index);
             // $(element).attr('action', url);
             $(element).find("input[name='emails']").val(text);
@@ -15,7 +15,7 @@ var Email = {
     ajaxSubmit: function(element, url) {
 
         /**
-         * 成功信息条
+         * <LABEL_1095>
          * @param message
          * @param data
          */
@@ -24,7 +24,7 @@ var Email = {
         }
 
         /**
-         * 失败信息条
+         * <LABEL_1096>
          * @param message
          * @param data
          */

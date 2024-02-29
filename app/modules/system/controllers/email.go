@@ -28,8 +28,8 @@ func (this *EmailController) List() {
 		emails, err = models.EmailModel.GetEmails()
 	}
 	if err != nil {
-		this.ErrorLog("获取邮件服务器列表失败: " + err.Error())
-		this.ViewError("获取邮件服务器列表失败", "/system/main/index")
+		this.ErrorLog("<LABEL_136>: " + err.Error())
+		this.ViewError("<LABEL_136>", "/system/main/index")
 	}
 
 	this.Data["emails"] = emails
@@ -44,7 +44,7 @@ func (this *EmailController) Add() {
 func (this *EmailController) Save() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/email/list")
+		this.ViewError("<LABEL_705>！", "/system/email/list")
 	}
 	name := strings.TrimSpace(this.GetString("name", ""))
 	senderAddress := strings.TrimSpace(this.GetString("sender_address", ""))
@@ -57,37 +57,37 @@ func (this *EmailController) Save() {
 	isSsl := strings.TrimSpace(this.GetString("is_ssl", "0"))
 
 	if name == "" {
-		this.jsonError("邮件服务器名称不能为空！")
+		this.jsonError("<LABEL_137>！")
 	}
 	if host == "" {
-		this.jsonError("邮件服务器主机不能为空！")
+		this.jsonError("<LABEL_138>！")
 	}
 	if validation.Validate(host, is.Host) != nil {
-		this.jsonError("邮件服务器主机格式不正确！")
+		this.jsonError("<LABEL_90>！")
 	}
 	if port == "" {
-		this.jsonError("邮件服务器端口不能为空！")
+		this.jsonError("<LABEL_139>！")
 	}
 	if validation.Validate(port, is.Port) != nil {
-		this.jsonError("邮件服务器端口格式不正确！")
+		this.jsonError("<LABEL_91>！")
 	}
 	if senderAddress == "" {
-		this.jsonError("发件人邮箱不能为空！")
+		this.jsonError("<LABEL_278>！")
 	}
 	if username == "" {
-		this.jsonError("发件用户名不能为空！")
+		this.jsonError("<LABEL_279>！")
 	}
 	if password == "" {
-		this.jsonError("发件人密码不能为空！")
+		this.jsonError("<LABEL_280>！")
 	}
 
 	ok, err := models.EmailModel.HasEmailName(name)
 	if err != nil {
-		this.ErrorLog("添加邮件服务器失败：" + err.Error())
-		this.jsonError("添加邮件服务器失败！")
+		this.ErrorLog("<LABEL_281>：" + err.Error())
+		this.jsonError("<LABEL_281>！")
 	}
 	if ok {
-		this.jsonError("邮件服务器名称已经存在！")
+		this.jsonError("<LABEL_140>！")
 	}
 
 	emailId, err := models.EmailModel.Insert(map[string]interface{}{
@@ -103,23 +103,23 @@ func (this *EmailController) Save() {
 	})
 
 	if err != nil {
-		this.ErrorLog("添加邮件服务器失败：" + err.Error())
-		this.jsonError("添加邮件服务器失败")
+		this.ErrorLog("<LABEL_281>：" + err.Error())
+		this.jsonError("<LABEL_281>")
 	}
-	this.InfoLog("添加邮件服务器 " + utils.Convert.IntToString(emailId, 10) + " 成功")
-	this.jsonSuccess("添加邮件服务器成功", nil, "/system/email/list")
+	this.InfoLog("<LABEL_583> " + utils.Convert.IntToString(emailId, 10) + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_282>", nil, "/system/email/list")
 }
 
 func (this *EmailController) Edit() {
 
 	emailId := this.GetString("email_id", "")
 	if emailId == "" {
-		this.ViewError("邮件服务器不存在", "/system/email/list")
+		this.ViewError("<LABEL_418>", "/system/email/list")
 	}
 
 	email, err := models.EmailModel.GetEmailByEmailId(emailId)
 	if err != nil {
-		this.ViewError("邮件服务器不存在", "/system/email/list")
+		this.ViewError("<LABEL_418>", "/system/email/list")
 	}
 
 	this.Data["email"] = email
@@ -129,7 +129,7 @@ func (this *EmailController) Edit() {
 func (this *EmailController) Modify() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/email/list")
+		this.ViewError("<LABEL_705>！", "/system/email/list")
 	}
 	emailId := this.GetString("email_id", "")
 	name := strings.TrimSpace(this.GetString("name", ""))
@@ -143,45 +143,45 @@ func (this *EmailController) Modify() {
 	isSsl := strings.TrimSpace(this.GetString("is_ssl", "0"))
 
 	if emailId == "" {
-		this.jsonError("邮件服务器不存在！")
+		this.jsonError("<LABEL_418>！")
 	}
 	if name == "" {
-		this.jsonError("邮件服务器名称不能为空！")
+		this.jsonError("<LABEL_137>！")
 	}
 	if host == "" {
-		this.jsonError("邮件服务器主机不能为空！")
+		this.jsonError("<LABEL_138>！")
 	}
 	if validation.Validate(host, is.Host) != nil {
-		this.jsonError("邮件服务器主机格式不正确！")
+		this.jsonError("<LABEL_90>！")
 	}
 	if port == "" {
-		this.jsonError("邮件服务器端口不能为空！")
+		this.jsonError("<LABEL_139>！")
 	}
 	if validation.Validate(port, is.Port) != nil {
-		this.jsonError("邮件服务器端口格式不正确！")
+		this.jsonError("<LABEL_91>！")
 	}
 	if senderAddress == "" {
-		this.jsonError("发件人邮箱不能为空！")
+		this.jsonError("<LABEL_278>！")
 	}
 	if username == "" {
-		this.jsonError("发件用户名不能为空！")
+		this.jsonError("<LABEL_279>！")
 	}
 	if password == "" {
-		this.jsonError("发件人密码不能为空！")
+		this.jsonError("<LABEL_280>！")
 	}
 
 	email, err := models.EmailModel.GetEmailByEmailId(emailId)
 	if err != nil {
-		this.ErrorLog("修改邮件服务器 " + emailId + " 失败: " + err.Error())
-		this.jsonError("修改邮件服务器失败！")
+		this.ErrorLog("<LABEL_584> " + emailId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_283>！")
 	}
 	if len(email) == 0 {
-		this.jsonError("邮件服务器不存在！")
+		this.jsonError("<LABEL_418>！")
 	}
 
 	ok, _ := models.EmailModel.HasSameName(emailId, name)
 	if ok {
-		this.jsonError("邮件服务器名称已经存在！")
+		this.jsonError("<LABEL_140>！")
 	}
 	_, err = models.EmailModel.Update(emailId, map[string]interface{}{
 		"name":                name,
@@ -196,73 +196,73 @@ func (this *EmailController) Modify() {
 	})
 
 	if err != nil {
-		this.ErrorLog("修改邮件服务器 " + emailId + " 失败：" + err.Error())
-		this.jsonError("修改邮件服务器失败")
+		this.ErrorLog("<LABEL_584> " + emailId + " <LABEL_1618>：" + err.Error())
+		this.jsonError("<LABEL_283>")
 	}
-	this.InfoLog("修改邮件服务器 " + emailId + " 成功")
-	this.jsonSuccess("修改邮件服务器成功", nil, "/system/email/list")
+	this.InfoLog("<LABEL_584> " + emailId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_284>", nil, "/system/email/list")
 }
 
 func (this *EmailController) Used() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/email/list")
+		this.ViewError("<LABEL_705>！", "/system/email/list")
 	}
 	emailId := this.GetString("email_id", "")
 	if emailId == "" {
-		this.jsonError("没有选择邮件服务器！")
+		this.jsonError("<LABEL_285>！")
 	}
 
 	email, err := models.EmailModel.GetEmailByEmailId(emailId)
 	if err != nil {
-		this.ErrorLog("邮件服务器 " + emailId + " 启用失败: " + err.Error())
-		this.jsonError("邮件服务器启用失败")
+		this.ErrorLog("<LABEL_984> " + emailId + " <LABEL_1184>: " + err.Error())
+		this.jsonError("<LABEL_286>")
 	}
 	if len(email) == 0 {
-		this.jsonError("邮件服务器不存在")
+		this.jsonError("<LABEL_418>")
 	}
 	_, err = models.EmailModel.SetEmailUsed(emailId)
 	if err != nil {
-		this.ErrorLog("邮件服务器 " + emailId + " 启用失败: " + err.Error())
-		this.jsonError("邮件服务器启用失败")
+		this.ErrorLog("<LABEL_984> " + emailId + " <LABEL_1184>: " + err.Error())
+		this.jsonError("<LABEL_286>")
 	}
 
-	this.InfoLog("启用邮件服务器 " + emailId + " 成功")
-	this.jsonSuccess("启用邮件服务器成功", nil, "/system/email/list")
+	this.InfoLog("<LABEL_585> " + emailId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_287>", nil, "/system/email/list")
 }
 
 func (this *EmailController) Delete() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/email/list")
+		this.ViewError("<LABEL_705>！", "/system/email/list")
 	}
 	emailId := this.GetString("email_id", "")
 	if emailId == "" {
-		this.jsonError("没有选择邮件服务器！")
+		this.jsonError("<LABEL_285>！")
 	}
 
 	email, err := models.EmailModel.GetEmailByEmailId(emailId)
 	if err != nil {
-		this.ErrorLog("删除邮件服务器 " + emailId + " 失败: " + err.Error())
-		this.jsonError("删除邮件服务器失败")
+		this.ErrorLog("<LABEL_586> " + emailId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_288>")
 	}
 	if len(email) == 0 {
-		this.jsonError("邮件服务器不存在")
+		this.jsonError("<LABEL_418>")
 	}
 	err = models.EmailModel.Delete(emailId)
 	if err != nil {
-		this.ErrorLog("删除邮件服务器 " + emailId + " 失败: " + err.Error())
-		this.jsonError("删除邮件服务器失败")
+		this.ErrorLog("<LABEL_586> " + emailId + " <LABEL_1618>: " + err.Error())
+		this.jsonError("<LABEL_288>")
 	}
 
-	this.InfoLog("删除邮件服务器 " + emailId + " 成功")
-	this.jsonSuccess("删除邮件服务器成功", nil, "/system/email/list")
+	this.InfoLog("<LABEL_586> " + emailId + " <LABEL_1617>")
+	this.jsonSuccess("<LABEL_289>", nil, "/system/email/list")
 }
 
 func (this *EmailController) Test() {
 
 	if !this.IsPost() {
-		this.ViewError("请求方式有误！", "/system/email/list")
+		this.ViewError("<LABEL_705>！", "/system/email/list")
 	}
 	name := strings.TrimSpace(this.GetString("name", ""))
 	senderAddress := strings.TrimSpace(this.GetString("sender_address", ""))
@@ -276,31 +276,31 @@ func (this *EmailController) Test() {
 	emails := strings.TrimSpace(this.GetString("emails", ""))
 
 	if name == "" {
-		this.jsonError("邮件服务器名称不能为空！")
+		this.jsonError("<LABEL_137>！")
 	}
 	if host == "" {
-		this.jsonError("邮件服务器主机不能为空！")
+		this.jsonError("<LABEL_138>！")
 	}
 	if validation.Validate(host, is.Host) != nil {
-		this.jsonError("邮件服务器主机格式不正确！")
+		this.jsonError("<LABEL_90>！")
 	}
 	if port == "" {
-		this.jsonError("邮件服务器端口不能为空！")
+		this.jsonError("<LABEL_139>！")
 	}
 	if validation.Validate(port, is.Port) != nil {
-		this.jsonError("邮件服务器端口格式不正确！")
+		this.jsonError("<LABEL_91>！")
 	}
 	if senderAddress == "" {
-		this.jsonError("发件人邮箱不能为空！")
+		this.jsonError("<LABEL_278>！")
 	}
 	if username == "" {
-		this.jsonError("发件用户名不能为空！")
+		this.jsonError("<LABEL_279>！")
 	}
 	if password == "" {
-		this.jsonError("发件人密码不能为空！")
+		this.jsonError("<LABEL_280>！")
 	}
 	if emails == "" {
-		this.jsonError("要发送的邮件地址不能为空！")
+		this.jsonError("<LABEL_92>！")
 	}
 
 	emailConfig := map[string]string{
@@ -316,26 +316,26 @@ func (this *EmailController) Test() {
 
 	to := strings.Split(emails, ";")
 	documentValue := map[string]string{
-		"name":         "MM-Wiki测试邮件",
+		"name":         "MM-Wiki<LABEL_1185>",
 		"username":     this.User["username"],
 		"update_time":  fmt.Sprintf("%d", time.Now().Unix()),
 		"comment":      "",
 		"document_url": "",
-		"content":      "欢迎使用 <a href='https://github.com/chaiyd/mm-wiki'>MM-Wiki</a>，这是一封测试邮件，请勿回复!",
+		"content":      "<LABEL_1186> <a href='https://github.com/chaiyd/mm-wiki'>MM-Wiki</a>，<LABEL_419>，<LABEL_985>",
 	}
 
 	emailTemplate := beego.BConfig.WebConfig.ViewsPath + "/system/email/template_test.html"
 	body, err := utils.Email.MakeDocumentHtmlBody(documentValue, emailTemplate)
 	if err != nil {
-		this.ErrorLog("发送测试邮件失败：" + err.Error())
-		this.jsonError("发送测试邮件失败！")
+		this.ErrorLog("<LABEL_420>：" + err.Error())
+		this.jsonError("<LABEL_420>！")
 	}
 	// start send email
-	err = utils.Email.Send(emailConfig, to, "测试邮件", body)
+	err = utils.Email.Send(emailConfig, to, "<LABEL_1185>", body)
 	if err != nil {
-		this.ErrorLog("发送测试邮件失败：" + err.Error())
-		this.jsonError("发送测试邮件失败！")
+		this.ErrorLog("<LABEL_420>：" + err.Error())
+		this.jsonError("<LABEL_420>！")
 	}
 
-	this.jsonSuccess("发送测试邮件成功", nil)
+	this.jsonSuccess("<LABEL_421>", nil)
 }
